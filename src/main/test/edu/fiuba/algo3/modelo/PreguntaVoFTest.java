@@ -8,13 +8,19 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PreguntaVoFTest {
     @Test
-    public void seleccionaPreguntaAYDevuelveUnPuntoPorqueEsLaCorrecta() {
-        RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Verdadero");
-        RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Falso");
-        PreguntaVoF pregunta = new PreguntaVoF("Consigna verdadero y falso");
-        pregunta.agregarRespuestaIncorrecta(respuestaIncorrecta);
-        pregunta.agregarRespuestaCorrecta(respuestaCorrecta);
+    public void preguntaVoFPuedeCrearsePasandoRespuestaCorrecta() {
+        Respuesta respuestaCorrecta = new RespuestaCorrecta("Verdadero");
+        Respuesta respuestaIncorrecta = new RespuestaIncorrecta("Falso");
+        PreguntaVoF pregunta = new PreguntaVoF("1 + 1 = 2 ", respuestaCorrecta, respuestaIncorrecta);
 
-        assertEquals(pregunta.obtenerRespuestaCorrecta(),"Verdadero");
+        assertEquals(pregunta.esCorrecta(respuestaCorrecta),true);
     }
+
+    /*@Test
+    public void preguntaVoFRecibeRespuestasAsignaCorrectamentePuntajes(){
+        Respuesta respuestaCorrecta = new RespuestaCorrecta("Verdadero");
+        Respuesta respuestaIncorrecta = new RespuestaIncorrecta("Falso");
+        PreguntaVoF pregunta = new PreguntaVoF("1 + 1 = 2 ", respuestaCorrecta, respuestaIncorrecta);
+
+    }*/
 }

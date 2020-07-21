@@ -5,11 +5,15 @@ public class Respuesta {
 
 
 
-    public String obtenerNombre(){
+    public String nombre(){
         return nombre;
     }
 
     public int calificar(){
         return 0;
+    }
+
+    public boolean igual(Respuesta respuesta) {
+        return nombre.equals(respuesta.nombre);
     }
 }

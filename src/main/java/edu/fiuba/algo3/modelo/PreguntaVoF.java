@@ -2,22 +2,16 @@ package edu.fiuba.algo3.modelo;
 
 public class PreguntaVoF {
     String enunciado;
-    RespuestaCorrecta respuestaCorrecta;
-    RespuestaIncorrecta respuestaIncorrecta;
+    Respuesta respuestaCorrecta;
+    Respuesta respuestaIncorrecta;
 
-    public PreguntaVoF(String enunciado){
+    public PreguntaVoF(String enunciado, Respuesta respuestaCorrecta, Respuesta respuestaIncorrecta){
         this.enunciado = enunciado;
-    }
-
-    public void agregarRespuestaIncorrecta(RespuestaIncorrecta respuestaIncorrecta) {
+        this.respuestaCorrecta = respuestaCorrecta;
         this.respuestaIncorrecta = respuestaIncorrecta;
     }
 
-    public void agregarRespuestaCorrecta(RespuestaCorrecta respuestaCorrecta) {
-        this.respuestaCorrecta = respuestaCorrecta;
-    }
-
-    public String obtenerRespuestaCorrecta() {
-        return respuestaCorrecta.obtenerNombre();
+    public boolean esCorrecta(Respuesta respuesta) {
+        return (respuestaCorrecta.igual(respuesta));
     }
 }
