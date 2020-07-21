@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class PreguntaVoFTest {
     @Test
     public void seleccionaPreguntaAYDevuelveUnPuntoPorqueEsLaCorrecta() {
-
         RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Verdadero");
         RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Falso");
         PreguntaVoF pregunta = new PreguntaVoF("Consigna verdadero y falso");
