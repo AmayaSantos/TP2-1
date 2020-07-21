@@ -19,8 +19,8 @@ public class PreguntaVoFTest {
 
     @Test
     public void preguntaVoFRecibeRespuestasAsignaCorrectamentePuntajes(){
-        Jugador jugador1 = new Jugador();
-        Jugador jugador2 = new Jugador();
+        Jugador jugador1 = new Jugador("carlos");
+        Jugador jugador2 = new Jugador("juan");
 
         Respuesta respuestaJugador1 = new RespuestaIncorrecta("Verdadero");
         Respuesta respuestaJugador2 = new RespuestaCorrecta("Falso");

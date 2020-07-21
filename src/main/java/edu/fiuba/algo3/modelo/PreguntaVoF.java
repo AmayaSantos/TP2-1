@@ -15,10 +15,9 @@ public class PreguntaVoF {
         this.respuestaIncorrecta = respuestaIncorrecta;
     }
     public void clasificarRespuesta( List<Seleccion> listaDeSeleccion) {
-        Iterator iterador = listaDeSeleccion.iterator();
-        while(iterador.hasNext()){
-            iterador.next().calificar();
 
+        for (Seleccion seleccion: listaDeSeleccion){
+            seleccion.calificar();
         }
     }
 
