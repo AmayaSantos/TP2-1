@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-public class Respuesta {
+public abstract class Respuesta {
     String nombre;
 
 
@@ -9,9 +9,7 @@ public class Respuesta {
         return nombre;
     }
 
-    public int calificar(){
-        return 0;
-    }
+    public abstract int calificar();
 
     public boolean igual(Respuesta respuesta) {
         return nombre.equals(respuesta.nombre);
