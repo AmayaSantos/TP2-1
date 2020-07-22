@@ -1,11 +1,13 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.Entrega0;
 
+import edu.fiuba.algo3.modelo.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PreguntaVoFTest {
     @Test
@@ -14,7 +16,7 @@ public class PreguntaVoFTest {
         Respuesta respuestaIncorrecta = new RespuestaIncorrecta("Falso");
         PreguntaVoF pregunta = new PreguntaVoF("1 + 1 = 2 ", respuestaCorrecta, respuestaIncorrecta);
 
-        assertEquals(pregunta.esCorrecta(respuestaCorrecta),true);
+        assertTrue(pregunta.esCorrecta(respuestaCorrecta));
     }
 
     @Test
@@ -35,8 +37,8 @@ public class PreguntaVoFTest {
         PreguntaVoF pregunta = new PreguntaVoF("1 + 1 = 2 ", respuestaJugador2, respuestaJugador1);
         pregunta.clasificarRespuesta(listaRespuestas);
 
-        assertEquals(jugador2.obtenerPuntaje(),1);
-        assertEquals(jugador1.obtenerPuntaje(),0);
+        assertEquals(1, jugador2.obtenerPuntaje() );
+        assertEquals(0, jugador1.obtenerPuntaje() );
     }
 
 
