@@ -1,4 +1,5 @@
 @startuml
+hide footbox
 activate TestCase
 activate Jugador
 activate Pregunta

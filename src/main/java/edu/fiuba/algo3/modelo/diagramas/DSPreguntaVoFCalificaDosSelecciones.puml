@@ -1,4 +1,5 @@
 @startuml
+hide footbox
 Panel -> Pregunta ++ : calificar(selecciones)
 loop : por cada seleccion
 Pregunta -> Seleccion ++ : calificarNormal()
@@ -9,5 +10,6 @@ Seleccion -> Jugador ++ : sumarPuntaje(puntos)
 deactivate Jugador
 deactivate Seleccion
 deactivate Pregunta
+
 end
 @enduml
