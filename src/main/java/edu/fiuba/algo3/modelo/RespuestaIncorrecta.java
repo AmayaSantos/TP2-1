@@ -9,4 +9,9 @@ public class RespuestaIncorrecta extends Respuesta {
     public int calificar() {
         return 0;
     }
+
+    @Override
+    public boolean esCorrecta() {
+        return false;
+    }
 }

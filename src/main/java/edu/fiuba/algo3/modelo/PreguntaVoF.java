@@ -1,18 +1,23 @@
 package edu.fiuba.algo3.modelo;
 
+import java.util.AbstractList;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class PreguntaVoF {
     String enunciado;
-    Respuesta respuestaCorrecta;
-    Respuesta respuestaIncorrecta;
+    List<Respuesta> respuestas=new ArrayList<Respuesta>();
+    //Respuesta respuestaCorrecta;
+    //Respuesta respuestaIncorrecta;
 
 
     public PreguntaVoF(String enunciado, Respuesta respuestaCorrecta, Respuesta respuestaIncorrecta){
         this.enunciado = enunciado;
-        this.respuestaCorrecta = respuestaCorrecta;
-        this.respuestaIncorrecta = respuestaIncorrecta;
+        respuestas.add(respuestaCorrecta);
+        respuestas.add(respuestaIncorrecta);
+    //    this.respuestaCorrecta = respuestaCorrecta;
+    //    this.respuestaIncorrecta = respuestaIncorrecta;
     }
     public void clasificarRespuesta( List<Seleccion> listaDeSeleccion) {
 
@@ -21,7 +26,11 @@ public class PreguntaVoF {
         }
     }
 
-    public boolean esCorrecta(Respuesta respuesta) {
-        return (respuestaCorrecta.igual(respuesta));
+    public List<Respuesta> obtenerOpciones() {
+        return respuestas;
+    }
+
+   public boolean esCorrecta(Respuesta respuesta) {
+        return (respuesta.esCorrecta());
     }
 }
