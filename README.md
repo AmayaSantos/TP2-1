@@ -1,3 +1,5 @@
+https://travis-ci.org/Alex1161/TP2.svg?branch=V1.0
+
 # TP2 Algoritmos 3: Kahoot
 
 Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
