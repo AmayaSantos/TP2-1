@@ -10,65 +10,24 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PreguntaVoFTest {
-    @Test
-    public void preguntaVoFPuedeCrearsePasandoRespuestaCorrecta() {
-        Respuesta respuestaCorrecta = new RespuestaCorrecta("Verdadero");
-        Respuesta respuestaIncorrecta = new RespuestaIncorrecta("Falso");
-        PreguntaVoF pregunta = new PreguntaVoF("1 + 1 = 2 ", respuestaCorrecta, respuestaIncorrecta);
 
-       assertTrue(pregunta.esCorrecta(respuestaCorrecta));
-    }
     @Test
-    public void preguntaVoFPuedeCrearsePasandoRespuestaCorrectaSinOrden() {
-        Respuesta respuestaCorrecta = new RespuestaCorrecta("Verdadero");
-        Respuesta respuestaIncorrecta = new RespuestaIncorrecta("Falso");
-        PreguntaVoF pregunta = new PreguntaVoF("1 + 1 = 2 ", respuestaIncorrecta, respuestaCorrecta);
-
-        assertTrue(pregunta.esCorrecta(respuestaCorrecta));
+    public void preguntaVoFSeCreaIndicandoRespuestaCorrectaEsVerdadero(){
+        OpcionVoF verdadero = new OpcionVerdadero();
+        PreguntaVoF pregunta = new PreguntaVoF("Este es un enunciado", verdadero);
+        Respuesta respuesta = pregunta.calificar(verdadero);
+        assertEquals(1 , respuesta.puntaje());
     }
 
     @Test
-    public void preguntaVoFRecibeRespuestasAsignaCorrectamentePuntajes(){
-        Jugador jugador1 = new Jugador("carlos");
-        Jugador jugador2 = new Jugador("juan");
-
-        Respuesta respuestaJugador1 = new RespuestaIncorrecta("Verdadero");
-        Respuesta respuestaJugador2 = new RespuestaCorrecta("Falso");
-
-        Seleccion eleccionJugador1 = new Seleccion(respuestaJugador1,jugador1);
-        Seleccion eleccionJugador2 = new Seleccion(respuestaJugador2,jugador2);
-
-        List listaRespuestas = new ArrayList();
-        listaRespuestas.add(eleccionJugador1);
-        listaRespuestas.add(eleccionJugador2);
-
-        PreguntaVoF pregunta = new PreguntaVoF("1 + 1 = 2 ", respuestaJugador2, respuestaJugador1);
-        pregunta.clasificarRespuesta(listaRespuestas);
-
-        assertEquals(1, jugador2.obtenerPuntaje() );
-        assertEquals(0, jugador1.obtenerPuntaje() );
+    public void preguntaVoFSeCreaIndicandoRespuestaCorrectaEsVerdaderoSeEligeFalsoYDaCeroPuntos(){
+        OpcionVoF verdadero = new OpcionVerdadero();
+        OpcionVoF falso = new OpcionFalso();
+        PreguntaVoF pregunta = new PreguntaVoF("Este es un enunciado", verdadero);
+        Respuesta respuesta = pregunta.calificar(falso);
+        assertEquals(0 , respuesta.puntaje());
     }
-    @Test
-    public void preguntaVoFRecibeRespuestasAsignaCorrectamentePuntajesSinOrden(){
-        Jugador jugador1 = new Jugador("carlos");
-        Jugador jugador2 = new Jugador("juan");
 
-        Respuesta respuestaJugador1 = new RespuestaIncorrecta("Verdadero");
-        Respuesta respuestaJugador2 = new RespuestaCorrecta("Falso");
-
-        Seleccion eleccionJugador1 = new Seleccion(respuestaJugador1,jugador1);
-        Seleccion eleccionJugador2 = new Seleccion(respuestaJugador2,jugador2);
-
-        List listaRespuestas = new ArrayList();
-        listaRespuestas.add(eleccionJugador1);
-        listaRespuestas.add(eleccionJugador2);
-
-        PreguntaVoF pregunta = new PreguntaVoF("1 + 1 = 2 ", respuestaJugador1, respuestaJugador2);
-        pregunta.clasificarRespuesta(listaRespuestas);
-
-        assertEquals(1, jugador2.obtenerPuntaje() );
-        assertEquals(0, jugador1.obtenerPuntaje() );
-    }
 
 
 }

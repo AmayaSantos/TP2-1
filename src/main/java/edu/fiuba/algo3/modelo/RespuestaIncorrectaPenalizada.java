@@ -14,5 +14,10 @@ public class RespuestaIncorrectaPenalizada extends Respuesta {
     public boolean esCorrecta() {
         return false;
     }
+
+    @Override
+    public int puntaje() {
+        return -1;
+    }
 }
 

@@ -4,7 +4,6 @@ public abstract class Respuesta {
     String nombre;
 
 
-
     public String nombre(){
         return nombre;
     }
@@ -16,4 +15,6 @@ public abstract class Respuesta {
     }
 
     public abstract boolean esCorrecta();
+
+    public abstract int puntaje();
 }

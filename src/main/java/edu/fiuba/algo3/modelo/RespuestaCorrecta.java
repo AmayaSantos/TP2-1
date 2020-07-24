@@ -5,6 +5,9 @@ public class RespuestaCorrecta extends Respuesta {
         this.nombre = nombre;
     }
 
+    public RespuestaCorrecta(){
+
+    }
     @Override
     public int calificar() {
         return 1;
@@ -13,6 +16,11 @@ public class RespuestaCorrecta extends Respuesta {
     @Override
     public boolean esCorrecta() {
         return true;
+    }
+
+    @Override
+    public int puntaje(){
+        return 1;
     }
 
 }

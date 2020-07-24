@@ -4,6 +4,9 @@ public class RespuestaIncorrecta extends Respuesta {
     public RespuestaIncorrecta(String nombre){
         this.nombre = nombre;
     }
+    public RespuestaIncorrecta(){
+
+    }
 
     @Override
     public int calificar() {
@@ -13,5 +16,9 @@ public class RespuestaIncorrecta extends Respuesta {
     @Override
     public boolean esCorrecta() {
         return false;
+    }
+
+    public int puntaje(){
+        return 0;
     }
 }

@@ -5,32 +5,35 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class PreguntaVoF {
+public class PreguntaVoF extends Pregunta{
     String enunciado;
-    List<Respuesta> respuestas=new ArrayList<Respuesta>();
-    //Respuesta respuestaCorrecta;
-    //Respuesta respuestaIncorrecta;
+    Respuesta respuestaOpcionFalsa, respuestaOpcionVerdadera;
 
-
-    public PreguntaVoF(String enunciado, Respuesta respuestaCorrecta, Respuesta respuestaIncorrecta){
+    public PreguntaVoF(String enunciado, OpcionVoF opcion){
         this.enunciado = enunciado;
-        respuestas.add(respuestaCorrecta);
-        respuestas.add(respuestaIncorrecta);
-    //    this.respuestaCorrecta = respuestaCorrecta;
-    //    this.respuestaIncorrecta = respuestaIncorrecta;
-    }
-    public void clasificarRespuesta( List<Seleccion> listaDeSeleccion) {
-
-        for (Seleccion seleccion: listaDeSeleccion){
-            seleccion.calificar();
-        }
+        opcion.esCorrecta(this);
     }
 
-    public List<Respuesta> obtenerOpciones() {
-        return respuestas;
+    public Respuesta opcionVerdadera(){
+        return respuestaOpcionVerdadera;
     }
 
-   public boolean esCorrecta(Respuesta respuesta) {
-        return (respuesta.esCorrecta());
+    public Respuesta opcionFalsa(){
+        return respuestaOpcionFalsa;
     }
+
+    public void laCorrectaEsLaFalsa(){
+        respuestaOpcionFalsa = new RespuestaCorrecta();
+        respuestaOpcionVerdadera = new RespuestaIncorrecta();
+    }
+
+    public void laCorrectaEsLaVerdadera(){
+        respuestaOpcionFalsa = new RespuestaIncorrecta();
+        respuestaOpcionVerdadera = new RespuestaCorrecta();
+    }
+
+    public Respuesta calificar(OpcionVoF opcion){
+        return opcion.opcionSeleccionada(this);
+    }
+
 }
