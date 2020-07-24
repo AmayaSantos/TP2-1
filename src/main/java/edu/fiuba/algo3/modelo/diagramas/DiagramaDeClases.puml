@@ -3,59 +3,31 @@ hide circle
 skinparam classAttributeIconSize 0
 
 'Clases
-class Panel{
-    +cargarPregunta(): Void
-    +enviarRespuesta(): Void
-    -monstrarOpciones(): Void
-    -mostrarEnunciado(): Void
-}
-
-Class Presentador{
-    -jugadores: List<Jugador>
-}
+Class Panel{
+ }
 
 Class Pregunta{
-    +enunciado():String
-    +cantidadDeOpciones():int
-    +entregarOpciones():List<Respuesta>
-    +calificar(List<Selecciones>):int
+
 }
 
 Class Respuesta{
-    -puntaje: int
-    +calificar(): Void
-    +detalle(): String
-}
 
-Class RespuestaCorrecta{
-    +calificar(): Void
-    +detalle(): String
-}
-
-Class RespuestaIncorrecta{
-    +calificar(): Void
-    +detalle(): String
 }
 
 Class PreguntaVoF{
-    -respuestaCorrecta: RespuestaCorrecta
-    -respuestaIncorrecta: RespuestaIncorrecta
-    +calificar(respuestas: List<Respuesta>): int
-    +agregarRespuestaIncorrecta(respuestaInCorrecta: RespuestaIncorrecta): Void
-    +agregarRespuestaCorrecta(respuestaCorrecta: RespuestaCorrecta): Void
-    +obtenerRespuestaCorrecta(): String
+
 }
 
 Class PreguntaMultipleChoise{
-    +calificar(Selecciones):int
+
 }
 
 Class GroupChoice{
-    +calificar(Selecciones):int
+
 }
 
 Class TipoMChoise{
-    +calificar(Seleccion):int
+
 }
 
 Class ClasicMChoice
@@ -63,28 +35,23 @@ Class ParcialMChoice
 Class OrdererChoice
 
 Class Seleccion{
-    -respuesta
-    -multiplicador
-    -exclusividad
-    +agregarRespuesta()
-    +calificarNormal()
-    +calificarParcial()
-    +calificarChoice()
+
 }
 
 Class Jugador{
-    -nombre
-    -puntos
-    +sumarPuntaje(int):
-    +usarMultiplicador(Multiplicador)
+
 }
+
+Class Puntaje{
+}
+
 
 Class Exclusividad
 Class Multiplicador
 
 'Relaciones
-Panel <-left- Presentador
-Presentador --* "*" Pregunta
+
+Panel --* "*" Pregunta
 Pregunta -left-* "*" Respuesta
 RespuestaIncorrecta -up-|> Respuesta
 RespuestaCorrecta -up-|> Respuesta

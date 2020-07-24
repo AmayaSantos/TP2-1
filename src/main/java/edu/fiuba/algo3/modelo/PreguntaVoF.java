@@ -21,10 +21,11 @@ public class PreguntaVoF {
     }
     public void clasificarRespuesta( List<Seleccion> listaDeSeleccion) {
 
-        for (Seleccion seleccion: listaDeSeleccion){
-            seleccion.calificar();
+        for (Seleccion seleccion: listaDeSeleccion)
+                for(Respuesta respuesta: seleccion.devolverListaDeRespuestas()) {
+                    seleccion.jugador.modificarPuntaje(respuesta.calificar());
+                }
         }
-    }
 
     public List<Respuesta> obtenerOpciones() {
         return respuestas;

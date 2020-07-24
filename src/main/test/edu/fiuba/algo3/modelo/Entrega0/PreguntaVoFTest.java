@@ -18,6 +18,8 @@ public class PreguntaVoFTest {
 
        assertTrue(pregunta.esCorrecta(respuestaCorrecta));
     }
+
+
     @Test
     public void preguntaVoFPuedeCrearsePasandoRespuestaCorrectaSinOrden() {
         Respuesta respuestaCorrecta = new RespuestaCorrecta("Verdadero");
@@ -35,10 +37,13 @@ public class PreguntaVoFTest {
         Respuesta respuestaJugador1 = new RespuestaIncorrecta("Verdadero");
         Respuesta respuestaJugador2 = new RespuestaCorrecta("Falso");
 
-        Seleccion eleccionJugador1 = new Seleccion(respuestaJugador1,jugador1);
-        Seleccion eleccionJugador2 = new Seleccion(respuestaJugador2,jugador2);
+        Seleccion eleccionJugador1 = new Seleccion(jugador1);
+        eleccionJugador1.agregarRespuesta(respuestaJugador1);
 
-        List listaRespuestas = new ArrayList();
+        Seleccion eleccionJugador2 = new Seleccion(jugador2);
+        eleccionJugador2.agregarRespuesta(respuestaJugador2);
+
+        List<Seleccion> listaRespuestas = new ArrayList<Seleccion>();
         listaRespuestas.add(eleccionJugador1);
         listaRespuestas.add(eleccionJugador2);
 
@@ -48,27 +53,5 @@ public class PreguntaVoFTest {
         assertEquals(1, jugador2.obtenerPuntaje() );
         assertEquals(0, jugador1.obtenerPuntaje() );
     }
-    @Test
-    public void preguntaVoFRecibeRespuestasAsignaCorrectamentePuntajesSinOrden(){
-        Jugador jugador1 = new Jugador("carlos");
-        Jugador jugador2 = new Jugador("juan");
-
-        Respuesta respuestaJugador1 = new RespuestaIncorrecta("Verdadero");
-        Respuesta respuestaJugador2 = new RespuestaCorrecta("Falso");
-
-        Seleccion eleccionJugador1 = new Seleccion(respuestaJugador1,jugador1);
-        Seleccion eleccionJugador2 = new Seleccion(respuestaJugador2,jugador2);
-
-        List listaRespuestas = new ArrayList();
-        listaRespuestas.add(eleccionJugador1);
-        listaRespuestas.add(eleccionJugador2);
-
-        PreguntaVoF pregunta = new PreguntaVoF("1 + 1 = 2 ", respuestaJugador1, respuestaJugador2);
-        pregunta.clasificarRespuesta(listaRespuestas);
-
-        assertEquals(1, jugador2.obtenerPuntaje() );
-        assertEquals(0, jugador1.obtenerPuntaje() );
-    }
-
 
 }

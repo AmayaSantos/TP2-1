@@ -26,10 +26,13 @@ public class PreguntaVoFPenalizadoTest {
             Respuesta respuestaJugador1 = new RespuestaIncorrectaPenalizada("Verdadero");
             Respuesta respuestaJugador2 = new RespuestaCorrecta("Falso");
 
-            Seleccion eleccionJugador1 = new Seleccion(respuestaJugador1,jugador1);
-            Seleccion eleccionJugador2 = new Seleccion(respuestaJugador2,jugador2);
+            Seleccion eleccionJugador1 = new Seleccion(jugador1);
+            eleccionJugador1.agregarRespuesta(respuestaJugador1);
 
-            List listaRespuestas = new ArrayList();
+            Seleccion eleccionJugador2 = new Seleccion(jugador2);
+            eleccionJugador2.agregarRespuesta(respuestaJugador2);
+
+            List<Seleccion> listaRespuestas = new ArrayList<Seleccion> ();
             listaRespuestas.add(eleccionJugador1);
             listaRespuestas.add(eleccionJugador2);
 
