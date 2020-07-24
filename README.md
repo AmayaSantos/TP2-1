@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/Alex1161/TP2.svg?branch=V1.0)](https://travis-ci.org/Alex1161/TP2)
+[![codecov](https://codecov.io/gh/Alex1161/TP2/branch/V1.0/graph/badge.svg)](https://codecov.io/gh/Alex1161/TP2)
 
 # TP2 Algoritmos 3: Kahoot
 
