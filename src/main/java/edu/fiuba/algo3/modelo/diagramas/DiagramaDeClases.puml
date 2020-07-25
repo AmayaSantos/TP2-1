@@ -15,89 +15,101 @@ Class Presentador{
 }
 
 Class Pregunta{
-    +enunciado():String
-    +cantidadDeOpciones():int
-    +entregarOpciones():List<Respuesta>
-    +calificar(List<Selecciones>):int
+    -enunciado():String
+    -respuestasCorrectas():List<Respuesta>
+    -respuestasIncorrectas():List<Respuesta>
+    +obtenerOpciones(): List<Respuesta>
+    +calificar(Seleccion seleccion):int
 }
 
 Class Respuesta{
-    -puntaje: int
-    +calificar(): Void
-    +detalle(): String
+    -nombre:string
+    +nombre():String
+    +calificar(Abstracto): Void
+    +igual(respuesta:Respuesta): Boolean
+    +esCorrecta(Abstracto):boolean
 }
 
 Class RespuestaCorrecta{
-    +calificar(): Void
-    +detalle(): String
+    +RespuestaCorrecta(nombre:String)
+    +calificar():int
+    +esCorrecta():boolean
 }
 
 Class RespuestaIncorrecta{
-    +calificar(): Void
-    +detalle(): String
+   +RespuestaIncorrecta(nombre:String)
+    +calificar():int
+    +esCorrecta():boolean
 }
 
 Class PreguntaVoF{
-    -respuestaCorrecta: RespuestaCorrecta
-    -respuestaIncorrecta: RespuestaIncorrecta
-    +calificar(respuestas: List<Respuesta>): int
-    +agregarRespuestaIncorrecta(respuestaInCorrecta: RespuestaIncorrecta): Void
-    +agregarRespuestaCorrecta(respuestaCorrecta: RespuestaCorrecta): Void
-    +obtenerRespuestaCorrecta(): String
+   +PreguntaVoF(enunciado:String,respuestaCorrecta:RespuestaCorrecta,respuestaIncorrecta:RespuestaIncorrecta)
+   +PreguntaVoF(enunciado:String,respuestaIncorrecta:RespuestaIncorrecta,respuestaCorrecta:RespuestaCorrecta)
 }
 
-Class PreguntaMultipleChoise{
+
+
+Class PreguntaChoise{
+    +agregar(respuesta:RespuestaCorrecta):void
+    +agregar(respuesta:RespuestaIncorrecta):void
+
+}
+
+
+
+
+Class PreguntaGroup{
     +calificar(Selecciones):int
 }
 
-Class GroupChoice{
-    +calificar(Selecciones):int
-}
 
-Class TipoMChoise{
-    +calificar(Seleccion):int
-}
-
-Class ClasicMChoice
-Class ParcialMChoice
-Class OrdererChoice
 
 Class Seleccion{
-    -respuesta
-    -multiplicador
-    -exclusividad
-    +agregarRespuesta()
+    -jugador:Jugador
+    -misRespuestasCorrestas:List<Respuesta>
+    -misRespuestasIncorrestas:List<Respuesta>
+    -busteador
+    +Selecion(jugador:Jugador)
+    +agregar(respuesta:RespuestaCorrecta)
+    +agregar(respuesta:RespuestaIncrrecta)
     +calificarNormal()
     +calificarParcial()
     +calificarChoice()
 }
 
 Class Jugador{
-    -nombre
-    -puntos
-    +sumarPuntaje(int):
-    +usarMultiplicador(Multiplicador)
+    -nombre:String
+    -puntos:int
+    +Jugador(nombre:String)
+    + modificarPuntaje(numero:int):void
+    +obtenerPuntaje():int
 }
 
-Class Exclusividad
-Class Multiplicador
+Class Ronda{
+   -pregunta: Pregunta
+   -selecciones:List<Seleccion>
+   +agregarSeleccion(Seleccion seleccion):void
+   +abstract clasificar():void
+   +aplicarBusteador()
+}
 
 'Relaciones
-Panel <-left- Presentador
+
 Presentador --* "*" Pregunta
-Pregunta -left-* "*" Respuesta
-RespuestaIncorrecta -up-|> Respuesta
-RespuestaCorrecta -up-|> Respuesta
+Pregunta -right-* "*" Respuesta
+RespuestaIncorrecta -down-|> Respuesta
+RespuestaCorrecta -down-|> Respuesta
 PreguntaVoF -up-|> Pregunta
-PreguntaMultipleChoise -up-|> Pregunta
-GroupChoice -up-|> Pregunta
-PreguntaMultipleChoise -down-> TipoMChoise
-ClasicMChoice -up-|> TipoMChoise
-ParcialMChoice -up-|> TipoMChoise
-OrdererChoice -up-|> TipoMChoise
-Pregunta .left.> Seleccion
-Seleccion -up-> Jugador
+PreguntaChoise -up-|> Pregunta
+PreguntaGroup -up-|> Pregunta
+Pregunta .up.>Ronda
+Seleccion .left.>Ronda
+RondaClasica -up-|>Ronda
+RondaParcial -up-|>Ronda
+RondaPenalizada -up-|>Ronda
+Ronda -up-> Jugador
 Jugador -right-> Exclusividad
 Jugador -right-> Multiplicador
+
 
 @enduml

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Pregunta {
-    public Object obtenerCorrectas;
+
     String enunciado;
     List<Respuesta> respuestasCorrectas;
     List<Respuesta> respuestasIncorrectas;

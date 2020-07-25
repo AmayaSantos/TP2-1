@@ -3,16 +3,13 @@ package edu.fiuba.algo3.modelo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RondaParcial {
-    Pregunta pregunta;
-    List<Seleccion> selecciones;
+public class RondaParcial  extends Ronda{
+
     public RondaParcial(Pregunta pregunta) {
         this.pregunta=pregunta;
         selecciones=new ArrayList<>();
     }
-    public void agregarSeleccion(Seleccion seleccion) {
-        selecciones.add(seleccion);
-    }
+    @Override
     public void clasificar() {
         for (Seleccion seleccion: selecciones){
             seleccion.calificarParcial();
