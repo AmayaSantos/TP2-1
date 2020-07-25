@@ -15,7 +15,7 @@ public class Selecciones {
         listaDeSelecciones.add(seleccion);
     }
     
-    public void calificarPregunta(PreguntaVoF pregunta){
+    public void calificarConPregunta(PreguntaVoF pregunta){
         for (Seleccion sel: listaDeSelecciones
              ) {
             sel.calificarPregunta(pregunta);

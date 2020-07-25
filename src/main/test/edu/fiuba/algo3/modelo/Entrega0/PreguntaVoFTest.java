@@ -35,22 +35,22 @@ public class PreguntaVoFTest {
         Respuesta respuesta = pregunta.calificar(falso);
         assertEquals(1 , respuesta.puntaje());
     }
-/*
+
     @Test void preguntaVoFConEnunciadoVerdaderoCalificaRespuestasDeJugadoresPrimerJugadorSuma1SegundoJugadorSuma0(){
         OpcionVoF verdadero = new OpcionVerdadero();
         OpcionVoF falso = new OpcionFalso();
         Selecciones selecciones = new Selecciones();
-        Jugador jugador1 = new Jugador();
-        Jugador jugador2 = new Jugador();
-        Seleccion seleccion(jugador1, verdadero);
-        Seleccion seleccion2(jugador2, falso);
-        seleccion.agregar(seleccion);
-        seleccion.agregar(seleccion2);
+        Jugador jugador1 = new Jugador("");
+        Jugador jugador2 = new Jugador("");
+        Seleccion seleccion = new Seleccion(jugador1, verdadero);
+        Seleccion seleccion2 = new Seleccion(jugador2, falso);
+        selecciones.agregar(seleccion);
+        selecciones.agregar(seleccion2);
         PreguntaVoF pregunta = new PreguntaVoF("Un Enunciado", new OpcionVerdadero());
-        PreguntaVoF.calificar(selecciones);
-        assertEquals(1 , Jugador.obtenerPuntaje());
-        assertEquals(0 , Jugador.obtenerPuntaje());
+        pregunta.calificar(selecciones);
+        assertEquals(1 , jugador1.obtenerPuntaje());
+        assertEquals(0 , jugador2.obtenerPuntaje());
     }
 
- */
+
 }

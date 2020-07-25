@@ -1,9 +1,9 @@
 @startuml
-Test -> PreguntaVoF : calificar(OpcionFalsa)
+Test -> PreguntaVoF : calificar(Opcion)
 activate PreguntaVoF
-PreguntaVoF -> OpcionFalsa: opcionSeleccionada(preguntaVoF)
+PreguntaVoF -> OpcionFalsa: esCalificadaPor(preguntaVoF)
 activate OpcionFalsa
-OpcionFalsa-> PreguntaVoF : opcionFalsa()
+OpcionFalsa-> PreguntaVoF : calificar(this)
 activate PreguntaVoF
 return respuestaIncorrecta
 return respuestaIncorrecta

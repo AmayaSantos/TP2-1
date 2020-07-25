@@ -24,6 +24,9 @@ public class PreguntaVoF extends Pregunta{
         respuestaOpcionVerdadera = new RespuestaCorrecta();
     }
 
+    public void calificar(Selecciones selecciones){
+        selecciones.calificarConPregunta(this);
+    }
     public Respuesta calificar(OpcionVoF opcion){
         return opcion.esCalificadaPor(this);
     }
