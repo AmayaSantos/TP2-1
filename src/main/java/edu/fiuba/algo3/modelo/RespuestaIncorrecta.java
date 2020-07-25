@@ -7,7 +7,7 @@ public class RespuestaIncorrecta extends Respuesta {
 
     @Override
     public int calificar() {
-        return 0;
+        return -1;
     }
 
     @Override
