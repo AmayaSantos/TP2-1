@@ -22,10 +22,11 @@ public class Seleccion {
     ////ClasificacionPenalizada
 
     public void calificar(){
-        List<Respuesta> misRespuestas= new ArrayList<>();
-        misRespuestas.addAll(misRespuestasCorrestas);
-        misRespuestas.addAll(misRespuestasIncorrestas);
-        for (Respuesta respuesta: misRespuestas){
+
+        for (Respuesta respuesta: misRespuestasCorrestas){
+            jugador.modificarPuntaje(respuesta.calificar());
+        };
+        for (Respuesta respuesta: misRespuestasIncorrestas){
             jugador.modificarPuntaje(respuesta.calificar());
         };
     }

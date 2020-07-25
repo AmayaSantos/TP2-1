@@ -11,7 +11,7 @@ class Panel{
 }
 
 
-Class Pregunta{
+Abstract Pregunta{
     -enunciado():String
     -respuestasCorrectas():List<Respuesta>
     -respuestasIncorrectas():List<Respuesta>
@@ -19,7 +19,7 @@ Class Pregunta{
     +calificar(Seleccion seleccion):int
 }
 
-Class Respuesta{
+Abstract Respuesta{
     -nombre:string
     +nombre():String
     +calificar(Abstracto): Void
@@ -82,7 +82,7 @@ Class Jugador{
     +obtenerPuntaje():int
 }
 
-Class Ronda{
+Abstract Ronda{
    -pregunta: Pregunta
    -selecciones:List<Seleccion>
    +agregarSeleccion(Seleccion seleccion):void
