@@ -14,14 +14,6 @@ public class PreguntaVoF extends Pregunta{
         opcion.esCorrecta(this);
     }
 
-    public Respuesta opcionVerdadera(){
-        return respuestaOpcionVerdadera;
-    }
-
-    public Respuesta opcionFalsa(){
-        return respuestaOpcionFalsa;
-    }
-
     public void laCorrectaEsLaFalsa(){
         respuestaOpcionFalsa = new RespuestaCorrecta();
         respuestaOpcionVerdadera = new RespuestaIncorrecta();
@@ -33,7 +25,15 @@ public class PreguntaVoF extends Pregunta{
     }
 
     public Respuesta calificar(OpcionVoF opcion){
-        return opcion.opcionSeleccionada(this);
+        return opcion.esCalificadaPor(this);
+    }
+
+    public Respuesta calificar(OpcionVerdadero opcion){
+        return respuestaOpcionVerdadera;
+    }
+
+    public Respuesta calificar(OpcionFalso opcion){
+        return respuestaOpcionFalsa;
     }
 
 }

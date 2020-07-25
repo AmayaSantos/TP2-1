@@ -2,15 +2,16 @@ package edu.fiuba.algo3.modelo;
 
 public class Seleccion {
     Jugador jugador;
-    Respuesta respuesta;
+    OpcionVoF opcion;
 
-    public Seleccion(Respuesta respuesta,Jugador jugador) {
+    public Seleccion(Jugador jugador,OpcionVoF opcion) {
         this.jugador = jugador;
-        this.respuesta = respuesta;
+        this.opcion = opcion;
     }
 
-    public void calificar(){
-        jugador.modificarPuntaje(respuesta.calificar());
-    }
 
+    public void calificarPregunta(PreguntaVoF pregunta){
+        Respuesta respuesta = pregunta.calificar(opcion);
+        jugador.modificarPuntaje(respuesta.puntaje());
+    }
 }
