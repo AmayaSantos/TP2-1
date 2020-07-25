@@ -1,0 +1,13 @@
+@startuml
+Test -> PreguntaVoF : calificar(OpcionFalsa)
+activate PreguntaVoF
+PreguntaVoF -> OpcionFalsa: opcionSeleccionada(preguntaVoF)
+activate OpcionFalsa
+OpcionFalsa-> PreguntaVoF : opcionFalsa()
+activate PreguntaVoF
+return respuestaIncorrecta
+return respuestaIncorrecta
+return respuestaIncorrecta
+
+deactivate PreguntaVoF
+@enduml
