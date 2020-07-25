@@ -10,9 +10,6 @@ class Panel{
     -mostrarEnunciado(): Void
 }
 
-Class Presentador{
-    -jugadores: List<Jugador>
-}
 
 Class Pregunta{
     -enunciado():String
@@ -94,22 +91,17 @@ Class Ronda{
 }
 
 'Relaciones
-
-Presentador --* "*" Pregunta
 Pregunta -right-* "*" Respuesta
 RespuestaIncorrecta -down-|> Respuesta
 RespuestaCorrecta -down-|> Respuesta
 PreguntaVoF -up-|> Pregunta
 PreguntaChoise -up-|> Pregunta
-PreguntaGroup -up-|> Pregunta
-Pregunta .up.>Ronda
+PreguntaGroup -left-|> Pregunta
+Pregunta ..up.>Ronda
 Seleccion .left.>Ronda
-RondaClasica -up-|>Ronda
-RondaParcial -up-|>Ronda
-RondaPenalizada -up-|>Ronda
-Ronda -up-> Jugador
-Jugador -right-> Exclusividad
-Jugador -right-> Multiplicador
-
+RondaClasica -down-|>Ronda
+RondaParcial -down-|>Ronda
+RondaPenalizada -down-|>Ronda
+Ronda -left-> Jugador
 
 @enduml
