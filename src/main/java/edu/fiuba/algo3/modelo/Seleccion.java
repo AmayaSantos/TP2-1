@@ -18,6 +18,10 @@ public class Seleccion {
         return respuestas;
     }
 
+    public int cantidadRespuestas(){
+        return respuestas.size();
+    }
+
     /*public void calificar(){
         jugador.modificarPuntaje(respuestas.calificar());
     }*/

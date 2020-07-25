@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PreguntaMultipleChoiceParcial {
+public class PreguntaMultipleChoiceConPenalidad {
 
     String enunciado;
     List<Respuesta> respuestasCorrectas = new ArrayList<Respuesta>();
@@ -13,7 +13,6 @@ public class PreguntaMultipleChoiceParcial {
         this.enunciado = enunciado;
         this.respuestasCorrectas = respuestasCorrectas;
     }
-
     public void calificarRespuestas(List<Seleccion> listaDeRespuesta){
 
         for (Seleccion seleccion: listaDeRespuesta){
@@ -29,3 +28,4 @@ public class PreguntaMultipleChoiceParcial {
         }
     }
 }
+

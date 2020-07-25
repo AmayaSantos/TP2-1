@@ -17,7 +17,7 @@ public class PreguntaMultipleChoice {
     public void calificarRespuestas(List<Seleccion> listaDeRespuesta){
 
         for (Seleccion seleccion: listaDeRespuesta){
-            if( seleccion.devolverListaDeRespuestas().size() < respuestasCorrectas.size()){
+            if( seleccion.cantidadRespuestas() < respuestasCorrectas.size()){
 
                 seleccion.jugador.modificarPuntaje(0);
 
