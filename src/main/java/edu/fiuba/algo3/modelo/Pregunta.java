@@ -16,8 +16,9 @@ public abstract class Pregunta {
         return respuestas;
     }
 
-    public void clasificar(Seleccion seleccion) {
-            seleccion.calificar(respuestasCorrectas);
+
+    public List<Respuesta> obtenerRespuestasCorrectas(){
+        return respuestasCorrectas;
     }
 }
 

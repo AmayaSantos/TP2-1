@@ -1,0 +1,17 @@
+/*package edu.fiuba.algo3.modelo;
+
+import org.junit.jupiter.api.Test;
+
+public class RespuestasTest {
+    @Test
+    public void creoRespuestas(){
+        Respuesta respuesta1= new Respuesta("manzana");
+        Respuesta respuesta2= new Respuesta("tomate");
+        Respuesta respuesta3= new Respuesta("pera");
+        Respuestas lista1=new Respuestas();
+        lista1.agregar(respuesta1);
+        lista1.agregar(respuesta2);
+        lista1.agregar(respuesta3);
+    }
+}
+*/

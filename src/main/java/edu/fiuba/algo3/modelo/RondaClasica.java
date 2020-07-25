@@ -12,7 +12,8 @@ public class RondaClasica extends Ronda{
     @Override
     public void clasificar() {
         for (Seleccion seleccion: selecciones){
-            pregunta.clasificar(seleccion);
+
+            seleccion.calificar(pregunta.obtenerRespuestasCorrectas());
         }
     }
 }
