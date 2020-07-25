@@ -1,20 +1,16 @@
 package edu.fiuba.algo3.modelo;
 
-public abstract class Respuesta {
-    String nombre;
+public interface Respuesta {
 
+    String nombre();
 
-    public String nombre(){
-        return nombre;
-    }
+    int calificar();
 
-    public abstract int calificar();
+    int puntaje();
 
-    public boolean igual(Respuesta respuesta) {
-        return nombre.equals(respuesta.nombre);
-    }
+    void vs(Respuesta respuesta);
 
-    public abstract boolean esCorrecta();
+    void vs(RespuestaCorrecta respuesta);
 
-    public abstract int puntaje();
+    void vs(RespuestaIncorrecta respuesta);
 }
