@@ -124,7 +124,7 @@ class PreguntaChoicePenalizadaTest {
         eleccionJugador2.agregar(respuesta2);
 
 
-        RondaParcial ronda= new RondaParcial();
+        RondaPenalizada ronda= new RondaPenalizada();
         ronda.agregarSeleccion(eleccionJugador1);
         ronda.agregarSeleccion(eleccionJugador2);
 
