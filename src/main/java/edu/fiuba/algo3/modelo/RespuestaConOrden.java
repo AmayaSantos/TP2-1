@@ -7,12 +7,12 @@ public class RespuestaConOrden extends  Respuesta{
         this.nombre =nombre;
         posionVerdadera= posicion;
     }
-    public RespuestaConOrden(RespuestaConOrden respuestaOriginal, int posicionPropuesta){
-
+    private RespuestaConOrden(String nombre, int posicionVerdadera,int posicionPropuesta){
         this.nombre =nombre;
-        posionVerdadera= RespuestaConOrden.obtenerPosicion();
-       this.posicionPropuesta=posicionPropuesta;
+        posionVerdadera= posicionVerdadera;
+        this.posicionPropuesta= posicionPropuesta;
     }
+
 
     public static int obtenerPosicion() {
         return posionVerdadera;
@@ -27,4 +27,8 @@ public class RespuestaConOrden extends  Respuesta{
         }
     }
 
+    public RespuestaConOrden proponer(int posicionPropuesta) {
+        RespuestaConOrden respuestaPropuesta= new RespuestaConOrden(nombre,posionVerdadera,posicionPropuesta);
+        return respuestaPropuesta;
+    }
 }

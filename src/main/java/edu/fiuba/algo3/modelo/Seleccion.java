@@ -25,7 +25,8 @@ public class Seleccion {
     }
 
     public void proponer(RespuestaConOrden respuesta,int posicion){
-        misRespuestasOrdenadas.add(new RespuestaConOrden(respuesta,posicion));
+
+       misRespuestasOrdenadas.add( respuesta.proponer(posicion));
     }
 
     public Jugador jugador() {
