@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 public class RespuestaConOrden extends  Respuesta{
-    private static int posionVerdadera;
+    protected int posionVerdadera;
     int posicionPropuesta;
     public RespuestaConOrden(String nombre, int posicion){
         this.nombre =nombre;
@@ -14,9 +14,6 @@ public class RespuestaConOrden extends  Respuesta{
     }
 
 
-    public static int obtenerPosicion() {
-        return posionVerdadera;
-    }
 
     @Override
     public int calificar() {

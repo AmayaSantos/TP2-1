@@ -1,19 +1,18 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Seleccion {
     Jugador jugador;
     List<Respuesta> misRespuestasCorrectas;
     List<Respuesta> misRespuestasIncorrectas;
-    List<Respuesta> misRespuestasOrdenadas;
+    List<RespuestaConOrden> misRespuestasOrdenadas;
 
     public Seleccion(Jugador jugador) {
         this.jugador = jugador;
         this.misRespuestasCorrectas =new ArrayList<>();
         this.misRespuestasIncorrectas =new ArrayList<>();
-        this.misRespuestasOrdenadas =new ArrayList<>();
+        this.misRespuestasOrdenadas = new ArrayList<>();
     }
 
     public void agregar(RespuestaCorrecta respuesta){
@@ -26,7 +25,8 @@ public class Seleccion {
 
     public void proponer(RespuestaConOrden respuesta,int posicion){
 
-       misRespuestasOrdenadas.add( respuesta.proponer(posicion));
+       misRespuestasOrdenadas.add(respuesta.proponer(posicion));
+
     }
 
     public Jugador jugador() {
@@ -63,7 +63,8 @@ public class Seleccion {
     }
 
     public void calificarOrden(){
-        for (Respuesta respuesta: misRespuestasOrdenadas){
+        for (RespuestaConOrden respuesta: misRespuestasOrdenadas){
+            System.out.println(respuesta.calificar());
             jugador.modificarPuntaje(respuesta.calificar());
         };
     }
