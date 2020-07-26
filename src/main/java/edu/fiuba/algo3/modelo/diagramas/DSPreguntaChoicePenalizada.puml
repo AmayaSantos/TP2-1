@@ -1,0 +1,21 @@
+@startuml
+
+PanelControl ->RondaPenalizada: new RondaParcial()
+    loop  PorCadaSelecion
+    PanelControl -> RondaPenalizada:  agregar(selecion)
+    end
+PanelControl ->RondaPenalizada: calificar()
+loop PorCadaSelecion
+RondaPenalizada -> Selecion: calificar()
+    loop PorCadaRespuestaCorrectas
+        Selecion -> RespuestaCorrecta:calificar()
+        RespuestaCorrecta --> Selecion: Valor
+        Selecion -> Jugador: modificarPuntaje(Valor)
+    end
+    loop PorCadaRespuestaIncorrecta
+           Selecion -> RespuestaIncorrecta:calificar()
+           RespuestaCorrecta --> Selecion: Valor
+           Selecion -> Jugador: modificarPuntaje(Valor)
+           end
+    end
+@enduml

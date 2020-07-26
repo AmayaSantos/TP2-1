@@ -11,9 +11,5 @@ public abstract class Respuesta {
 
     public abstract int calificar();
 
-    public boolean igual(Respuesta respuesta) {
-        return nombre.equals(respuesta.nombre);
-    }
 
-    public abstract boolean esCorrecta();
 }
