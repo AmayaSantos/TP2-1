@@ -10,8 +10,4 @@ public class RespuestaIncorrecta extends Respuesta {
         return -1;
     }
 
-    @Override
-    public boolean esCorrecta() {
-        return false;
-    }
 }

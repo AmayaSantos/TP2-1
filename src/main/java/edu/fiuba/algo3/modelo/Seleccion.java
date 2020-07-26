@@ -7,11 +7,12 @@ public class Seleccion {
     Jugador jugador;
     List<Respuesta> misRespuestasCorrectas;
     List<Respuesta> misRespuestasIncorrectas;
-
+    List<Respuesta> misRespuestasOrdenadas;
     public Seleccion(Jugador jugador) {
         this.jugador = jugador;
         this.misRespuestasCorrectas =new ArrayList<>();
         this.misRespuestasIncorrectas =new ArrayList<>();
+        this.misRespuestasOrdenadas =new ArrayList<>();
     }
     public void agregar(RespuestaCorrecta respuesta){
         misRespuestasCorrectas.add(respuesta);
@@ -20,6 +21,9 @@ public class Seleccion {
         misRespuestasIncorrectas.add(respuesta);
     }
 
+    public void proponer(RespuestaConOrden respuesta,int posicion){
+        misRespuestasOrdenadas.add(new RespuestaConOrden(respuesta,posicion));
+    }
     public Jugador jugador() {
         return jugador;
     }
@@ -50,6 +54,13 @@ public class Seleccion {
                 jugador.modificarPuntaje(respuesta.calificar());
             };
         }
+    }
+
+
+    public void calificarOrden(){
+        for (Respuesta respuesta: misRespuestasOrdenadas){
+            jugador.modificarPuntaje(respuesta.calificar());
+        };
     }
 }
 

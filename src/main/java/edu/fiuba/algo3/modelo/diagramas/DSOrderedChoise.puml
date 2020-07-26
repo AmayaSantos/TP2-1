@@ -9,10 +9,11 @@ end
 PanelDeControl ->OrderedChoise: obtenerOpciones()
 loop porJugador
 PanelDeControl-> Seleccion: new Seleccion(Jugador)
-end
+
 loop porCadaSeleccion
 PanelDeControl -> Seleccion: proponer(RespuestaConOrden, posicionPropuesta)
 Seleccion -> Seleccion: new RespuestaConOrden(RespuestaConOrden,posicionPropuesta)
+end
 end
 PanelDeControl -> Ronda: new Ronda()
 loop porCadaSeleccion
