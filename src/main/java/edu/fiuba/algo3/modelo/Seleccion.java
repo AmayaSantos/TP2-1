@@ -8,15 +8,18 @@ public class Seleccion {
     List<Respuesta> misRespuestasCorrectas;
     List<Respuesta> misRespuestasIncorrectas;
     List<Respuesta> misRespuestasOrdenadas;
+
     public Seleccion(Jugador jugador) {
         this.jugador = jugador;
         this.misRespuestasCorrectas =new ArrayList<>();
         this.misRespuestasIncorrectas =new ArrayList<>();
         this.misRespuestasOrdenadas =new ArrayList<>();
     }
+
     public void agregar(RespuestaCorrecta respuesta){
         misRespuestasCorrectas.add(respuesta);
     }
+
     public void agregar(RespuestaIncorrecta respuesta){
         misRespuestasIncorrectas.add(respuesta);
     }
@@ -24,11 +27,12 @@ public class Seleccion {
     public void proponer(RespuestaConOrden respuesta,int posicion){
         misRespuestasOrdenadas.add(new RespuestaConOrden(respuesta,posicion));
     }
+
     public Jugador jugador() {
         return jugador;
     }
-    ////ClasificacionPenalizada
 
+    ////ClasificacionPenalizada
     public void calificar(int multiplicador){
 
         for (Respuesta respuesta: misRespuestasCorrectas){
@@ -38,6 +42,7 @@ public class Seleccion {
             jugador.modificarPuntaje(respuesta.calificar()*multiplicador);
         };
     }
+
     ///clsificacion Clasica
     public void calificar(List<Respuesta> respuestas) {
         if (misRespuestasIncorrectas.isEmpty()){
@@ -46,8 +51,8 @@ public class Seleccion {
             }
         }
     }
-    ///clasificacion Parcial
 
+    ///clasificacion Parcial
     public void calificarParcial() {
         if (misRespuestasIncorrectas.isEmpty()){
             for (Respuesta respuesta: misRespuestasCorrectas){
@@ -55,7 +60,6 @@ public class Seleccion {
             };
         }
     }
-
 
     public void calificarOrden(){
         for (Respuesta respuesta: misRespuestasOrdenadas){

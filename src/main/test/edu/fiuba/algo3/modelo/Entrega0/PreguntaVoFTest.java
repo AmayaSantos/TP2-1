@@ -18,6 +18,7 @@ public class PreguntaVoFTest {
 
        //assertTrue(pregunta.esCorrecta(respuestaCorrecta));
     }
+
     @Test
     public void preguntaVoFPuedeCrearsePasandoRespuestaCorrectaSinOrden() {
         RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Verdadero");
@@ -50,11 +51,12 @@ public class PreguntaVoFTest {
         ronda.agregarSeleccion(eleccionJugador1);
         ronda.agregarSeleccion(eleccionJugador2);
 
-        ronda.clasificar();
+        ronda.calificar();
 
         assertEquals(1, jugador2.obtenerPuntaje() );
         assertEquals(0, jugador1.obtenerPuntaje() );
     }
+
     @Test
     public void preguntaVoFRecibeRespuestasAsignaCorrectamentePuntajesSinOrden(){
         Jugador jugador1 = new Jugador("carlos");
@@ -78,10 +80,8 @@ public class PreguntaVoFTest {
         ronda.agregarSeleccion(eleccionJugador1);
         ronda.agregarSeleccion(eleccionJugador2);
 
-        ronda.clasificar();
+        ronda.calificar();
         assertEquals(1, jugador2.obtenerPuntaje() );
         assertEquals(0, jugador1.obtenerPuntaje() );
     }
-
-
 }

@@ -7,7 +7,7 @@ public class RondaOrdered extends Ronda{
         this.selecciones= new ArrayList<>();
     }
     @Override
-    public void clasificar() {
+    public void calificar() {
         for (Seleccion seleccion: selecciones){
             seleccion.calificarOrden();
         }

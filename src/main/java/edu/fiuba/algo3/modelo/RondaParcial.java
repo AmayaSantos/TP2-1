@@ -4,16 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RondaParcial  extends Ronda{
-
-    public RondaParcial() {
-        selecciones=new ArrayList<>();
-    }
     @Override
-    public void clasificar() {
+    public void calificar() {
         for (Seleccion seleccion: selecciones){
             seleccion.calificarParcial();
         }
     }
-
-
 }

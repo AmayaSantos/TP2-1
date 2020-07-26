@@ -2,9 +2,6 @@ package edu.fiuba.algo3.modelo;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -37,7 +34,7 @@ public class PreguntaVoFPenalizadoTest {
             ronda.agregarSeleccion(eleccionJugador1);
             ronda.agregarSeleccion(eleccionJugador2);
 
-            ronda.clasificar();
+            ronda.calificar();
 
             assertEquals(1, jugador2.obtenerPuntaje() );
             assertEquals(-1, jugador1.obtenerPuntaje() );
@@ -66,7 +63,7 @@ public class PreguntaVoFPenalizadoTest {
             ronda.agregarSeleccion(eleccionJugador1);
             ronda.agregarSeleccion(eleccionJugador2);
 
-            ronda.clasificar();
+            ronda.calificar();
 
             assertEquals(3, jugador2.obtenerPuntaje() );
             assertEquals(-2, jugador1.obtenerPuntaje() );

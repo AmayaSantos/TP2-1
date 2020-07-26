@@ -2,9 +2,6 @@ package edu.fiuba.algo3.modelo;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PreguntaChoiceClasicoTest {
@@ -50,7 +47,7 @@ public class PreguntaChoiceClasicoTest {
         ronda.agregarSeleccion(eleccionJugador1);
         ronda.agregarSeleccion(eleccionJugador2);
 
-        ronda.clasificar();
+        ronda.calificar();
 
 
         assertEquals(0, jugador2.obtenerPuntaje() );
@@ -90,7 +87,7 @@ public class PreguntaChoiceClasicoTest {
         ronda.agregarSeleccion(eleccionJugador1);
         ronda.agregarSeleccion(eleccionJugador2);
 
-        ronda.clasificar();
+        ronda.calificar();
 
 
         assertEquals(0, jugador2.obtenerPuntaje() );
