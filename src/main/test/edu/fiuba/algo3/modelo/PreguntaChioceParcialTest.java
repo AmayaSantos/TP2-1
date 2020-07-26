@@ -1,15 +1,13 @@
-
 package edu.fiuba.algo3.modelo;
-
 
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
+
 public class PreguntaChioceParcialTest {
     @Test
-
     public void preguntaChoicePuedeCrearsePasandoRespuestaCorrecta() {
         RespuestaCorrecta respuesta1 = new RespuestaCorrecta("2");
         RespuestaIncorrecta respuesta2 = new RespuestaIncorrecta("1");
@@ -20,6 +18,7 @@ public class PreguntaChioceParcialTest {
         pregunta.agregar(respuesta2);
         pregunta.agregar(respuesta3);
     }
+
     @Test
     public void preguntaChoiceRecibeRespuestasAsignaCorrectamentePuntajes01(){
 
@@ -93,9 +92,5 @@ public class PreguntaChioceParcialTest {
         assertEquals(0, jugador2.obtenerPuntaje() );
         assertEquals(2, jugador1.obtenerPuntaje() );
     }
-
-
-
-
 }
 

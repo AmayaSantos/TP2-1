@@ -1,13 +1,14 @@
 package edu.fiuba.algo3.modelo;
 
-
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-class PreguntaChoiceClasicoTest {
+
+public class PreguntaChoiceClasicoTest {
+
     @Test
     public void preguntaChoicePuedeCrearsePasandoRespuestaCorrecta() {
         RespuestaCorrecta respuesta1 = new RespuestaCorrecta("2");
@@ -54,7 +55,7 @@ class PreguntaChoiceClasicoTest {
 
         assertEquals(0, jugador2.obtenerPuntaje() );
         assertEquals(0, jugador1.obtenerPuntaje() );
-        }
+    }
 
     @Test
     public void preguntaChoiceElJugadorNoEligeTodasLasOpcionesCorrectas(){
@@ -95,6 +96,4 @@ class PreguntaChoiceClasicoTest {
         assertEquals(0, jugador2.obtenerPuntaje() );
         assertEquals(0, jugador1.obtenerPuntaje() );
     }
-
-
 }
