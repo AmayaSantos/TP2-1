@@ -5,19 +5,19 @@ import java.util.List;
 
 public class Seleccion {
     Jugador jugador;
-    List<Respuesta> misRespuestasCorrestas;
-    List<Respuesta> misRespuestasIncorrestas;
+    List<Respuesta> misRespuestasCorrectas;
+    List<Respuesta> misRespuestasIncorrectas;
 
     public Seleccion(Jugador jugador) {
         this.jugador = jugador;
-        this.misRespuestasCorrestas =new ArrayList<>();
-        this.misRespuestasIncorrestas =new ArrayList<>();
+        this.misRespuestasCorrectas =new ArrayList<>();
+        this.misRespuestasIncorrectas =new ArrayList<>();
     }
     public void agregar(RespuestaCorrecta respuesta){
-        misRespuestasCorrestas.add(respuesta);
+        misRespuestasCorrectas.add(respuesta);
     }
     public void agregar(RespuestaIncorrecta respuesta){
-        misRespuestasIncorrestas.add(respuesta);
+        misRespuestasIncorrectas.add(respuesta);
     }
 
     public Jugador jugador() {
@@ -27,27 +27,29 @@ public class Seleccion {
 
     public void calificar(int multiplicador){
 
-        for (Respuesta respuesta: misRespuestasCorrestas){
+        for (Respuesta respuesta: misRespuestasCorrectas){
             jugador.modificarPuntaje(respuesta.calificar()*multiplicador);
         };
-        for (Respuesta respuesta: misRespuestasIncorrestas){
+        for (Respuesta respuesta: misRespuestasIncorrectas){
             jugador.modificarPuntaje(respuesta.calificar()*multiplicador);
         };
     }
     ///clsificacion Clasica
     public void calificar(List<Respuesta> respuestas) {
-        if (misRespuestasIncorrestas.isEmpty()){
-            if (misRespuestasCorrestas.equals(respuestas)){
+        if (misRespuestasIncorrectas.isEmpty()){
+            if (misRespuestasCorrectas.equals(respuestas)){
             jugador.modificarPuntaje(1);
             }
         }
     }
-///clasificacion Parcial
+    ///clasificacion Parcial
+
     public void calificarParcial() {
-        if (misRespuestasIncorrestas.isEmpty()){
-            for (Respuesta respuesta: misRespuestasCorrestas){
+        if (misRespuestasIncorrectas.isEmpty()){
+            for (Respuesta respuesta: misRespuestasCorrectas){
                 jugador.modificarPuntaje(respuesta.calificar());
             };
         }
     }
 }
+
