@@ -5,8 +5,7 @@ import java.util.List;
 
 public class RondaParcial  extends Ronda{
 
-    public RondaParcial(Pregunta pregunta) {
-        this.pregunta=pregunta;
+    public RondaParcial() {
         selecciones=new ArrayList<>();
     }
     @Override

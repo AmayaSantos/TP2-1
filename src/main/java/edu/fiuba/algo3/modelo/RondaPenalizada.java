@@ -5,9 +5,8 @@ import java.util.List;
 
 public class RondaPenalizada  extends Ronda{
 
-    public RondaPenalizada(Pregunta pregunta) {
-        this.pregunta=pregunta;
-        selecciones=new ArrayList<>();
+    public RondaPenalizada() {
+            selecciones=new ArrayList<>();
     }
 
     @Override

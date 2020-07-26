@@ -45,7 +45,7 @@ public class PreguntaChioceParcialTest {
         eleccionJugador2.agregar(respuesta3);
 
 
-        RondaParcial ronda= new RondaParcial(pregunta);
+        RondaParcial ronda= new RondaParcial();
         ronda.agregarSeleccion(eleccionJugador1);
         ronda.agregarSeleccion(eleccionJugador2);
 

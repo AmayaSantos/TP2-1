@@ -1,6 +1,6 @@
 @startuml
 
-PanelControl ->RondaParcial: new RondaParcial(Pregunta)
+PanelControl ->RondaParcial: new RondaParcial()
     loop  PorCadaSelecion
     PanelControl -> RondaParcial:  agregar(selecion)
     end

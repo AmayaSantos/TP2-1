@@ -33,7 +33,7 @@ public class PreguntaVoFPenalizadoTest {
 
             PreguntaVoF pregunta = new PreguntaVoF("1 + 1 = 2 ", respuestaJugador2, respuestaJugador1);
 
-            RondaPenalizada ronda= new RondaPenalizada(pregunta);
+            RondaPenalizada ronda= new RondaPenalizada();
             ronda.agregarSeleccion(eleccionJugador1);
             ronda.agregarSeleccion(eleccionJugador2);
 
