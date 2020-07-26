@@ -6,8 +6,8 @@ import java.util.List;
 public abstract class Pregunta {
 
     String enunciado;
-    List<Respuesta> respuestasCorrectas;
-    List<Respuesta> respuestasIncorrectas;
+    protected List<Respuesta> respuestasCorrectas;
+    protected List<Respuesta> respuestasIncorrectas;
 
     public List<Respuesta> obtenerOpciones(){
         List<Respuesta> respuestas= new ArrayList<>();

@@ -43,7 +43,38 @@ public class PreguntaVoFPenalizadoTest {
             assertEquals(-1, jugador1.obtenerPuntaje() );
         }
 
+        @Test
 
+        public void preguntaVoFPenalizadaConMultiplicadorRecibeRespuestasAsignaCorrectamentePuntajes(){
 
+            Jugador jugador1 = new Jugador("carlos");
+            Jugador jugador2 = new Jugador("juan");
+
+            jugador1.activarMultiplicador(2);
+            jugador2.activarMultiplicador(3);
+
+            RespuestaIncorrecta respuestaJugador1 = new RespuestaIncorrecta("Verdadero");
+            RespuestaCorrecta respuestaJugador2 = new RespuestaCorrecta("Falso");
+
+            Seleccion eleccionJugador1 = new Seleccion(jugador1);
+            eleccionJugador1.agregar(respuestaJugador1);
+            Seleccion eleccionJugador2 = new Seleccion(jugador2);
+            eleccionJugador2.agregar(respuestaJugador2);
+
+            PreguntaVoF pregunta = new PreguntaVoF("1 + 1 = 2 ", respuestaJugador2, respuestaJugador1);
+
+            RondaPenalizada ronda= new RondaPenalizada();
+            ronda.agregarSeleccion(eleccionJugador1);
+            ronda.agregarSeleccion(eleccionJugador2);
+
+            ronda.clasificar();
+
+            assertEquals(3, jugador2.obtenerPuntaje() );
+            assertEquals(-2, jugador1.obtenerPuntaje() );
     }
+
+
+
+
+}
 

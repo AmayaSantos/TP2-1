@@ -19,15 +19,19 @@ public class Seleccion {
     public void agregar(RespuestaIncorrecta respuesta){
         misRespuestasIncorrestas.add(respuesta);
     }
+
+    public Jugador jugador() {
+        return jugador;
+    }
     ////ClasificacionPenalizada
 
-    public void calificar(){
+    public void calificar(int multiplicador){
 
         for (Respuesta respuesta: misRespuestasCorrestas){
-            jugador.modificarPuntaje(respuesta.calificar());
+            jugador.modificarPuntaje(respuesta.calificar()*multiplicador);
         };
         for (Respuesta respuesta: misRespuestasIncorrestas){
-            jugador.modificarPuntaje(respuesta.calificar());
+            jugador.modificarPuntaje(respuesta.calificar()*multiplicador);
         };
     }
     ///clsificacion Clasica
