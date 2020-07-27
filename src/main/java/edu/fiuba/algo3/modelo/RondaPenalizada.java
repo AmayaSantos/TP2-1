@@ -7,7 +7,7 @@ public class RondaPenalizada  extends Ronda{
     @Override
     public void calificar() {
         for (Seleccion seleccion: selecciones){
-            seleccion.calificar(seleccion.jugador.multiplicador());
+            seleccion.calificar();
         }
     }
 }

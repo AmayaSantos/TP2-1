@@ -33,13 +33,13 @@ public class Seleccion {
     }
 
     ////ClasificacionPenalizada
-    public void calificar(int multiplicador){
+    public void calificar(){
 
         for (Respuesta respuesta: misRespuestasCorrectas){
-            jugador.modificarPuntaje(respuesta.calificar()*multiplicador);
+            jugador.modificarPuntaje(respuesta.calificar());
         };
         for (Respuesta respuesta: misRespuestasIncorrectas){
-            jugador.modificarPuntaje(respuesta.calificar()*multiplicador);
+            jugador.modificarPuntaje(respuesta.calificar());
         };
     }
 
