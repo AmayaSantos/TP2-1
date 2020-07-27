@@ -93,4 +93,42 @@ public class PreguntaChoiceClasicoTest {
         assertEquals(0, jugador2.obtenerPuntaje() );
         assertEquals(0, jugador1.obtenerPuntaje() );
     }
+    @Test
+    public void preguntaChoiceElJugadorEligeTodasLasOpcionesCorrectas(){
+
+        RespuestaCorrecta respuesta1 = new RespuestaCorrecta("lapiz");
+        RespuestaIncorrecta respuesta2 = new RespuestaIncorrecta("Gato");
+        RespuestaCorrecta respuesta3 = new RespuestaCorrecta("Celular");
+        RespuestaIncorrecta respuesta4 = new RespuestaIncorrecta("Tortuga");
+        RespuestaIncorrecta respuesta5 = new RespuestaIncorrecta("Caballo");
+
+        PreguntaChoice pregunta = new PreguntaChoice("Cuales de las siguientes opciones NO son animales");
+        pregunta.agregar(respuesta1);
+        pregunta.agregar(respuesta2);
+        pregunta.agregar(respuesta3);
+        pregunta.agregar(respuesta4);
+        pregunta.agregar(respuesta5);
+
+        Jugador jugador1 = new Jugador("carlos");
+        Jugador jugador2 = new Jugador("juan");
+
+        Seleccion eleccionJugador1 = new Seleccion(jugador1);
+        Seleccion eleccionJugador2 = new Seleccion(jugador2);
+
+        eleccionJugador1.agregar(respuesta3);
+        eleccionJugador1.agregar(respuesta1);
+
+        eleccionJugador2.agregar(respuesta1);
+        eleccionJugador2.agregar(respuesta3);
+
+
+        RondaClasica ronda= new RondaClasica(pregunta);
+        ronda.agregarSeleccion(eleccionJugador1);
+        ronda.agregarSeleccion(eleccionJugador2);
+
+        ronda.calificar();
+
+        assertEquals(1, jugador2.obtenerPuntaje() );
+        assertEquals(1, jugador1.obtenerPuntaje() );
+    }
 }

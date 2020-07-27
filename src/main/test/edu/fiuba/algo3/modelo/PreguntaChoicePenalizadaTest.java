@@ -16,6 +16,11 @@ public class PreguntaChoicePenalizadaTest {
         pregunta.agregar(respuesta1);
         pregunta.agregar(respuesta2);
         pregunta.agregar(respuesta3);
+
+        assertTrue(pregunta.obtenerRespuestasCorrectas().contains(respuesta1));
+        assertFalse(pregunta.obtenerRespuestasCorrectas().contains(respuesta2));
+        assertFalse(pregunta.obtenerRespuestasCorrectas().contains(respuesta3));
+
     }
 
     @Test
@@ -93,7 +98,7 @@ public class PreguntaChoicePenalizadaTest {
     }
 
     @Test
-    public void preguntaChoicePenalizadaConMultiplicadorRecibeRespuestasAsignaCorrectamentePuntajes(){
+    public void preguntaChoicePenalizadaRecibeRespuestasAsignaCorrectamentePuntajes03(){
 
         RespuestaCorrecta respuesta1 = new RespuestaCorrecta("1");
         RespuestaIncorrecta respuesta2 = new RespuestaIncorrecta("2");
@@ -109,9 +114,6 @@ public class PreguntaChoicePenalizadaTest {
         Jugador jugador1 = new Jugador("carlos");
         Jugador jugador2 = new Jugador("juan");
 
-        jugador1.activarMultiplicadorX2();
-        jugador2.activarMultiplicadorX3();
-
         Seleccion eleccionJugador1 = new Seleccion(jugador1);
         Seleccion eleccionJugador2 = new Seleccion(jugador2);
 
@@ -119,6 +121,7 @@ public class PreguntaChoicePenalizadaTest {
         eleccionJugador1.agregar(respuesta4);
 
         eleccionJugador2.agregar(respuesta2);
+        eleccionJugador2.agregar(respuesta4);
 
 
         RondaPenalizada ronda= new RondaPenalizada();
@@ -128,7 +131,7 @@ public class PreguntaChoicePenalizadaTest {
         ronda.calificar();
 
 
-        assertEquals(-3, jugador2.obtenerPuntaje() );
-        assertEquals(4, jugador1.obtenerPuntaje() );
+        assertEquals(0, jugador2.obtenerPuntaje() );
+        assertEquals(2, jugador1.obtenerPuntaje() );
     }
 }

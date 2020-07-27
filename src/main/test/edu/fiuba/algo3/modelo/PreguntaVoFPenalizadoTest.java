@@ -12,11 +12,11 @@ public class PreguntaVoFPenalizadoTest {
             RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Falso");
             PreguntaVoF pregunta = new PreguntaVoF("1 + 1 = 2 ", respuestaCorrecta, respuestaIncorrecta);
 
-            //assertTrue(pregunta.esCorrecta(respuestaCorrecta));
+            assertTrue(pregunta.obtenerRespuestasCorrectas().contains(respuestaCorrecta));
         }
 
         @Test
-        public void preguntaVoFPenalizadaRecibeRespuestasAsignaCorrectamentePuntajes(){
+        public void preguntaVoFPenalizadaRecibeRespuestasAsignaCorrectamentePuntajes01(){
             Jugador jugador1 = new Jugador("carlos");
             Jugador jugador2 = new Jugador("juan");
 
@@ -41,13 +41,10 @@ public class PreguntaVoFPenalizadoTest {
         }
 
         @Test
-        public void preguntaVoFPenalizadaConMultiplicadorRecibeRespuestasAsignaCorrectamentePuntajes(){
+        public void preguntaVoFPenalizadaRecibeRespuestasAsignaCorrectamentePuntajes02(){
 
             Jugador jugador1 = new Jugador("carlos");
             Jugador jugador2 = new Jugador("juan");
-
-            jugador1.activarMultiplicadorX2();
-            jugador2.activarMultiplicadorX3();
 
             RespuestaIncorrecta respuestaJugador1 = new RespuestaIncorrecta("Verdadero");
             RespuestaCorrecta respuestaJugador2 = new RespuestaCorrecta("Falso");
@@ -65,8 +62,8 @@ public class PreguntaVoFPenalizadoTest {
 
             ronda.calificar();
 
-            assertEquals(3, jugador2.obtenerPuntaje() );
-            assertEquals(-2, jugador1.obtenerPuntaje() );
+            assertEquals(1, jugador2.obtenerPuntaje() );
+            assertEquals(-1, jugador1.obtenerPuntaje() );
     }
 }
 

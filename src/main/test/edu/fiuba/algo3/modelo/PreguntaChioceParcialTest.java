@@ -15,6 +15,10 @@ public class PreguntaChioceParcialTest {
         pregunta.agregar(respuesta1);
         pregunta.agregar(respuesta2);
         pregunta.agregar(respuesta3);
+
+        assertTrue(pregunta.obtenerRespuestasCorrectas().contains(respuesta1));
+        assertFalse(pregunta.obtenerRespuestasCorrectas().contains(respuesta2));
+        assertFalse(pregunta.obtenerRespuestasCorrectas().contains(respuesta3));
     }
 
     @Test
