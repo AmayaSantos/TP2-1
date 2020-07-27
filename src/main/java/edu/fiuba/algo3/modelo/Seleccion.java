@@ -46,11 +46,12 @@ public class Seleccion {
     ///clsificacion Clasica
     public void calificar(List<Respuesta> respuestas) {
         if (misRespuestasIncorrectas.isEmpty()){
-            if (misRespuestasCorrectas.equals(respuestas)){
+            if (misRespuestasCorrectas.containsAll(respuestas)){
             jugador.modificarPuntaje(1);
             }
         }
     }
+
 
     ///clasificacion Parcial
     public void calificarParcial() {
