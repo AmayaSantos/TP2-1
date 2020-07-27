@@ -12,15 +12,17 @@ public class PreguntaVoF implements TipoDePregunta{
         opcionCorrecta.esCorrecta(this);
     }
 
+    public void laVerdaderaEsLaCorrecta(){
+        respuestaOpcionFalsa = new RespuestaIncorrecta();
+        respuestaOpcionVerdadera = new RespuestaCorrecta();
+    }
+
     public void laFalsaEsLaCorrecta(){
         respuestaOpcionFalsa = new RespuestaCorrecta();
         respuestaOpcionVerdadera = new RespuestaIncorrecta();
     }
 
-    public void laVerdaderaEsLaCorrecta(){
-        respuestaOpcionFalsa = new RespuestaIncorrecta();
-        respuestaOpcionVerdadera = new RespuestaCorrecta();
-    }
+
 
     public void calificar(Selecciones selecciones){
         selecciones.calificarConPregunta(this);
@@ -36,7 +38,7 @@ public class PreguntaVoF implements TipoDePregunta{
     }
 
     @Override
-    public Respuesta calificar(List<Opcion> opciones) {
+    public Respuesta calificar(ArrayList<Opcion> opciones) {
         return opciones.get(0).esCalificadaPor(this);
     }
 

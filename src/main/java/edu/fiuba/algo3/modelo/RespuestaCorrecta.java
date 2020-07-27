@@ -12,7 +12,7 @@ public class RespuestaCorrecta implements Respuesta {
     }
 
     public RespuestaCorrecta(){
-
+        puntaje = 1;
     }
 
     @Override

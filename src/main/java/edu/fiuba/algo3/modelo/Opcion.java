@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 public class Opcion {
+    // LANZAR EXCEPCIONES EN TODAS LAS PREGUNTAS
     Respuesta esCalificadaPor(TipoDePregunta pregunta){
         return new RespuestaCorrecta();
     }

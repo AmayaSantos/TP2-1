@@ -14,43 +14,64 @@ public class PreguntaVoFTest {
     @Test
     public void preguntaVoFSeCreaIndicandoRespuestaCorrectaEsVerdadero(){
         Opcion verdadero = new OpcionVerdadero();
-        PreguntaVoF pregunta = new PreguntaVoF("Este es un enunciado", verdadero);
-        Respuesta respuesta = pregunta.calificar(verdadero);
-        assertEquals(1 , respuesta.puntaje());
+        PreguntaVoF pregunta = new PreguntaVoF(verdadero);
+        ArrayList<Opcion> respuestas = new ArrayList<Opcion>();
+        respuestas.add(verdadero);
+        RespuestaCorrecta respuestaEsperada = new RespuestaCorrecta();
+        Respuesta respuesta = pregunta.calificar(respuestas);
+        assertEquals(1, respuesta.puntaje());
     }
 
     @Test
     public void preguntaVoFSeCreaIndicandoRespuestaCorrectaEsVerdaderoSeEligeFalsoYDaCeroPuntos(){
-        OpcionVoF verdadero = new OpcionVerdadero();
-        OpcionVoF falso = new OpcionFalso();
-        PreguntaVoF pregunta = new PreguntaVoF("Este es un enunciado", verdadero);
-        Respuesta respuesta = pregunta.calificar(falso);
-        assertEquals(0 , respuesta.puntaje());
+        Opcion verdadero = new OpcionVerdadero();
+        Opcion falso = new OpcionFalso();
+        PreguntaVoF pregunta = new PreguntaVoF(verdadero);
+        ArrayList<Opcion> respuestas = new ArrayList<Opcion>();
+        respuestas.add(falso);
+        RespuestaIncorrecta respuestaEsperada = new RespuestaIncorrecta();
+        Respuesta respuesta = pregunta.calificar(respuestas);
+        assertEquals(respuestaEsperada.puntaje(), respuesta.puntaje());
     }
 
     @Test
-    public void preguntaVoFSeCreaIndicandoRespuestaCorrectaEsFalsaSeEligeFalsoYDaCeroUnPunto(){
-        OpcionVoF falso = new OpcionFalso();
-        PreguntaVoF pregunta = new PreguntaVoF("Este es un enunciado", falso);
-        Respuesta respuesta = pregunta.calificar(falso);
-        assertEquals(1 , respuesta.puntaje());
+    public void preguntaVoFSeCreaIndicandoRespuestaCorrectaEsFalsaSeEligeFalsoYDaUnPunto(){
+        Opcion falso = new OpcionFalso();
+        PreguntaVoF pregunta = new PreguntaVoF(falso);
+        ArrayList<Opcion> respuestas = new ArrayList<Opcion>();
+        respuestas.add(falso);
+        RespuestaCorrecta respuestaEsperada = new RespuestaCorrecta();
+        Respuesta respuesta = pregunta.calificar(respuestas);
+        assertEquals(respuestaEsperada.puntaje(), respuesta.puntaje());
     }
 
-    @Test void preguntaVoFConEnunciadoVerdaderoCalificaRespuestasDeJugadoresPrimerJugadorSuma1SegundoJugadorSuma0(){
-        OpcionVoF verdadero = new OpcionVerdadero();
-        OpcionVoF falso = new OpcionFalso();
-        Selecciones selecciones = new Selecciones();
+    @Test
+    public void preguntaVoFSeCreaIndicandoRespuestaCorrectaEsFalsoSeEligeVerdaderoYDaCeroPuntos(){
+        Opcion verdadero = new OpcionVerdadero();
+        Opcion falso = new OpcionFalso();
+        PreguntaVoF pregunta = new PreguntaVoF(falso);
+        ArrayList<Opcion> respuestas = new ArrayList<Opcion>();
+        respuestas.add(verdadero);
+        RespuestaIncorrecta respuestaEsperada = new RespuestaIncorrecta();
+        Respuesta respuesta = pregunta.calificar(respuestas);
+        assertEquals(respuestaEsperada.puntaje(), respuesta.puntaje());
+    }
+
+    @Test
+    public void PreguntaVoFAsigna1PuntoAJugadorQueRespondeCorrectamenteYCeroAlQueFalla(){
         Jugador jugador1 = new Jugador("");
         Jugador jugador2 = new Jugador("");
-        Seleccion seleccion = new Seleccion(jugador1, verdadero);
+        OpcionVerdadero verdadero = new OpcionVerdadero();
+        OpcionFalso falso = new OpcionFalso();
+        Seleccion seleccion1 = new Seleccion(jugador1, verdadero);
         Seleccion seleccion2 = new Seleccion(jugador2, falso);
-        selecciones.agregar(seleccion);
-        selecciones.agregar(seleccion2);
-        PreguntaVoF pregunta = new PreguntaVoF("Un Enunciado", new OpcionVerdadero());
-        pregunta.calificar(selecciones);
-        assertEquals(1 , jugador1.obtenerPuntaje());
-        assertEquals(0 , jugador2.obtenerPuntaje());
+        ArrayList<Seleccion> selecciones = new ArrayList<Seleccion>();
+        selecciones.add(seleccion1);
+        selecciones.add(seleccion2);
+        Pregunta preguntaVoF = new Pregunta("enunciado", verdadero);
+        preguntaVoF.calificar(selecciones);
+        assertEquals(jugador1.obtenerPuntaje(), 1);
+        assertEquals(jugador2.obtenerPuntaje(), 0);
     }
-
 
 }
