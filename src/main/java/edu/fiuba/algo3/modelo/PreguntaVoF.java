@@ -5,21 +5,19 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class PreguntaVoF extends Pregunta{
-    String enunciado;
+public class PreguntaVoF implements TipoDePregunta{
     Respuesta respuestaOpcionFalsa, respuestaOpcionVerdadera;
 
-    public PreguntaVoF(String enunciado, OpcionVoF opcion){
-        this.enunciado = enunciado;
-        opcion.esCorrecta(this);
+    public PreguntaVoF(OpcionVoF opcionCorrecta){
+        opcionCorrecta.esCorrecta(this);
     }
 
-    public void laCorrectaEsLaFalsa(){
+    public void esCorrecta(OpcionFalso op){
         respuestaOpcionFalsa = new RespuestaCorrecta();
         respuestaOpcionVerdadera = new RespuestaIncorrecta();
     }
 
-    public void laCorrectaEsLaVerdadera(){
+    public void esCorrecta(OpcionVerdadero op){
         respuestaOpcionFalsa = new RespuestaIncorrecta();
         respuestaOpcionVerdadera = new RespuestaCorrecta();
     }
@@ -37,6 +35,11 @@ public class PreguntaVoF extends Pregunta{
 
     public Respuesta calificar(OpcionFalso opcion){
         return respuestaOpcionFalsa;
+    }
+
+    @Override
+    public Respuesta calificar(List<Opcion> opciones) {
+        return opciones.get(0).esCalificadaPor(this);
     }
 
 }

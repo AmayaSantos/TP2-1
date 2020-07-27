@@ -8,6 +8,7 @@ public class RespuestaCorrecta implements Respuesta {
 
     public RespuestaCorrecta(String nombre){
         this.nombre = nombre;
+        puntaje = 1;
     }
 
     public RespuestaCorrecta(){
@@ -26,7 +27,7 @@ public class RespuestaCorrecta implements Respuesta {
 
     @Override
     public int puntaje(){
-        return 1;
+        return puntaje;
     }
 
     @Override

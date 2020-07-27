@@ -1,6 +1,14 @@
 package edu.fiuba.algo3.modelo;
 
-public interface Opcion {
-    void esCorrecta(Pregunta pregunta);
-    Respuesta esCalificadaPor(Pregunta pregunta);
+public class Opcion {
+    void esCorrecta(TipoDePregunta pregunta){
+        pregunta.esCorrecta(this);
+    }
+    Respuesta esCalificadaPor(TipoDePregunta pregunta){
+        return new RespuestaCorrecta();
+    }
+
+    public Opcion getInstance(){
+        return this;
+    }
 }

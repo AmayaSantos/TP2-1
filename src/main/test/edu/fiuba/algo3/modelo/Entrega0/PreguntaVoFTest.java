@@ -13,7 +13,7 @@ public class PreguntaVoFTest {
 
     @Test
     public void preguntaVoFSeCreaIndicandoRespuestaCorrectaEsVerdadero(){
-        OpcionVoF verdadero = new OpcionVerdadero();
+        Opcion verdadero = new OpcionVerdadero();
         PreguntaVoF pregunta = new PreguntaVoF("Este es un enunciado", verdadero);
         Respuesta respuesta = pregunta.calificar(verdadero);
         assertEquals(1 , respuesta.puntaje());
