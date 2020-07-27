@@ -8,25 +8,23 @@ import java.util.List;
 public class PreguntaVoF implements TipoDePregunta{
     Respuesta respuestaOpcionFalsa, respuestaOpcionVerdadera;
 
-    public PreguntaVoF(OpcionVoF opcionCorrecta){
+    public PreguntaVoF(Opcion opcionCorrecta){
         opcionCorrecta.esCorrecta(this);
     }
 
-    public void esCorrecta(OpcionFalso op){
+    public void laFalsaEsLaCorrecta(){
         respuestaOpcionFalsa = new RespuestaCorrecta();
         respuestaOpcionVerdadera = new RespuestaIncorrecta();
     }
 
-    public void esCorrecta(OpcionVerdadero op){
+    public void laVerdaderaEsLaCorrecta(){
         respuestaOpcionFalsa = new RespuestaIncorrecta();
         respuestaOpcionVerdadera = new RespuestaCorrecta();
     }
 
     public void calificar(Selecciones selecciones){
         selecciones.calificarConPregunta(this);
-    }
-    public Respuesta calificar(OpcionVoF opcion){
-        return opcion.esCalificadaPor(this);
+
     }
 
     public Respuesta calificar(OpcionVerdadero opcion){

@@ -1,14 +1,14 @@
 package edu.fiuba.algo3.modelo;
 
-public class OpcionVerdadero implements Opcion{
+public class OpcionVerdadero extends Opcion{
 
     @Override
-    public void esCorrecta(TipoDePregunta pregunta) {
-
+    public void esCorrecta(PreguntaVoF pregunta){
+        pregunta.laVerdaderaEsLaCorrecta();
     }
 
     @Override
-    public Respuesta esCalificadaPor(TipoDePregunta pregunta) {
-        return null;
+    public Respuesta esCalificadaPor(PreguntaVoF pregunta) {
+        return pregunta.calificar(this);
     }
 }
