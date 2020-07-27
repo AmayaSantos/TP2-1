@@ -3,22 +3,22 @@ hide circle
 skinparam classAttributeIconSize 0
 
 'Clases
-Interface Respuesta{
+Interface Opcion{
     +{abstract}calificar(): int
     +{abstract}esCorrecta(): boolean
 }
 
-Class RespuestaCorrecta{
+Class OpcionCorrecta{
     +calificar(): int
     +esCorrecta(): boolean
 }
 
-Class RespuestaIncorrecta{
+Class OpcionIncorrecta{
     +calificar(): int
     +esCorrecta(): boolean
 }
 
-Class RespuestaIncorrectaPenalizada{
+Class OpcionIncorrectaPenalizada{
     +calificar(): int
     +esCorrecta(): boolean
 }
@@ -26,9 +26,9 @@ Class RespuestaIncorrectaPenalizada{
 Abstract Class Pregunta{
     -enunciado: String
     +{abstract}{static}Pregunta(enunciado: String)
-    +asignarRespuestaCorrecta(respuestaCorrecta: String): void
-    +esCorrecta(respuesta: String): boolean
-    +calificar(selecciones: List<Seleccion>): void
+    +asignarOpcionCorrecta(opcionCorrecta: String): void
+    +esCorrecta(Opcion: String): boolean
+    +calificar(Respuestaes: List<Respuesta>): void
 }
 
 Class PreguntaVoFClasico{
@@ -39,10 +39,10 @@ Class PreguntaVoFPenalizado{
    +{static}PreguntaVoFPenalizado(enunciado: String)
 }
 
-Class Seleccion{
-    -respuesta: String
-    +{static}Seleccion(jugador: Jugador, respuesta: String)
-    +calificar(respuestas: HashMap<String, Respuesta>): void
+Class Respuesta{
+    -opcionElegida: String
+    +{static}Respuesta(jugador: Jugador, opcionElegida: String)
+    +calificar(opciones: HashMap<String, Opcion>): void
 }
 
 Class Jugador{
@@ -54,13 +54,13 @@ Class Jugador{
 }
 
 'Relaciones
-RespuestaIncorrecta ..|> Respuesta
-RespuestaIncorrectaPenalizada ..|> Respuesta
-RespuestaCorrecta ..|> Respuesta
+OpcionIncorrecta ..|> Opcion
+OpcionIncorrectaPenalizada ..|> Opcion
+OpcionCorrecta ..|> Opcion
 PreguntaVoFPenalizado --|> Pregunta
 PreguntaVoFClasico --|> Pregunta
-Seleccion o-- Jugador
-Pregunta "1" *-left- "*" Respuesta
-Seleccion .up.> Respuesta
+Respuesta o-- Jugador
+Pregunta "1" *-left- "*" Opcion
+Respuesta .up.> Opcion
 
 @enduml
