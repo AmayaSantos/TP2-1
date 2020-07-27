@@ -15,7 +15,15 @@ public class Opcion {
 
     }
 
+    public void esCorrecta(MultipleChoise pregunta){
+        //pregunta.agregarOpcionCorrecta(obtenerNumero());
+    }
+
     public void esCorrecta(PreguntaVoF pregunta){
 
+    }
+
+    public int obtenerNumero(){
+        return 0;
     }
 }

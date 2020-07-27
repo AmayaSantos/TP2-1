@@ -6,10 +6,9 @@ import org.junit.jupiter.api.Test;
 public class PreguntaMultipleChoiseTest {
 
     @Test
-    public void SeCreaMultipleChoiseNormalDandole2RespuestasCorrectas(){
+    public void SeCreaMultipleChoiseNormalDandoleRespuestasCorrectas(){
 
-        /*
-        PreguntaMultipleChoiseNormal multipleChoise = new PreguntaMultipleChoise("Enunciado", opcionesCorrectas);
+        PreguntaMultipleChoiseNormal multipleChoise = new PreguntaMultipleChoise(opcionesCorrectas);
 
         Respuesta respuesta = new RespuestaCorrecta();
         assertEquals(respuesta , respuesta);/*/
