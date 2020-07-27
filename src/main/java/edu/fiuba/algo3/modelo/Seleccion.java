@@ -1,19 +1,23 @@
 package edu.fiuba.algo3.modelo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Seleccion {
+    String respuesta;
     Jugador jugador;
-    List<Respuesta> misRespuestasCorrectas;
-    List<Respuesta> misRespuestasIncorrectas;
-    List<Respuesta> misRespuestasOrdenadas;
+    List<Respuesta> misRespuestasCorrectas = new ArrayList<>();
+    List<Respuesta> misRespuestasIncorrectas = new ArrayList<>();
+    List<Respuesta> misRespuestasOrdenadas = new ArrayList<>();
 
     public Seleccion(Jugador jugador) {
         this.jugador = jugador;
-        this.misRespuestasCorrectas =new ArrayList<>();
-        this.misRespuestasIncorrectas =new ArrayList<>();
-        this.misRespuestasOrdenadas =new ArrayList<>();
+    }
+
+    public Seleccion(Jugador jugador, String respuesta) {
+        this.jugador = jugador;
+        this.respuesta = respuesta;
     }
 
     public void agregar(RespuestaCorrecta respuesta){
@@ -30,6 +34,11 @@ public class Seleccion {
 
     public Jugador jugador() {
         return jugador;
+    }
+
+    public void calificar(HashMap<String, Respuesta> respuestas){
+        Respuesta respuestaEscogida = respuestas.get(respuesta);
+        jugador.modificarPuntaje(respuestaEscogida.calificar());
     }
 
     ////ClasificacionPenalizada

@@ -5,9 +5,17 @@ public class RespuestaIncorrecta extends Respuesta {
         this.nombre = nombre;
     }
 
-    @Override
-    public int calificar() {
-        return -1;
+    public RespuestaIncorrecta(){
+        super();
     }
 
+    @Override
+    public int calificar() {
+        return 0;
+    }
+
+    @Override
+    public boolean esCorrecta() {
+        return false;
+    }
 }

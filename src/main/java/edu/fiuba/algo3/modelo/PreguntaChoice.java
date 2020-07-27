@@ -16,4 +16,8 @@ public class PreguntaChoice extends Pregunta{
     }
 
 
+    @Override
+    public void respuestaCorrecta(String respuesta) {
+
+    }
 }

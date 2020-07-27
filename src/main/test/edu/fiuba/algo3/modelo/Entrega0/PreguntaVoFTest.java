@@ -6,82 +6,62 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PreguntaVoFTest {
     @Test
-    public void preguntaVoFPuedeCrearsePasandoRespuestaCorrecta() {
-        RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Verdadero");
-        RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Falso");
-        PreguntaVoF pregunta = new PreguntaVoF("1 + 1 = 2 ", respuestaCorrecta, respuestaIncorrecta);
+    public void test01preguntaVoFPuedeCrearsePasandoRespuestaCorrectaYSePuedeResponderCorrectamente() {
+        PreguntaVoF pregunta = new PreguntaVoF("1 + 1 = 2 ");
+        pregunta.respuestaCorrecta("Verdadero");
 
-       //assertTrue(pregunta.esCorrecta(respuestaCorrecta));
+        assertTrue(pregunta.esCorrecta("Verdadero"));
     }
 
     @Test
-    public void preguntaVoFPuedeCrearsePasandoRespuestaCorrectaSinOrden() {
-        RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Verdadero");
-        RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Falso");
-        PreguntaVoF pregunta = new PreguntaVoF("1 + 1 = 2 ", respuestaIncorrecta, respuestaCorrecta);
+    public void test02preguntaVoFPuedeCrearsePasandoRespuestaCorrectaYSePuedeResponderIncorrectamente() {
+        PreguntaVoF pregunta = new PreguntaVoF("1 + 1 = 2 ");
+        pregunta.respuestaCorrecta("Verdadero");
 
-       // assertTrue(pregunta.esCorrecta(respuestaCorrecta));
+        assertFalse(pregunta.esCorrecta("Falso"));
     }
 
     @Test
-    public void preguntaVoFRecibeRespuestasAsignaCorrectamentePuntajes(){
+    public void test03preguntaVoFRecibeRespuestasDeJugadoresEIncrementaEnUnoAlQueRespondioCorrectamente(){
         Jugador jugador1 = new Jugador("carlos");
         Jugador jugador2 = new Jugador("juan");
 
-        RespuestaIncorrecta respuestaJugador1 = new RespuestaIncorrecta("Verdadero");
-        RespuestaCorrecta respuestaJugador2 = new RespuestaCorrecta("Falso");
+        PreguntaVoF pregunta = new PreguntaVoF("1 + 1 = 2 ");
+        pregunta.respuestaCorrecta("Verdadero");
 
-        Seleccion eleccionJugador1 = new Seleccion(jugador1);
-        eleccionJugador1.agregar(respuestaJugador1);
-        Seleccion eleccionJugador2 = new Seleccion(jugador2);
-        eleccionJugador2.agregar(respuestaJugador2);
+        Seleccion seleccionJugador1 = new Seleccion(jugador1, "Verdadero");
+        Seleccion seleccionJugador2 = new Seleccion(jugador2, "Falso");
 
-        List listaRespuestas = new ArrayList();
-        listaRespuestas.add(eleccionJugador1);
-        listaRespuestas.add(eleccionJugador2);
+        List<Seleccion> selecciones = new ArrayList<Seleccion>();
+        selecciones.add(seleccionJugador1);
+        selecciones.add(seleccionJugador2);
 
-        PreguntaVoF pregunta = new PreguntaVoF("1 + 1 = 2 ", respuestaJugador2, respuestaJugador1);
+        pregunta.calificar(selecciones);
 
-        RondaClasica ronda= new RondaClasica(pregunta);
-        ronda.agregarSeleccion(eleccionJugador1);
-        ronda.agregarSeleccion(eleccionJugador2);
-
-        ronda.calificar();
-
-        assertEquals(1, jugador2.obtenerPuntaje() );
-        assertEquals(0, jugador1.obtenerPuntaje() );
+        assertEquals(1, jugador1.obtenerPuntaje() );
     }
 
     @Test
-    public void preguntaVoFRecibeRespuestasAsignaCorrectamentePuntajesSinOrden(){
+    public void test04preguntaVoFRecibeRespuestasDeJugadoresEIncrementaEnCeroAlQueRespondioIncorrectamente(){
         Jugador jugador1 = new Jugador("carlos");
         Jugador jugador2 = new Jugador("juan");
 
-        RespuestaIncorrecta respuestaJugador1 = new RespuestaIncorrecta("Verdadero");
-        RespuestaCorrecta respuestaJugador2 = new RespuestaCorrecta("Falso");
+        PreguntaVoF pregunta = new PreguntaVoF("1 + 1 = 2 ");
+        pregunta.respuestaCorrecta("Verdadero");
 
-        Seleccion eleccionJugador1 = new Seleccion(jugador1);
-        eleccionJugador1.agregar(respuestaJugador1);
-        Seleccion eleccionJugador2 = new Seleccion(jugador2);
-        eleccionJugador2.agregar(respuestaJugador2);
+        Seleccion seleccionJugador1 = new Seleccion(jugador1, "Verdadero");
+        Seleccion seleccionJugador2 = new Seleccion(jugador2, "Falso");
 
-        List listaRespuestas = new ArrayList();
-        listaRespuestas.add(eleccionJugador1);
-        listaRespuestas.add(eleccionJugador2);
+        List<Seleccion> selecciones = new ArrayList<Seleccion>();
+        selecciones.add(seleccionJugador1);
+        selecciones.add(seleccionJugador2);
 
-        PreguntaVoF pregunta = new PreguntaVoF("1 + 1 = 2 ", respuestaJugador1, respuestaJugador2);
+        pregunta.calificar(selecciones);
 
-        RondaClasica ronda= new RondaClasica(pregunta);
-        ronda.agregarSeleccion(eleccionJugador1);
-        ronda.agregarSeleccion(eleccionJugador2);
-
-        ronda.calificar();
-        assertEquals(1, jugador2.obtenerPuntaje() );
-        assertEquals(0, jugador1.obtenerPuntaje() );
+        assertEquals(0, jugador2.obtenerPuntaje() );
     }
 }

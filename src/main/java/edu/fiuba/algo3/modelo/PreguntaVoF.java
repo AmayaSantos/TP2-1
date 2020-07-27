@@ -18,4 +18,17 @@ public class PreguntaVoF extends Pregunta {
         this.respuestasIncorrectas.add(respuestaIncorrecta);
         this.respuestasCorrectas.add(respuestaCorrecta);
     }
+
+    public PreguntaVoF(String enunciado) {
+        this.enunciado= enunciado;
+        respuestas.put("Verdadero", new RespuestaIncorrecta());
+        respuestas.put("Falso", new RespuestaIncorrecta());
+    }
+
+    @Override
+    public void respuestaCorrecta(String respuesta) {
+        respuestas.replace(respuesta, new RespuestaCorrecta());
+        //respuestas.remove(respuesta);
+        //respuestas.put(respuesta, new RespuestaCorrecta());
+    }
 }
