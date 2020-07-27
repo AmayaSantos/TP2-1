@@ -109,8 +109,8 @@ public class PreguntaChoicePenalizadaTest {
         Jugador jugador1 = new Jugador("carlos");
         Jugador jugador2 = new Jugador("juan");
 
-        jugador1.activarMultiplicador(2);
-        jugador2.activarMultiplicador(3);
+        jugador1.activarMultiplicadorX2();
+        jugador2.activarMultiplicadorX3();
 
         Seleccion eleccionJugador1 = new Seleccion(jugador1);
         Seleccion eleccionJugador2 = new Seleccion(jugador2);

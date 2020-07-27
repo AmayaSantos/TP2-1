@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 public class RespuestaConOrden extends  Respuesta{
     protected int posionVerdadera;
-    int posicionPropuesta;
+    protected int posicionPropuesta;
     public RespuestaConOrden(String nombre, int posicion){
         this.nombre =nombre;
         posionVerdadera= posicion;

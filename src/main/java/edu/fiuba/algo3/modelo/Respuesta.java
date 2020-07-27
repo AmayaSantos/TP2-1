@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 public abstract class Respuesta {
-    String nombre;
+    protected String nombre;
 
     public String nombre(){
         return nombre;

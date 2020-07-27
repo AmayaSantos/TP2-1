@@ -34,13 +34,13 @@ public class Seleccion {
     }
 
     ////ClasificacionPenalizada
-    public void calificar(int multiplicador){
+    public void calificar(){
 
         for (Respuesta respuesta: misRespuestasCorrectas){
-            jugador.modificarPuntaje(respuesta.calificar()*multiplicador);
+            jugador.modificarPuntaje(respuesta.calificar());
         };
         for (Respuesta respuesta: misRespuestasIncorrectas){
-            jugador.modificarPuntaje(respuesta.calificar()*multiplicador);
+            jugador.modificarPuntaje(respuesta.calificar());
         };
     }
 
@@ -52,7 +52,13 @@ public class Seleccion {
             }
         }
     }
-
+    public void calificarTemporalmente(List<Respuesta> respuestas) {
+        if (misRespuestasIncorrectas.isEmpty()){
+            if (misRespuestasCorrectas.equals(respuestas)){
+                jugador.modificarPuntajeTemporal(1);
+            }
+        }
+    }
     ///clasificacion Parcial
     public void calificarParcial() {
         if (misRespuestasIncorrectas.isEmpty()){
@@ -61,12 +67,25 @@ public class Seleccion {
             };
         }
     }
+    public void calificarParcialTemporalmente() {
+        if (misRespuestasIncorrectas.isEmpty()){
+            for (Respuesta respuesta: misRespuestasCorrectas){
+                jugador.modificarPuntajeTemporal(respuesta.calificar());
+            };
+        }
+    }
 
     public void calificarOrden(){
         for (RespuestaConOrden respuesta: misRespuestasOrdenadas){
-            System.out.println(respuesta.calificar());
             jugador.modificarPuntaje(respuesta.calificar());
         };
     }
+
+    public void calificarOrdenTemporal() {
+        for (RespuestaConOrden respuesta: misRespuestasOrdenadas){
+            jugador.modificarPuntajeTemporal(respuesta.calificar());
+        };
+    }
+
 }
 

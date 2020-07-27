@@ -3,32 +3,43 @@ package edu.fiuba.algo3.modelo;
 import java.util.List;
 
 public class Jugador {
-    String nombreJugador;
-    int puntaje = 0;
-    protected int multiplicador;
+    protected String nombreJugador;
+    protected int puntaje = 0;
+    protected int puntajeTemporal;
+    protected int multiplicadorActivo;
+    private int multiplicadorX2;
+    private int multiplicadorX3;
 
 
     public Jugador(String nombre) {
         this.nombreJugador = nombre;
-        this.multiplicador = 1;
+        this.multiplicadorX2= 2;
+        multiplicadorActivo=1;
+        multiplicadorX3=3;
+        puntajeTemporal=0;
     }
 
-    public void modificarPuntaje(int numero){
-        puntaje += numero;
+    public void activarMultiplicadorX2() {
+        multiplicadorActivo=multiplicadorX2;
+        multiplicadorX2=1;
     }
 
-    public void activarMultiplicador(int valor){
-        this.multiplicador = valor;
+    public void activarMultiplicadorX3(){
+        multiplicadorActivo=multiplicadorX3;
+        multiplicadorX3=1;
     }
-
     public int obtenerPuntaje(){
         return puntaje;
     }
 
-    public int multiplicador() {
-        int multiplicadorBoosteado = multiplicador;
-        this.multiplicador = 1;
-        return multiplicadorBoosteado;
+
+    public void modificarPuntaje(int puntaje) {
+    this.puntaje+=(puntaje*multiplicadorActivo);
     }
+
+    public void modificarPuntajeTemporal(int puntaje) {
+        puntajeTemporal+=puntaje;
+    }
+    
 }
 

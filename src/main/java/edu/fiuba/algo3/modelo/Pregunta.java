@@ -5,7 +5,7 @@ import java.util.List;
 
 public abstract class Pregunta {
 
-    String enunciado;
+    protected String enunciado;
     protected List<Respuesta> respuestasCorrectas;
     protected List<Respuesta> respuestasIncorrectas;
 
