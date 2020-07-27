@@ -1,13 +1,13 @@
 package edu.fiuba.algo3.modelo;
 
-public class RespuestaIncorrectaPenalizada implements Respuesta {
+public class OpcionCorrecta implements Opcion {
     @Override
     public int calificar() {
-        return -1;
+        return 1;
     }
 
     @Override
     public boolean esCorrecta() {
-        return false;
+        return true;
     }
 }

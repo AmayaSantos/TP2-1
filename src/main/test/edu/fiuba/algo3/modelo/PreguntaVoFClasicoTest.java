@@ -29,12 +29,12 @@ public class PreguntaVoFClasicoTest {
         PreguntaVoFClasico pregunta = new PreguntaVoFClasico("1 + 1 = 2 ");
         pregunta.asignarRespuestaCorrecta("Verdadero");
 
-        Seleccion seleccionJugador1 = new Seleccion(jugador1, "Verdadero");
-        Seleccion seleccionJugador2 = new Seleccion(jugador2, "Falso");
+        Respuesta respuestaJugador1 = new Respuesta(jugador1, "Verdadero");
+        Respuesta respuestaJugador2 = new Respuesta(jugador2, "Falso");
 
-        List<Seleccion> selecciones = new ArrayList<Seleccion>();
-        selecciones.add(seleccionJugador1);
-        selecciones.add(seleccionJugador2);
+        List<Respuesta> selecciones = new ArrayList<Respuesta>();
+        selecciones.add(respuestaJugador1);
+        selecciones.add(respuestaJugador2);
 
         pregunta.calificar(selecciones);
 
@@ -49,12 +49,12 @@ public class PreguntaVoFClasicoTest {
         PreguntaVoFClasico pregunta = new PreguntaVoFClasico("1 + 1 = 2 ");
         pregunta.asignarRespuestaCorrecta("Verdadero");
 
-        Seleccion seleccionJugador1 = new Seleccion(jugador1, "Verdadero");
-        Seleccion seleccionJugador2 = new Seleccion(jugador2, "Falso");
+        Respuesta respuestaJugador1 = new Respuesta(jugador1, "Verdadero");
+        Respuesta respuestaJugador2 = new Respuesta(jugador2, "Falso");
 
-        List<Seleccion> selecciones = new ArrayList<Seleccion>();
-        selecciones.add(seleccionJugador1);
-        selecciones.add(seleccionJugador2);
+        List<Respuesta> selecciones = new ArrayList<Respuesta>();
+        selecciones.add(respuestaJugador1);
+        selecciones.add(respuestaJugador2);
 
         pregunta.calificar(selecciones);
 
