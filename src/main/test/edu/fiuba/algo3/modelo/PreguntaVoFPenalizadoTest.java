@@ -1,72 +1,66 @@
 package edu.fiuba.algo3.modelo;
-
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PreguntaVoFPenalizadoTest {
-        @Test
-        public void preguntaVoFPuedeCrearsePasandoRespuestaCorrectaPenalizada() {
-            RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Verdadero");
-            RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Falso");
-            PreguntaVoF pregunta = new PreguntaVoF("1 + 1 = 2 ", respuestaCorrecta, respuestaIncorrecta);
+    @Test
+    public void test01preguntaVoFPenalizadoPuedeCrearseIndicandoRespuestaCorrectaYSePuedeResponderCorrectamente() {
+        PreguntaVoFPenalizado pregunta = new PreguntaVoFPenalizado("1 + 1 = 2 ");
+        pregunta.respuestaCorrecta("Verdadero");
 
-            //assertTrue(pregunta.esCorrecta(respuestaCorrecta));
-        }
+        assertTrue(pregunta.esCorrecta("Verdadero"));
+    }
 
-        @Test
-        public void preguntaVoFPenalizadaRecibeRespuestasAsignaCorrectamentePuntajes(){
-            Jugador jugador1 = new Jugador("carlos");
-            Jugador jugador2 = new Jugador("juan");
+    @Test
+    public void test02preguntaVoFPenalizadoPuedeCrearseIndicandoRespuestaCorrectaYSePuedeResponderIncorrectamente() {
+        PreguntaVoFPenalizado pregunta = new PreguntaVoFPenalizado("1 + 1 = 2 ");
+        pregunta.respuestaCorrecta("Verdadero");
 
-            RespuestaIncorrecta respuestaJugador1 = new RespuestaIncorrecta("Verdadero");
-            RespuestaCorrecta respuestaJugador2 = new RespuestaCorrecta("Falso");
+        assertFalse(pregunta.esCorrecta("Falso"));
+    }
 
-            Seleccion eleccionJugador1 = new Seleccion(jugador1);
-            eleccionJugador1.agregar(respuestaJugador1);
-            Seleccion eleccionJugador2 = new Seleccion(jugador2);
-            eleccionJugador2.agregar(respuestaJugador2);
+    @Test
+    public void test03preguntaVoFPenalizadoRecibeRespuestasDeJugadoresEIncrementaEnUnoAlQueRespondioCorrectamente(){
+        Jugador jugador1 = new Jugador("carlos");
+        Jugador jugador2 = new Jugador("juan");
 
-            PreguntaVoF pregunta = new PreguntaVoF("1 + 1 = 2 ", respuestaJugador2, respuestaJugador1);
+        PreguntaVoFPenalizado pregunta = new PreguntaVoFPenalizado("1 + 1 = 2 ");
+        pregunta.respuestaCorrecta("Verdadero");
 
-            RondaPenalizada ronda= new RondaPenalizada();
-            ronda.agregarSeleccion(eleccionJugador1);
-            ronda.agregarSeleccion(eleccionJugador2);
+        Seleccion seleccionJugador1 = new Seleccion(jugador1, "Verdadero");
+        Seleccion seleccionJugador2 = new Seleccion(jugador2, "Falso");
 
-            ronda.calificar();
+        List<Seleccion> selecciones = new ArrayList<Seleccion>();
+        selecciones.add(seleccionJugador1);
+        selecciones.add(seleccionJugador2);
 
-            assertEquals(1, jugador2.obtenerPuntaje() );
-            assertEquals(-1, jugador1.obtenerPuntaje() );
-        }
+        pregunta.calificar(selecciones);
 
-        @Test
-        public void preguntaVoFPenalizadaConMultiplicadorRecibeRespuestasAsignaCorrectamentePuntajes(){
+        assertEquals(1, jugador1.obtenerPuntaje() );
+    }
 
-            Jugador jugador1 = new Jugador("carlos");
-            Jugador jugador2 = new Jugador("juan");
+    @Test
+    public void test04preguntaVoFPenalizadoRecibeRespuestasDeJugadoresEIncrementaEnCeroAlQueRespondioIncorrectamente(){
+        Jugador jugador1 = new Jugador("carlos");
+        Jugador jugador2 = new Jugador("juan");
 
-            jugador1.activarMultiplicador(2);
-            jugador2.activarMultiplicador(3);
+        PreguntaVoFPenalizado pregunta = new PreguntaVoFPenalizado("1 + 1 = 2 ");
+        pregunta.respuestaCorrecta("Verdadero");
 
-            RespuestaIncorrecta respuestaJugador1 = new RespuestaIncorrecta("Verdadero");
-            RespuestaCorrecta respuestaJugador2 = new RespuestaCorrecta("Falso");
+        Seleccion seleccionJugador1 = new Seleccion(jugador1, "Verdadero");
+        Seleccion seleccionJugador2 = new Seleccion(jugador2, "Falso");
 
-            Seleccion eleccionJugador1 = new Seleccion(jugador1);
-            eleccionJugador1.agregar(respuestaJugador1);
-            Seleccion eleccionJugador2 = new Seleccion(jugador2);
-            eleccionJugador2.agregar(respuestaJugador2);
+        List<Seleccion> selecciones = new ArrayList<Seleccion>();
+        selecciones.add(seleccionJugador1);
+        selecciones.add(seleccionJugador2);
 
-            PreguntaVoF pregunta = new PreguntaVoF("1 + 1 = 2 ", respuestaJugador2, respuestaJugador1);
+        pregunta.calificar(selecciones);
 
-            RondaPenalizada ronda= new RondaPenalizada();
-            ronda.agregarSeleccion(eleccionJugador1);
-            ronda.agregarSeleccion(eleccionJugador2);
-
-            ronda.calificar();
-
-            assertEquals(3, jugador2.obtenerPuntaje() );
-            assertEquals(-2, jugador1.obtenerPuntaje() );
+        assertEquals(-1, jugador2.obtenerPuntaje() );
     }
 }
 

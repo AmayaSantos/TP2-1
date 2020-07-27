@@ -3,105 +3,64 @@ hide circle
 skinparam classAttributeIconSize 0
 
 'Clases
-class Panel{
-    +cargarPregunta(): Void
-    +enviarRespuesta(): Void
-    -monstrarOpciones(): Void
-    -mostrarEnunciado(): Void
-}
-
-
-Abstract Pregunta{
-    -enunciado():String
-    -respuestasCorrectas():List<Respuesta>
-    -respuestasIncorrectas():List<Respuesta>
-    +obtenerOpciones(): List<Respuesta>
-    +calificar(Seleccion seleccion):int
-}
-
-Abstract Respuesta{
-    -nombre:string
-    +nombre():String
-    +calificar(Abstracto): Void
-    +igual(respuesta:Respuesta): Boolean
-    +esCorrecta(Abstracto):boolean
+Interface Respuesta{
+    +{abstract}calificar(): int
+    +{abstract}esCorrecta(): boolean
 }
 
 Class RespuestaCorrecta{
-    +RespuestaCorrecta(nombre:String)
-    +calificar():int
-    +esCorrecta():boolean
+    +calificar(): int
+    +esCorrecta(): boolean
 }
 
 Class RespuestaIncorrecta{
-   +RespuestaIncorrecta(nombre:String)
-    +calificar():int
-    +esCorrecta():boolean
+    +calificar(): int
+    +esCorrecta(): boolean
 }
 
-Class PreguntaVoF{
-   +PreguntaVoF(enunciado:String,respuestaCorrecta:RespuestaCorrecta,respuestaIncorrecta:RespuestaIncorrecta)
-   +PreguntaVoF(enunciado:String,respuestaIncorrecta:RespuestaIncorrecta,respuestaCorrecta:RespuestaCorrecta)
+Class RespuestaIncorrectaPenalizada{
+    +calificar(): int
+    +esCorrecta(): boolean
 }
 
-
-
-Class PreguntaChoise{
-    +agregar(respuesta:RespuestaCorrecta):void
-    +agregar(respuesta:RespuestaIncorrecta):void
-
+Abstract Class Pregunta{
+    -enunciado: String
+    +{abstract}{static}Pregunta(enunciado: String)
+    +respuestaCorrecta(respuesta: String): void
+    +esCorrecta(respuesta: String): boolean
+    +calificar(selecciones: List<Seleccion>): void
 }
 
-
-
-
-Class PreguntaGroup{
-    +calificar(Selecciones):int
+Class PreguntaVoFClasico{
+   +{static}PreguntaVoFClasico(enunciado: String)
 }
 
-
+Class PreguntaVoFPenalizado{
+   +{static}PreguntaVoFPenalizado(enunciado: String)
+}
 
 Class Seleccion{
-    -jugador:Jugador
-    -misRespuestasCorrestas:List<Respuesta>
-    -misRespuestasIncorrestas:List<Respuesta>
-    -busteador
-    +Selecion(jugador:Jugador)
-    +agregar(respuesta:RespuestaCorrecta)
-    +agregar(respuesta:RespuestaIncrrecta)
-    +calificarNormal()
-    +calificarParcial()
-    +calificarChoice()
+    -respuesta: String
+    +{static}Seleccion(jugador: Jugador, respuesta: String)
+    +calificar(respuestas: HashMap<String, Respuesta>): void
 }
 
 Class Jugador{
-    -nombre:String
-    -puntos:int
-    +Jugador(nombre:String)
-    + modificarPuntaje(numero:int):void
-    +obtenerPuntaje():int
-}
-
-Abstract Ronda{
-   -pregunta: Pregunta
-   -selecciones:List<Seleccion>
-   +agregarSeleccion(Seleccion seleccion):void
-   +abstract clasificar():void
-   +aplicarBusteador()
+    -nombre: String
+    -puntos: int
+    +{Static}Jugador(nombre: String)
+    +modificarPuntaje(numero:int): void
+    +obtenerPuntaje(): int
 }
 
 'Relaciones
-Pregunta -right-* "*" Respuesta
-RespuestaIncorrecta -down-|> Respuesta
-RespuestaCorrecta -down-|> Respuesta
-PreguntaVoF -up-|> Pregunta
-PreguntaChoise -up-|> Pregunta
-PreguntaGroup -left-|> Pregunta
-Pregunta ..up.>Ronda
-Seleccion .left.>Ronda
-RondaClasica -down-|>Ronda
-RondaParcial -down-|>Ronda
-RondaPenalizada -down-|>Ronda
-Ronda -left-> Jugador
+RespuestaIncorrecta ..|> Respuesta
+RespuestaIncorrectaPenalizada ..|> Respuesta
+RespuestaCorrecta ..|> Respuesta
+PreguntaVoFPenalizado --|> Pregunta
+PreguntaVoFClasico --|> Pregunta
+Seleccion o-- Jugador
+Pregunta "1" *-left- "*" Respuesta
+Seleccion .up.> Respuesta
 
 @enduml

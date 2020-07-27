@@ -1,36 +1,32 @@
-package edu.fiuba.algo3.modelo.Entrega0;
-
-import edu.fiuba.algo3.modelo.*;
+package edu.fiuba.algo3.modelo;
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-public class PreguntaVoFTest {
+public class PreguntaVoFClasicoTest {
     @Test
-    public void test01preguntaVoFPuedeCrearsePasandoRespuestaCorrectaYSePuedeResponderCorrectamente() {
-        PreguntaVoF pregunta = new PreguntaVoF("1 + 1 = 2 ");
+    public void test01preguntaVoFClasicoPuedeCrearsePasandoRespuestaCorrectaYSePuedeResponderCorrectamente() {
+        PreguntaVoFClasico pregunta = new PreguntaVoFClasico("1 + 1 = 2 ");
         pregunta.respuestaCorrecta("Verdadero");
 
         assertTrue(pregunta.esCorrecta("Verdadero"));
     }
 
     @Test
-    public void test02preguntaVoFPuedeCrearsePasandoRespuestaCorrectaYSePuedeResponderIncorrectamente() {
-        PreguntaVoF pregunta = new PreguntaVoF("1 + 1 = 2 ");
+    public void test02preguntaVoFClasicoPuedeCrearsePasandoRespuestaCorrectaYSePuedeResponderIncorrectamente() {
+        PreguntaVoFClasico pregunta = new PreguntaVoFClasico("1 + 1 = 2 ");
         pregunta.respuestaCorrecta("Verdadero");
 
         assertFalse(pregunta.esCorrecta("Falso"));
     }
 
     @Test
-    public void test03preguntaVoFRecibeRespuestasDeJugadoresEIncrementaEnUnoAlQueRespondioCorrectamente(){
+    public void test03preguntaVoFClasicoRecibeRespuestasDeJugadoresEIncrementaEnUnoAlQueRespondioCorrectamente(){
         Jugador jugador1 = new Jugador("carlos");
         Jugador jugador2 = new Jugador("juan");
 
-        PreguntaVoF pregunta = new PreguntaVoF("1 + 1 = 2 ");
+        PreguntaVoFClasico pregunta = new PreguntaVoFClasico("1 + 1 = 2 ");
         pregunta.respuestaCorrecta("Verdadero");
 
         Seleccion seleccionJugador1 = new Seleccion(jugador1, "Verdadero");
@@ -46,11 +42,11 @@ public class PreguntaVoFTest {
     }
 
     @Test
-    public void test04preguntaVoFRecibeRespuestasDeJugadoresEIncrementaEnCeroAlQueRespondioIncorrectamente(){
+    public void test04preguntaVoFClasicoRecibeRespuestasDeJugadoresEIncrementaEnCeroAlQueRespondioIncorrectamente(){
         Jugador jugador1 = new Jugador("carlos");
         Jugador jugador2 = new Jugador("juan");
 
-        PreguntaVoF pregunta = new PreguntaVoF("1 + 1 = 2 ");
+        PreguntaVoFClasico pregunta = new PreguntaVoFClasico("1 + 1 = 2 ");
         pregunta.respuestaCorrecta("Verdadero");
 
         Seleccion seleccionJugador1 = new Seleccion(jugador1, "Verdadero");
