@@ -84,4 +84,61 @@ public class PreguntaVoFTest {
         assertEquals(1, jugador2.obtenerPuntaje() );
         assertEquals(0, jugador1.obtenerPuntaje() );
     }
+
+    @Test
+    public void preguntaVoFRecibeRespuestasEnGranEscalaYAsignaCorrectamentePuntajes() {
+
+        Jugador jugador1 = new Jugador("carlos");
+        Jugador jugador2 = new Jugador("juan");
+        Jugador jugador3 = new Jugador("pablo");
+        Jugador jugador4 = new Jugador("fernando");
+        Jugador jugador5 = new Jugador("santos");
+        Jugador jugador6 = new Jugador("matias");
+        Jugador jugador7 = new Jugador("gabriel");
+
+        RespuestaIncorrecta respuestaIncorrecta = new RespuestaIncorrecta("Falso");
+        RespuestaCorrecta respuestaCorrecta = new RespuestaCorrecta("Verdadero");
+
+        Seleccion eleccionJugador1 = new Seleccion(jugador1);
+        eleccionJugador1.agregar(respuestaIncorrecta);
+
+        Seleccion eleccionJugador2 = new Seleccion(jugador2);
+        eleccionJugador2.agregar(respuestaCorrecta);
+
+        Seleccion eleccionJugador3 = new Seleccion(jugador3);
+        eleccionJugador3.agregar(respuestaIncorrecta);
+
+        Seleccion eleccionJugador4 = new Seleccion(jugador4);
+        eleccionJugador4.agregar(respuestaCorrecta);
+
+        Seleccion eleccionJugador5 = new Seleccion(jugador5);
+        eleccionJugador5.agregar(respuestaIncorrecta);
+
+        Seleccion eleccionJugador6 = new Seleccion(jugador6);
+        eleccionJugador6.agregar(respuestaCorrecta);
+
+        Seleccion eleccionJugador7 = new Seleccion(jugador7);
+        eleccionJugador7.agregar(respuestaIncorrecta);
+
+        PreguntaVoF pregunta = new PreguntaVoF("1 + 1 = 2 ", respuestaIncorrecta, respuestaCorrecta);
+
+        RondaClasica ronda= new RondaClasica(pregunta);
+        ronda.agregarSeleccion(eleccionJugador1);
+        ronda.agregarSeleccion(eleccionJugador2);
+        ronda.agregarSeleccion(eleccionJugador3);
+        ronda.agregarSeleccion(eleccionJugador4);
+        ronda.agregarSeleccion(eleccionJugador5);
+        ronda.agregarSeleccion(eleccionJugador6);
+        ronda.agregarSeleccion(eleccionJugador7);
+
+        ronda.calificar();
+        assertEquals(0, jugador1.obtenerPuntaje() );
+        assertEquals(1, jugador2.obtenerPuntaje() );
+        assertEquals(0, jugador3.obtenerPuntaje() );
+        assertEquals(1, jugador4.obtenerPuntaje() );
+        assertEquals(0, jugador5.obtenerPuntaje() );
+        assertEquals(1, jugador6.obtenerPuntaje() );
+        assertEquals(0, jugador7.obtenerPuntaje() );
+
+    }
 }

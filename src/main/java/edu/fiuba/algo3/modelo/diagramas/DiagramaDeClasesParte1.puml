@@ -1,0 +1,50 @@
+@startuml
+
+
+Class Seleccion{
+    -jugador:Jugador
+    -misRespuestasCorrestas:List<Respuesta>
+    -misRespuestasIncorrestas:List<Respuesta>
+    -busteador
+    +Selecion(jugador:Jugador)
+    +agregar(respuesta:RespuestaCorrecta)
+    +agregar(respuesta:RespuestaIncrrecta)
+    +calificarNormal()
+    +calificarParcial()
+    +calificarChoice()
+}
+
+Class Jugador{
+    -nombre:String
+    -puntos:int
+    +Jugador(nombre:String)
+    + modificarPuntaje(numero:int):void
+    +obtenerPuntaje():int
+}
+
+Abstract Ronda{
+   -pregunta: Pregunta
+   -selecciones:List<Seleccion>
+   +agregarSeleccion(Seleccion seleccion):void
+   +abstract clasificar():void
+   +aplicarBusteador()
+}
+
+Abstract Pregunta{
+    -enunciado():String
+    -respuestasCorrectas():List<Respuesta>
+    -respuestasIncorrectas():List<Respuesta>
+    +obtenerOpciones(): List<Respuesta>
+    +calificar(Seleccion seleccion):int
+}
+
+'relaciones
+
+Seleccion .left.>Ronda
+RondaClasica -down-|>Ronda
+RondaParcial -down-|>Ronda
+RondaPenalizada -down-|>Ronda
+Ronda -left-> Jugador
+Pregunta ..up.>Ronda
+
+@enduml

@@ -1,0 +1,43 @@
+@startuml
+
+Abstract Pregunta{
+    -enunciado():String
+    -respuestasCorrectas():List<Respuesta>
+    -respuestasIncorrectas():List<Respuesta>
+    +obtenerOpciones(): List<Respuesta>
+    +calificar(Seleccion seleccion):int
+}
+
+Class RespuestaIncorrecta{
+   +RespuestaIncorrecta(nombre:String)
+    +calificar():int
+    +esCorrecta():boolean
+}
+
+Class PreguntaVoF{
+   +PreguntaVoF(enunciado:String,respuestaCorrecta:RespuestaCorrecta,respuestaIncorrecta:RespuestaIncorrecta)
+   +PreguntaVoF(enunciado:String,respuestaIncorrecta:RespuestaIncorrecta,respuestaCorrecta:RespuestaCorrecta)
+}
+
+
+Class PreguntaChoise{
+    +agregar(respuesta:RespuestaCorrecta):void
+    +agregar(respuesta:RespuestaIncorrecta):void
+
+}
+
+
+Class PreguntaGroup{
+    +calificar(Selecciones):int
+}
+
+'relaciones
+
+Pregunta -right-* "*" Respuesta
+RespuestaIncorrecta -right-|> Respuesta
+RespuestaCorrecta -down-|> Respuesta
+PreguntaVoF -up-|> Pregunta
+PreguntaChoise -up-|> Pregunta
+PreguntaGroup -left-|> Pregunta
+
+@enduml
