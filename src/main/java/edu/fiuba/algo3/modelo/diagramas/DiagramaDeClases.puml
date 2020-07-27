@@ -26,7 +26,7 @@ Class RespuestaIncorrectaPenalizada{
 Abstract Class Pregunta{
     -enunciado: String
     +{abstract}{static}Pregunta(enunciado: String)
-    +respuestaCorrecta(respuesta: String): void
+    +asignarRespuestaCorrecta(respuestaCorrecta: String): void
     +esCorrecta(respuesta: String): boolean
     +calificar(selecciones: List<Seleccion>): void
 }

@@ -8,8 +8,8 @@ public abstract class Pregunta {
     String enunciado;
     protected HashMap<String, Respuesta> respuestas = new HashMap<String, Respuesta>();
 
-    public void respuestaCorrecta(String respuesta){
-        respuestas.replace(respuesta, new RespuestaCorrecta());
+    public void asignarRespuestaCorrecta(String respuestaCorrecta){
+        respuestas.replace(respuestaCorrecta, new RespuestaCorrecta());
     }
 
     public boolean esCorrecta(String respuesta){

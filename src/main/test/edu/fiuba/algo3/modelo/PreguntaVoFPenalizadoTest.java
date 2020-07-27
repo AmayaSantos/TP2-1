@@ -10,7 +10,7 @@ public class PreguntaVoFPenalizadoTest {
     @Test
     public void test01preguntaVoFPenalizadoPuedeCrearseIndicandoRespuestaCorrectaYSePuedeResponderCorrectamente() {
         PreguntaVoFPenalizado pregunta = new PreguntaVoFPenalizado("1 + 1 = 2 ");
-        pregunta.respuestaCorrecta("Verdadero");
+        pregunta.asignarRespuestaCorrecta("Verdadero");
 
         assertTrue(pregunta.esCorrecta("Verdadero"));
     }
@@ -18,7 +18,7 @@ public class PreguntaVoFPenalizadoTest {
     @Test
     public void test02preguntaVoFPenalizadoPuedeCrearseIndicandoRespuestaCorrectaYSePuedeResponderIncorrectamente() {
         PreguntaVoFPenalizado pregunta = new PreguntaVoFPenalizado("1 + 1 = 2 ");
-        pregunta.respuestaCorrecta("Verdadero");
+        pregunta.asignarRespuestaCorrecta("Verdadero");
 
         assertFalse(pregunta.esCorrecta("Falso"));
     }
@@ -29,7 +29,7 @@ public class PreguntaVoFPenalizadoTest {
         Jugador jugador2 = new Jugador("juan");
 
         PreguntaVoFPenalizado pregunta = new PreguntaVoFPenalizado("1 + 1 = 2 ");
-        pregunta.respuestaCorrecta("Verdadero");
+        pregunta.asignarRespuestaCorrecta("Verdadero");
 
         Seleccion seleccionJugador1 = new Seleccion(jugador1, "Verdadero");
         Seleccion seleccionJugador2 = new Seleccion(jugador2, "Falso");
@@ -49,7 +49,7 @@ public class PreguntaVoFPenalizadoTest {
         Jugador jugador2 = new Jugador("juan");
 
         PreguntaVoFPenalizado pregunta = new PreguntaVoFPenalizado("1 + 1 = 2 ");
-        pregunta.respuestaCorrecta("Verdadero");
+        pregunta.asignarRespuestaCorrecta("Verdadero");
 
         Seleccion seleccionJugador1 = new Seleccion(jugador1, "Verdadero");
         Seleccion seleccionJugador2 = new Seleccion(jugador2, "Falso");

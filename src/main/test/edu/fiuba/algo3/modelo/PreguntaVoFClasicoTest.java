@@ -8,7 +8,7 @@ public class PreguntaVoFClasicoTest {
     @Test
     public void test01preguntaVoFClasicoPuedeCrearsePasandoRespuestaCorrectaYSePuedeResponderCorrectamente() {
         PreguntaVoFClasico pregunta = new PreguntaVoFClasico("1 + 1 = 2 ");
-        pregunta.respuestaCorrecta("Verdadero");
+        pregunta.asignarRespuestaCorrecta("Verdadero");
 
         assertTrue(pregunta.esCorrecta("Verdadero"));
     }
@@ -16,7 +16,7 @@ public class PreguntaVoFClasicoTest {
     @Test
     public void test02preguntaVoFClasicoPuedeCrearsePasandoRespuestaCorrectaYSePuedeResponderIncorrectamente() {
         PreguntaVoFClasico pregunta = new PreguntaVoFClasico("1 + 1 = 2 ");
-        pregunta.respuestaCorrecta("Verdadero");
+        pregunta.asignarRespuestaCorrecta("Verdadero");
 
         assertFalse(pregunta.esCorrecta("Falso"));
     }
@@ -27,7 +27,7 @@ public class PreguntaVoFClasicoTest {
         Jugador jugador2 = new Jugador("juan");
 
         PreguntaVoFClasico pregunta = new PreguntaVoFClasico("1 + 1 = 2 ");
-        pregunta.respuestaCorrecta("Verdadero");
+        pregunta.asignarRespuestaCorrecta("Verdadero");
 
         Seleccion seleccionJugador1 = new Seleccion(jugador1, "Verdadero");
         Seleccion seleccionJugador2 = new Seleccion(jugador2, "Falso");
@@ -47,7 +47,7 @@ public class PreguntaVoFClasicoTest {
         Jugador jugador2 = new Jugador("juan");
 
         PreguntaVoFClasico pregunta = new PreguntaVoFClasico("1 + 1 = 2 ");
-        pregunta.respuestaCorrecta("Verdadero");
+        pregunta.asignarRespuestaCorrecta("Verdadero");
 
         Seleccion seleccionJugador1 = new Seleccion(jugador1, "Verdadero");
         Seleccion seleccionJugador2 = new Seleccion(jugador2, "Falso");
