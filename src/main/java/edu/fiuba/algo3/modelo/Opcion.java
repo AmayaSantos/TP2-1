@@ -1,6 +1,11 @@
 package edu.fiuba.algo3.modelo;
 
 public class Opcion {
+    int ubicacion;
+
+    public Opcion(int ubicacion){
+        this.ubicacion = ubicacion;
+    }
     // LANZAR EXCEPCIONES EN TODAS LAS PREGUNTAS
     Respuesta esCalificadaPor(TipoDePregunta pregunta){
         return new RespuestaCorrecta();
@@ -24,6 +29,6 @@ public class Opcion {
     }
 
     public int obtenerNumero(){
-        return 0;
+        return ubicacion;
     }
 }

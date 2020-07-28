@@ -1,28 +1,41 @@
 package edu.fiuba.algo3.modelo;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 public class MultipleChoise implements TipoDePregunta {
-    ArrayList<Respuesta> respuestasAOpciones;
-    ArrayList<Opcion> opciones;
+    Hashtable<Opcion, Racha> rachaHashtable;
     int respuestasCorrectas;
+    Respuesta respuestaFinal;
+    Racha racha;
+
     public MultipleChoise(ArrayList<Opcion> correctas, ArrayList<Opcion> incorrectas){
-        opciones.addAll(correctas);
-        opciones.addAll(incorrectas);
-        respuestasCorrectas = correctas.size();
-        respuestasAOpciones = new ArrayList<Respuesta>();
-        for(int i = 0; i < opciones.size(); i++){
-            respuestasAOpciones.add(new RespuestaIncorrecta());
-        }
+        respuestasCorrectas = 0;
         for (Opcion op: correctas
              ) {
-            respuestasAOpciones.remove(op.obtenerNumero());
-            respuestasAOpciones.add(op.obtenerNumero(), new RespuestaCorrecta());
+            rachaHashtable.put(op, new EnRacha(0));
+            respuestasCorrectas++;
         }
+        for (Opcion op: incorrectas
+             ) {
+            rachaHashtable.put(op, new RachaRota(0));
+        }
+        respuestaFinal = new RespuestaCorrecta(0);
     }
 
     @Override
     public Respuesta calificar(ArrayList<Opcion> opciones) {
+        verificarRacha(opciones);
         return null;
     }
+
+    protected void verificarRacha(ArrayList<Opcion> opciones){
+        for (Opcion op: opciones
+        ) {
+            racha.verificar(rachaHashtable.get(op));
+        }
+    }
+
+
+
 }

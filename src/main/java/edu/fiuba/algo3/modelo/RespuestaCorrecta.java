@@ -6,6 +6,10 @@ public class RespuestaCorrecta implements Respuesta {
 
     int puntaje;
 
+    public RespuestaCorrecta(int puntajeInicial){
+        puntaje = puntajeInicial;
+    }
+
     public RespuestaCorrecta(String nombre){
         this.nombre = nombre;
         puntaje = 1;

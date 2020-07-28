@@ -2,7 +2,6 @@ package edu.fiuba.algo3.modelo;
 
 public class RespuestaIncorrecta implements Respuesta {
     String nombre;
-
     int puntaje;
 
     public RespuestaIncorrecta(String nombre){
@@ -10,6 +9,9 @@ public class RespuestaIncorrecta implements Respuesta {
     }
     public RespuestaIncorrecta(){
 
+    }
+    public RespuestaIncorrecta(int puntajeInicial){
+        puntaje = puntajeInicial;
     }
 
     @Override
