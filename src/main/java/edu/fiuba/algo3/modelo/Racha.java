@@ -1,19 +1,30 @@
 package edu.fiuba.algo3.modelo;
 
+import java.util.ArrayList;
+
 public class Racha {
     protected int correctas, incorrectas;
 
-    Racha verificar(Racha racha){
+    protected int correctas(){
+        return correctas;
+    }
+
+    public Racha verificar(Racha racha){
         return null;
     }
 
-    Racha verificar(EnRacha racha){
+    public Racha verificar(EnRacha racha){
         return null;
     }
 
-    Racha verificar(RachaRota racha){
+    public Racha verificar(RachaRota racha){
         return null;
     }
+
+    public Respuesta definirRespuesta(ArrayList<Respuesta> respuestas){
+        return null;
+    }
+
     void sumarCorrecta(){
         correctas++;
     }

@@ -8,7 +8,7 @@ public class RespuestaIncorrecta implements Respuesta {
         this.nombre = nombre;
     }
     public RespuestaIncorrecta(){
-
+        puntaje = 0;
     }
     public RespuestaIncorrecta(int puntajeInicial){
         puntaje = puntajeInicial;

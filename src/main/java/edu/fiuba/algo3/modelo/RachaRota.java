@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import java.util.ArrayList;
+
 public class RachaRota extends Racha{
 
     public RachaRota(int respuestasCorrectas){
@@ -14,13 +16,17 @@ public class RachaRota extends Racha{
 
     @Override
     public Racha verificar(EnRacha racha) {
-        return new RachaRota(correctas);
+        return new RachaRota(racha.correctas());
     }
 
     @Override
     public Racha verificar(RachaRota racha) {
         racha.sumarIncorrecta();
         return racha;
+    }
+
+    public Respuesta definirRespuesta(ArrayList<Respuesta> respuestas){
+        return new RespuestaIncorrecta();
     }
 
 

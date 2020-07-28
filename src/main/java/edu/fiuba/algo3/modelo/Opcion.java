@@ -3,6 +3,10 @@ package edu.fiuba.algo3.modelo;
 public class Opcion {
     int ubicacion;
 
+    public Opcion(){
+        ubicacion = 0;
+    }
+
     public Opcion(int ubicacion){
         this.ubicacion = ubicacion;
     }

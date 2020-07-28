@@ -4,11 +4,12 @@ import edu.fiuba.algo3.modelo.Racha;
 import edu.fiuba.algo3.modelo.RespuestaCorrecta;
 import edu.fiuba.algo3.modelo.RespuestaIncorrecta;
 
+import java.util.ArrayList;
+
 public class EnRacha extends Racha {
-    int respuestasCorrectas, getRespuestasIncorrectas;
 
     public EnRacha(int respuestasCorrectas){
-        this.respuestasCorrectas = respuestasCorrectas;
+        this.correctas = respuestasCorrectas;
     }
 
     @Override
@@ -28,4 +29,7 @@ public class EnRacha extends Racha {
         return racha;
     }
 
+    public Respuesta definirRespuesta(ArrayList<Respuesta> respuestas){
+        return respuestas.get(correctas);
+    }
 }
