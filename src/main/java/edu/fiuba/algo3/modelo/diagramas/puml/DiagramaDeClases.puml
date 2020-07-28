@@ -98,7 +98,7 @@ PreguntaVoF -up-|> Pregunta
 PreguntaChoise -up-|> Pregunta
 PreguntaGroup -left-|> Pregunta
 Pregunta ..up.>Ronda
-Seleccion .left.>Ronda
+Ronda -left-* "*" Seleccion
 RondaClasica -down-|>Ronda
 RondaParcial -down-|>Ronda
 RondaPenalizada -down-|>Ronda

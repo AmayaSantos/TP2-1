@@ -40,11 +40,11 @@ Abstract Pregunta{
 
 'relaciones
 
-Seleccion .left.>Ronda
 RondaClasica -down-|>Ronda
 RondaParcial -down-|>Ronda
 RondaPenalizada -down-|>Ronda
 Ronda -left-> Jugador
 Pregunta ..up.>Ronda
+Ronda -left-* "*" Seleccion
 
 @enduml
