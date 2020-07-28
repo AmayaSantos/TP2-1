@@ -14,11 +14,7 @@ Class OpcionCorrecta{
 }
 
 Class OpcionIncorrecta{
-    +calificar(): int
-    +esCorrecta(): boolean
-}
-
-Class OpcionIncorrectaPenalizada{
+    -penailizacion: int
     +calificar(): int
     +esCorrecta(): boolean
 }
@@ -55,7 +51,6 @@ Class Jugador{
 
 'Relaciones
 OpcionIncorrecta ..|> Opcion
-OpcionIncorrectaPenalizada ..|> Opcion
 OpcionCorrecta ..|> Opcion
 PreguntaVoFPenalizado --|> Pregunta
 PreguntaVoFClasico --|> Pregunta

@@ -1,9 +1,15 @@
 package edu.fiuba.algo3.modelo;
 
 public class OpcionIncorrecta implements Opcion {
+    int penalizacion;
+
+    public OpcionIncorrecta(int penalizacion){
+        this.penalizacion = penalizacion;
+    }
+
     @Override
     public int calificar() {
-        return 0;
+        return -1*penalizacion;
     }
 
     @Override
