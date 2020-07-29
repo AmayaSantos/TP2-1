@@ -34,11 +34,11 @@ public class PreguntaVoFPenalizadoTest {
         Respuesta respuestaJugador1 = new Respuesta(jugador1, "Verdadero");
         Respuesta respuestaJugador2 = new Respuesta(jugador2, "Falso");
 
-        List<Respuesta> selecciones = new ArrayList<Respuesta>();
-        selecciones.add(respuestaJugador1);
-        selecciones.add(respuestaJugador2);
+        List<Respuesta> respuestas = new ArrayList<Respuesta>();
+        respuestas.add(respuestaJugador1);
+        respuestas.add(respuestaJugador2);
 
-        pregunta.calificar(selecciones);
+        pregunta.calificar(respuestas);
 
         assertEquals(1, jugador1.obtenerPuntaje() );
     }
@@ -54,11 +54,11 @@ public class PreguntaVoFPenalizadoTest {
         Respuesta respuestaJugador1 = new Respuesta(jugador1, "Verdadero");
         Respuesta respuestaJugador2 = new Respuesta(jugador2, "Falso");
 
-        List<Respuesta> selecciones = new ArrayList<Respuesta>();
-        selecciones.add(respuestaJugador1);
-        selecciones.add(respuestaJugador2);
+        List<Respuesta> respuestas = new ArrayList<Respuesta>();
+        respuestas.add(respuestaJugador1);
+        respuestas.add(respuestaJugador2);
 
-        pregunta.calificar(selecciones);
+        pregunta.calificar(respuestas);
 
         assertEquals(-1, jugador2.obtenerPuntaje() );
     }

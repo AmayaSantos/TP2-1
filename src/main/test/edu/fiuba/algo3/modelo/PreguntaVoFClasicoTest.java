@@ -22,7 +22,7 @@ public class PreguntaVoFClasicoTest {
     }
 
     @Test
-    public void test03preguntaVoFClasicoRecibeRespuestasDeJugadoresEIncrementaEnUnoAlQueRespondioCorrectamente(){
+    public void test03preguntaVoFClasicoReciberespuestasDeJugadoresEIncrementaEnUnoAlQueRespondioCorrectamente(){
         Jugador jugador1 = new Jugador("carlos");
         Jugador jugador2 = new Jugador("juan");
 
@@ -32,17 +32,17 @@ public class PreguntaVoFClasicoTest {
         Respuesta respuestaJugador1 = new Respuesta(jugador1, "Verdadero");
         Respuesta respuestaJugador2 = new Respuesta(jugador2, "Falso");
 
-        List<Respuesta> selecciones = new ArrayList<Respuesta>();
-        selecciones.add(respuestaJugador1);
-        selecciones.add(respuestaJugador2);
+        List<Respuesta> respuestas = new ArrayList<Respuesta>();
+        respuestas.add(respuestaJugador1);
+        respuestas.add(respuestaJugador2);
 
-        pregunta.calificar(selecciones);
+        pregunta.calificar(respuestas);
 
         assertEquals(1, jugador1.obtenerPuntaje() );
     }
 
     @Test
-    public void test04preguntaVoFClasicoRecibeRespuestasDeJugadoresEIncrementaEnCeroAlQueRespondioIncorrectamente(){
+    public void test04preguntaVoFClasicoReciberespuestasDeJugadoresEIncrementaEnCeroAlQueRespondioIncorrectamente(){
         Jugador jugador1 = new Jugador("carlos");
         Jugador jugador2 = new Jugador("juan");
 
@@ -52,11 +52,11 @@ public class PreguntaVoFClasicoTest {
         Respuesta respuestaJugador1 = new Respuesta(jugador1, "Verdadero");
         Respuesta respuestaJugador2 = new Respuesta(jugador2, "Falso");
 
-        List<Respuesta> selecciones = new ArrayList<Respuesta>();
-        selecciones.add(respuestaJugador1);
-        selecciones.add(respuestaJugador2);
+        List<Respuesta> respuestas = new ArrayList<Respuesta>();
+        respuestas.add(respuestaJugador1);
+        respuestas.add(respuestaJugador2);
 
-        pregunta.calificar(selecciones);
+        pregunta.calificar(respuestas);
 
         assertEquals(0, jugador2.obtenerPuntaje() );
     }
