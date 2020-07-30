@@ -107,7 +107,7 @@ VerificadorDecorator -left-|> Verificador
 VerificadorDecorator o-left- Verificador
 VerificadorSinOrden -up-|> Verificador
 VerificadorConOrden -up-|> Verificador
-ClasicoDecorator --|> VerificadorDecorator
+ClasicoDecorator -left-|> VerificadorDecorator
 PenalizadoDecorator --|> VerificadorDecorator
 ParcialDecorator --|> VerificadorDecorator
 Ronda .left.> Jugador
