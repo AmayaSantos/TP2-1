@@ -110,7 +110,7 @@ VerificadorConOrden -up-|> Verificador
 ClasicoDecorator --|> VerificadorDecorator
 PenalizadoDecorator --|> VerificadorDecorator
 ParcialDecorator --|> VerificadorDecorator
-Ronda .up.> Jugador
+Ronda .left.> Jugador
 Ronda .left.> Pregunta
 
 @enduml
