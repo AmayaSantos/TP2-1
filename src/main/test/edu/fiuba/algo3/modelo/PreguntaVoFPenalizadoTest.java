@@ -1,4 +1,5 @@
-package edu.fiuba.algo3.modelo;
+/*package edu.fiuba.algo3.modelo;
+import edu.fiuba.algo3.modelo.Jugador.Jugador;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -29,8 +30,8 @@ public class PreguntaVoFPenalizadoTest {
         PreguntaVoFPenalizado pregunta = new PreguntaVoFPenalizado("1 + 1 = 2 ");
         pregunta.asignarRespuestaCorrecta("Verdadero");
 
-        Respuesta respuestaJugador1 = new Respuesta(jugador1, "Verdadero");
-        Respuesta respuestaJugador2 = new Respuesta(jugador2, "Falso");
+        Respuesta respuestaJugador1 = new Respuesta(jugador1), "Verdadero");
+        Respuesta respuestaJugador2 = new Respuesta(jugador2), "Falso");
         List<Respuesta> respuestas = new ArrayList<Respuesta>();
         respuestas.add(respuestaJugador1);
         respuestas.add(respuestaJugador2);
@@ -56,4 +57,4 @@ public class PreguntaVoFPenalizadoTest {
         pregunta.calificar(respuestas);
         assertEquals(-1, jugador2.obtenerPuntaje() );
     }
-}
+}*/

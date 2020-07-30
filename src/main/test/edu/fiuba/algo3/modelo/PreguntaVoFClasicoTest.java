@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo;
+/*package edu.fiuba.algo3.modelo;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
@@ -61,3 +61,4 @@ public class PreguntaVoFClasicoTest {
         assertEquals(0, jugador2.obtenerPuntaje() );
     }
 }
+*/
