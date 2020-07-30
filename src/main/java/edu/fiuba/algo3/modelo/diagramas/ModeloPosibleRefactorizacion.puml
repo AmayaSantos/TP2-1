@@ -5,6 +5,7 @@ skinparam classAttributeIconSize 0
 'Clases
 Class Opciones{
     -opciones: Collection<String>
+    +agregarOpcion(opcion: String): void
     +compararConOrden(opciones: Opciones): boolean
     +compararSinOrden(opciones: Opciones): boolean
 }

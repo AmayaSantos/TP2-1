@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo.Ronda;
+/*package edu.fiuba.algo3.modelo.Ronda;
 
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Pregunta;
@@ -9,7 +9,7 @@ public class Ronda {
         Puntaje puntaje=pregunta.calificar(jugador.respuestas());
 
         jugador.sumar(puntaje);
-    }
+    }*/
     /*
     public calificarEn(Jugadores jugadores,Pregunta pregunta){
         Puntaje puntaje=pregunta.calificar(jugador.respuestas());
@@ -27,5 +27,5 @@ public class Ronda {
     }
 
 
-     */
-}
+
+}     */
