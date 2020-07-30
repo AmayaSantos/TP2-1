@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo;
+/*package edu.fiuba.algo3.modelo;
 
 public class PreguntaVoFPenalizado extends Pregunta {
     public PreguntaVoFPenalizado(String enunciado) {
@@ -6,4 +6,4 @@ public class PreguntaVoFPenalizado extends Pregunta {
         opciones.put("Verdadero", new OpcionIncorrecta(1));
         opciones.put("Falso", new OpcionIncorrecta(1));
     }
-}
+}*/
