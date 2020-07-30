@@ -3,9 +3,10 @@ hide circle
 skinparam classAttributeIconSize 0
 
 'Clases
-Interface Opcion{
-    +{abstract}calificar(): int
-    +{abstract}esCorrecta(): boolean
+Class Opciones{
+    -opciones: Collection<String>
+    +compararConOrden(opciones: Opciones): boolean
+    +compararSinOrden(opciones: Opciones): boolean
 }
 
 Abstract Class Pregunta{
@@ -16,110 +17,102 @@ Abstract Class Pregunta{
     +calificar(Respuestaes: List<Respuesta>): void
 }
 
-Class PreguntaVoFClasico{
-   +{static}PreguntaVoFClasico(enunciado: String)
-}
-
-Class PreguntaVoFPenalizado{
-   +{static}PreguntaVoFPenalizado(enunciado: String)
-}
-
 Class Respuesta{
-    -opcionElegida: String
-    +{static}Respuesta(jugador: Jugador, opcionElegida: String)
-    +calificar(opciones: HashMap<String, Opcion>): void
+    -opcionesElegidas: Opciones
+    +{static}Respuesta(jugador: Jugador)
+    +agregarOpcion(opcion: String): void
 }
 
 Class Jugador{
     -nombre: String
-    -puntos: int
     +{Static}Jugador(nombre: String)
-    +modificarPuntaje(numero:int): void
+    +modificarPuntaje(puntaje: puntaje): void
     +obtenerPuntaje(): int
 }
 
 Abstract Class Puntaje{
-    -valor: int
-    +setValor(valor: int): void
-    +{abstract}agregar(puntaje: Puntaje): void
-    +{abstract}sumar(puntaje: Puntaje): Puntaje
+    +{abstract}añadir(puntaje: Puntaje): void
+    +{abstract}valor(puntaje: Puntaje): int
 }
 
 Class Puntos{
-    +agregar(puntaje: Puntaje): void
-    +sumar(puntaje: Puntaje): Puntaje
+    +añadir(puntaje: Puntaje): void
+    +valor(puntaje: Puntaje): int
 }
 
 Class PuntoNulo{
-    +agregar(puntaje: Puntaje): void
-    +sumar(puntaje: Puntaje): Puntaje
+    +añadir(puntaje: Puntaje): void
+    +valor(puntaje: Puntaje): int
 }
 
 Class PuntoNegativo{
-    +agregar(puntaje: Puntaje): void
-    +sumar(puntaje: Puntaje): Puntaje
+    +añadir(puntaje: Puntaje): void
+    +valor(puntaje: Puntaje): int
 }
 
 Class PuntoPositivo{
-    +agregar(puntaje: Puntaje): void
-    +sumar(puntaje: Puntaje): Puntaje
+    +añadir(puntaje: Puntaje): void
+    +valor(puntaje: Puntaje): int
 }
 
-Interface Calificador{
-    +calificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones)
+Interface Verificador{
+    +{abstract}verificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones): boolean
 }
 
-Class CalificadorConOrden{
-    +calificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones)
+Class VerificadorConOrden{
+    +verificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones): boolean
 }
 
-Class CalificadorSinOrden{
-    +calificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones)
+Class VerificadorSinOrden{
+    +verificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones): boolean
 }
 
-Abstract Class CalificadorDecorator{
-    +{Static}CalificadorDecorator(calificador: Calificador)
-    +calificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones)
-    +aplicarPenalizacion(): void
+Abstract Class VerificadorDecorator{
+    +{Static}VerificadorDecorator(verificador: Verificador)
+    +verificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones): boolean
+    +{abstract}calificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones): Puntaje
 }
 
 Class ClasicoDecorator{
-    +{Static}ClasicoDecorator(calificador: Calificador)
-    +calificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones)
-    +aplicarPenalizacion(): void
+    +{Static}ClasicoDecorator(verificador: Verificador)
+    +calificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones): Puntaje
 }
 
 Class PenalizadoDecorator{
-    +{Static}ClasicoDecorator(calificador: Calificador)
-    +calificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones)
-    +aplicarPenalizacion(): void
+    +{Static}ClasicoDecorator(verificador: Verificador)
+    +calificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones): Puntaje
 }
 
 Class ParcialDecorator{
-    +{Static}ClasicoDecorator(calificador: Calificador)
-    +calificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones)
-    +aplicarPenalizacion(): void
+    +{Static}ClasicoDecorator(verificador: Verificador)
+    +calificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones): Puntaje
 }
 
+Abstract Class Ronda{
+    +calificar(jugador: Jugador, pregunta: Pregunta): void
+}
+
+
+
 'Relaciones
-PreguntaVoFPenalizado --|> Pregunta
-PreguntaVoFClasico --|> Pregunta
 Respuesta o-- Jugador
-Pregunta "1" *-left- "*" Opcion
-Respuesta .up.> Opcion
+Pregunta *-left- Opciones
+Respuesta *-up- Opciones
 PuntoNegativo -up-|> Puntaje
 PuntoNulo -up-|> Puntaje
 PuntoPositivo -up-|> Puntaje
-Puntos --|> Puntaje
-Puntos o-right- Puntaje
+Puntos -left-|> Puntaje
+Puntos "1" o-left- "*" Puntaje
 Jugador *-- Puntaje
-Pregunta o-right- Calificador
-CalificadorDecorator -left-|> Calificador
-CalificadorDecorator o-left- Calificador
-CalificadorSinOrden -up-|> Calificador
-CalificadorConOrden -up-|> Calificador
-ClasicoDecorator --|> CalificadorDecorator
-PenalizadoDecorator --|> CalificadorDecorator
-ParcialDecorator --|> CalificadorDecorator
+Pregunta o-right- Verificador
+VerificadorDecorator -left-|> Verificador
+VerificadorDecorator o-left- Verificador
+VerificadorSinOrden -up-|> Verificador
+VerificadorConOrden -up-|> Verificador
+ClasicoDecorator --|> VerificadorDecorator
+PenalizadoDecorator --|> VerificadorDecorator
+ParcialDecorator --|> VerificadorDecorator
+Ronda .up.> Jugador
+Ronda .left.> Pregunta
 
 @enduml
