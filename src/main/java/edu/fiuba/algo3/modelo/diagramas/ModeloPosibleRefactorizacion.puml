@@ -92,8 +92,6 @@ Abstract Class Ronda{
     +calificar(jugador: Jugador, pregunta: Pregunta): void
 }
 
-
-
 'Relaciones
 Respuesta o-- Jugador
 Pregunta *-left- Opciones
