@@ -38,22 +38,22 @@ Abstract Class Puntaje{
 
 Class Puntos{
     +añadir(puntaje: Puntaje): void
-    +valor(puntaje: Puntaje): int
+    +valor(): int
 }
 
 Class PuntoNulo{
     +añadir(puntaje: Puntaje): void
-    +valor(puntaje: Puntaje): int
+    +valor(): int
 }
 
 Class PuntoNegativo{
     +añadir(puntaje: Puntaje): void
-    +valor(puntaje: Puntaje): int
+    +valor(): int
 }
 
 Class PuntoPositivo{
     +añadir(puntaje: Puntaje): void
-    +valor(puntaje: Puntaje): int
+    +valor(): int
 }
 
 Interface Verificador{
@@ -108,7 +108,7 @@ VerificadorDecorator -left-|> Verificador
 VerificadorDecorator o-left- Verificador
 VerificadorSinOrden -up-|> Verificador
 VerificadorConOrden -up-|> Verificador
-ClasicoDecorator --|> VerificadorDecorator
+ClasicoDecorator -left-|> VerificadorDecorator
 PenalizadoDecorator --|> VerificadorDecorator
 ParcialDecorator --|> VerificadorDecorator
 Ronda .left.> Jugador
