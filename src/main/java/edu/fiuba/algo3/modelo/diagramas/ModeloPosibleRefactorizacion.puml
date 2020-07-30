@@ -1,0 +1,117 @@
+@startuml
+hide circle
+skinparam classAttributeIconSize 0
+
+'Clases
+Class Opciones{
+    -opciones: Collection<String>
+    +agregarOpcion(opcion: String): void
+    +compararConOrden(opciones: Opciones): boolean
+    +compararSinOrden(opciones: Opciones): boolean
+}
+
+Abstract Class Pregunta{
+    -enunciado: String
+    +{abstract}{static}Pregunta(enunciado: String)
+    +asignarOpcionCorrecta(opcionCorrecta: String): void
+    +esCorrecta(Opcion: String): boolean
+    +calificar(Respuestaes: List<Respuesta>): void
+}
+
+Class Respuesta{
+    -opcionesElegidas: Opciones
+    +{static}Respuesta(jugador: Jugador)
+    +agregarOpcion(opcion: String): void
+}
+
+Class Jugador{
+    -nombre: String
+    +{Static}Jugador(nombre: String)
+    +modificarPuntaje(puntaje: puntaje): void
+    +obtenerPuntaje(): int
+}
+
+Abstract Class Puntaje{
+    +{abstract}añadir(puntaje: Puntaje): void
+    +{abstract}valor(puntaje: Puntaje): int
+}
+
+Class Puntos{
+    +añadir(puntaje: Puntaje): void
+    +valor(puntaje: Puntaje): int
+}
+
+Class PuntoNulo{
+    +añadir(puntaje: Puntaje): void
+    +valor(puntaje: Puntaje): int
+}
+
+Class PuntoNegativo{
+    +añadir(puntaje: Puntaje): void
+    +valor(puntaje: Puntaje): int
+}
+
+Class PuntoPositivo{
+    +añadir(puntaje: Puntaje): void
+    +valor(puntaje: Puntaje): int
+}
+
+Interface Verificador{
+    +{abstract}verificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones): boolean
+}
+
+Class VerificadorConOrden{
+    +verificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones): boolean
+}
+
+Class VerificadorSinOrden{
+    +verificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones): boolean
+}
+
+Abstract Class VerificadorDecorator{
+    +{Static}VerificadorDecorator(verificador: Verificador)
+    +verificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones): boolean
+    +{abstract}calificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones): Puntaje
+}
+
+Class ClasicoDecorator{
+    +{Static}ClasicoDecorator(verificador: Verificador)
+    +calificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones): Puntaje
+}
+
+Class PenalizadoDecorator{
+    +{Static}ClasicoDecorator(verificador: Verificador)
+    +calificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones): Puntaje
+}
+
+Class ParcialDecorator{
+    +{Static}ClasicoDecorator(verificador: Verificador)
+    +calificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones): Puntaje
+}
+
+Abstract Class Ronda{
+    +calificar(jugador: Jugador, pregunta: Pregunta): void
+}
+
+'Relaciones
+Respuesta o-- Jugador
+Pregunta *-left- Opciones
+Respuesta *-up- Opciones
+PuntoNegativo -up-|> Puntaje
+PuntoNulo -up-|> Puntaje
+PuntoPositivo -up-|> Puntaje
+Puntos -left-|> Puntaje
+Puntos "1" o-left- "*" Puntaje
+Jugador *-- Puntaje
+Pregunta o-right- Verificador
+VerificadorDecorator -left-|> Verificador
+VerificadorDecorator o-left- Verificador
+VerificadorSinOrden -up-|> Verificador
+VerificadorConOrden -up-|> Verificador
+ClasicoDecorator --|> VerificadorDecorator
+PenalizadoDecorator --|> VerificadorDecorator
+ParcialDecorator --|> VerificadorDecorator
+Ronda .left.> Jugador
+Ronda .left.> Pregunta
+
+@enduml

@@ -1,24 +1,24 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public abstract class Pregunta {
+    protected String enunciado;
+    protected HashMap<String, Opcion> opciones = new HashMap<String, Opcion>();
 
-    String enunciado;
-    protected List<Respuesta> respuestasCorrectas;
-    protected List<Respuesta> respuestasIncorrectas;
-
-    public List<Respuesta> obtenerOpciones(){
-        List<Respuesta> respuestas= new ArrayList<>();
-        respuestas.addAll(respuestasIncorrectas);
-        respuestas.addAll(respuestasCorrectas);
-        return respuestas;
+    public void asignarRespuestaCorrecta(String respuestaCorrecta){
+        opciones.replace(respuestaCorrecta, new OpcionCorrecta());
     }
 
+    public boolean esCorrecta(String respuesta){
+        return opciones.get(respuesta).esCorrecta();
+    }
 
-    public List<Respuesta> obtenerRespuestasCorrectas(){
-        return respuestasCorrectas;
+    public void calificar(List<Respuesta> selecciones) {
+        for ( Respuesta respuesta : selecciones ){
+            respuesta.calificar(opciones);
+        }
     }
 }
 
