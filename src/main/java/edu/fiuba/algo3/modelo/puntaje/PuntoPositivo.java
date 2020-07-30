@@ -1,12 +1,12 @@
 package edu.fiuba.algo3.modelo.puntaje;
 
-public class PuntoPositivo extends Puntaje {
-    public PuntoPositivo(){
-        this.setValor(1);
-    }
+public class PuntoPositivo implements Puntaje {
 
     @Override
-    public Puntaje sumar(Puntaje puntaje) {
-        return new Puntos().setValor(puntaje.valor() + this.valor());
+    public void añadir(Puntaje puntaje){}
+
+    @Override
+    public int valor(){
+        return 1;
     }
 }

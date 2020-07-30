@@ -37,22 +37,22 @@ Abstract Class Puntaje{
 
 Class Puntos{
     +añadir(puntaje: Puntaje): void
-    +valor(puntaje: Puntaje): int
+    +valor(): int
 }
 
 Class PuntoNulo{
     +añadir(puntaje: Puntaje): void
-    +valor(puntaje: Puntaje): int
+    +valor(): int
 }
 
 Class PuntoNegativo{
     +añadir(puntaje: Puntaje): void
-    +valor(puntaje: Puntaje): int
+    +valor(): int
 }
 
 Class PuntoPositivo{
     +añadir(puntaje: Puntaje): void
-    +valor(puntaje: Puntaje): int
+    +valor(): int
 }
 
 Interface Verificador{

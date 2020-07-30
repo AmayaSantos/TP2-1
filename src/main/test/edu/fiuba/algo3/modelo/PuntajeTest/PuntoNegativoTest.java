@@ -1,0 +1,16 @@
+package edu.fiuba.algo3.modelo.PuntajeTest;
+import edu.fiuba.algo3.modelo.puntaje.Puntaje;
+import edu.fiuba.algo3.modelo.puntaje.PuntoNegativo;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class PuntoNegativoTest {
+
+    @Test
+    public void inicializarUnPuntoPositivoNoDevuelveErrores() {
+        PuntoNegativo nuevoPunto = new PuntoNegativo();
+        assertEquals (nuevoPunto.valor(),-1);
+    }
+
+}
