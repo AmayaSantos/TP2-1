@@ -8,17 +8,6 @@ Interface Opcion{
     +{abstract}esCorrecta(): boolean
 }
 
-Class OpcionCorrecta{
-    +calificar(): int
-    +esCorrecta(): boolean
-}
-
-Class OpcionIncorrecta{
-    -penailizacion: int
-    +calificar(): int
-    +esCorrecta(): boolean
-}
-
 Abstract Class Pregunta{
     -enunciado: String
     +{abstract}{static}Pregunta(enunciado: String)
@@ -49,13 +38,88 @@ Class Jugador{
     +obtenerPuntaje(): int
 }
 
+Abstract Class Puntaje{
+    -valor: int
+    +setValor(valor: int): void
+    +{abstract}agregar(puntaje: Puntaje): void
+    +{abstract}sumar(puntaje: Puntaje): Puntaje
+}
+
+Class Puntos{
+    +agregar(puntaje: Puntaje): void
+    +sumar(puntaje: Puntaje): Puntaje
+}
+
+Class PuntoNulo{
+    +agregar(puntaje: Puntaje): void
+    +sumar(puntaje: Puntaje): Puntaje
+}
+
+Class PuntoNegativo{
+    +agregar(puntaje: Puntaje): void
+    +sumar(puntaje: Puntaje): Puntaje
+}
+
+Class PuntoPositivo{
+    +agregar(puntaje: Puntaje): void
+    +sumar(puntaje: Puntaje): Puntaje
+}
+
+Interface Calificador{
+    +calificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones)
+}
+
+Class CalificadorConOrden{
+    +calificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones)
+}
+
+Class CalificadorSinOrden{
+    +calificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones)
+}
+
+Abstract Class CalificadorDecorator{
+    +{Static}CalificadorDecorator(calificador: Calificador)
+    +calificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones)
+    +aplicarPenalizacion(): void
+}
+
+Class ClasicoDecorator{
+    +{Static}ClasicoDecorator(calificador: Calificador)
+    +calificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones)
+    +aplicarPenalizacion(): void
+}
+
+Class PenalizadoDecorator{
+    +{Static}ClasicoDecorator(calificador: Calificador)
+    +calificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones)
+    +aplicarPenalizacion(): void
+}
+
+Class ParcialDecorator{
+    +{Static}ClasicoDecorator(calificador: Calificador)
+    +calificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones)
+    +aplicarPenalizacion(): void
+}
+
 'Relaciones
-OpcionIncorrecta ..|> Opcion
-OpcionCorrecta ..|> Opcion
 PreguntaVoFPenalizado --|> Pregunta
 PreguntaVoFClasico --|> Pregunta
 Respuesta o-- Jugador
 Pregunta "1" *-left- "*" Opcion
 Respuesta .up.> Opcion
+PuntoNegativo -up-|> Puntaje
+PuntoNulo -up-|> Puntaje
+PuntoPositivo -up-|> Puntaje
+Puntos --|> Puntaje
+Puntos o-right- Puntaje
+Jugador *-- Puntaje
+Pregunta o-right- Calificador
+CalificadorDecorator -left-|> Calificador
+CalificadorDecorator o-left- Calificador
+CalificadorSinOrden -up-|> Calificador
+CalificadorConOrden -up-|> Calificador
+ClasicoDecorator --|> CalificadorDecorator
+PenalizadoDecorator --|> CalificadorDecorator
+ParcialDecorator --|> CalificadorDecorator
 
 @enduml
