@@ -56,40 +56,40 @@ Class PuntoPositivo{
     +valor(): int
 }
 
-Interface Verificador{
-    +{abstract}verificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones): boolean
+Interface Corrector{
+    +{abstract}sonCorrectas(opcionesCorrectas: Opciones, opcionesElegidas: Opciones): boolean
 }
 
-Class VerificadorConOrden{
-    +verificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones): boolean
+Class CorrectorConOrden{
+    +sonCorrectas(opcionesCorrectas: Opciones, opcionesElegidas: Opciones): boolean
 }
 
-Class VerificadorSinOrden{
-    +verificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones): boolean
+Class CorrectorSinOrden{
+    +sonCorrectas(opcionesCorrectas: Opciones, opcionesElegidas: Opciones): boolean
 }
 
-Class VerificadorParcial{
-    +verificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones): boolean
+Class CorrectorParcial{
+    +sonCorrectas(opcionesCorrectas: Opciones, opcionesElegidas: Opciones): boolean
 }
 
-Abstract Class VerificadorDecorator{
-    +{Static}VerificadorDecorator(verificador: Verificador)
-    +verificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones): boolean
+Abstract Class CorrectorDecorator{
+    +{Static}CorrectorDecorator(corrector: Corrector)
+    +sonCorrectas(opcionesCorrectas: Opciones, opcionesElegidas: Opciones): boolean
     +{abstract}calificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones): Puntaje
 }
 
 Class ClasicoDecorator{
-    +{Static}ClasicoDecorator(verificador: Verificador)
+    +{Static}ClasicoDecorator(corrector: Corrector)
     +calificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones): Puntaje
 }
 
 Class PenalizadoDecorator{
-    +{Static}ClasicoDecorator(verificador: Verificador)
+    +{Static}ClasicoDecorator(corrector: Corrector)
     +calificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones): Puntaje
 }
 
 Class ParcialDecorator{
-    +{Static}ClasicoDecorator(verificador: Verificador)
+    +{Static}ClasicoDecorator(corrector: Corrector)
     +calificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones): Puntaje
 }
 
@@ -107,15 +107,15 @@ PuntoPositivo -up-|> Puntaje
 Puntos -left-|> Puntaje
 Puntos "1" o-left- "*" Puntaje
 Jugador *-- Puntaje
-Pregunta o-right- Verificador
-VerificadorDecorator -left-|> Verificador
-VerificadorDecorator o-left- Verificador
-VerificadorSinOrden -up-|> Verificador
-VerificadorConOrden -up-|> Verificador
-VerificadorParcial -up-|> Verificador
-ClasicoDecorator -left-|> VerificadorDecorator
-PenalizadoDecorator --|> VerificadorDecorator
-ParcialDecorator --|> VerificadorDecorator
+Pregunta o-right- CorrectorDecorator
+CorrectorDecorator -right-|> Corrector
+CorrectorDecorator o-right- Corrector
+CorrectorSinOrden -up-|> Corrector
+CorrectorConOrden -up-|> Corrector
+CorrectorParcial -up-|> Corrector
+ClasicoDecorator -down-|> CorrectorDecorator
+PenalizadoDecorator --|> CorrectorDecorator
+ParcialDecorator --|> CorrectorDecorator
 Ronda .left.> Jugador
 Ronda .left.> Pregunta
 
