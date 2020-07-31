@@ -39,4 +39,8 @@ public class Opciones {
 
         return misOpciones.containsAll(opcionesAComparar);
     }
+
+    public int cantidad() {
+        return elementos.size();
+    }
 }

@@ -6,12 +6,13 @@ import edu.fiuba.algo3.modelo.puntaje.PuntoNulo;
 
 public class PenalizadoDecorator extends VerificadorDecorator{
 
-    public static PenalizadoDecorator ClasicoDecorator(Verificador verificador){
-        return new PenalizadoDecorator();
+    public PenalizadoDecorator(Verificador verificador){
+        super(verificador);
     }
 
-    public Puntaje calificar(Opciones opcionesCorrectas, Opciones opcionesIncorrectas){
+    @Override
+    public Puntaje calificar(Opciones opcionesCorrectas, Opciones opcionesElegidas) {
+        //Falta implementar
         return new PuntoNulo();
     }
-
 }

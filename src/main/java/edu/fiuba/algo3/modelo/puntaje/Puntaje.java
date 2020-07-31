@@ -5,4 +5,5 @@ public interface Puntaje {
     void aniadir(Puntaje puntaje);
 
     int valor();
+
 }

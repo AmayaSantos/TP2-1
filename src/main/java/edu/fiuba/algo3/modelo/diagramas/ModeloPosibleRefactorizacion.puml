@@ -68,6 +68,10 @@ Class VerificadorSinOrden{
     +verificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones): boolean
 }
 
+Class VerificadorParcial{
+    +verificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones): boolean
+}
+
 Abstract Class VerificadorDecorator{
     +{Static}VerificadorDecorator(verificador: Verificador)
     +verificar(opcionesCorrectas: Opciones, opcionesElegidas: Opciones): boolean
@@ -108,6 +112,7 @@ VerificadorDecorator -left-|> Verificador
 VerificadorDecorator o-left- Verificador
 VerificadorSinOrden -up-|> Verificador
 VerificadorConOrden -up-|> Verificador
+VerificadorParcial -up-|> Verificador
 ClasicoDecorator -left-|> VerificadorDecorator
 PenalizadoDecorator --|> VerificadorDecorator
 ParcialDecorator --|> VerificadorDecorator

@@ -48,5 +48,4 @@ public class VerificadorPacialTest {
 
         assertFalse(verificador.verificar(op1, op2));
     }
-
 }
