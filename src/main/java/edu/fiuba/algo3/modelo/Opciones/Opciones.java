@@ -7,16 +7,16 @@ import java.util.LinkedList;
 public class Opciones {
     private Collection<String> elementos = new ArrayList<String>();
 
+    private Collection<String> elementos(){
+        return elementos;
+    }
+
     public void agregarOpcion(String elemento) {
         elementos.add(elemento);
     }
 
     public boolean esta(String opcion) {
         return elementos.contains(opcion);
-    }
-
-    private Collection<String> elementos(){
-        return elementos;
     }
 
     public boolean compararSinOrden(Opciones opciones) {
@@ -31,5 +31,16 @@ public class Opciones {
         Collection<String> opcionesAComparar = new LinkedList<String>(opciones.elementos());
 
         return misOpciones.equals(opcionesAComparar);
+    }
+
+    public boolean compararParcialmente(Opciones opciones) {
+        Collection<String> misOpciones = new HashSet<String>(this.elementos);
+        Collection<String> opcionesAComparar = new HashSet<String>(opciones.elementos());
+
+        return misOpciones.containsAll(opcionesAComparar);
+    }
+
+    public int cantidad() {
+        return elementos.size();
     }
 }

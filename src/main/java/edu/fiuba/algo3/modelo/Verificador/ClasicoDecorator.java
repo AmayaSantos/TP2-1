@@ -5,11 +5,13 @@ import edu.fiuba.algo3.modelo.puntaje.Puntaje;
 import edu.fiuba.algo3.modelo.puntaje.PuntoNulo;
 
 public class ClasicoDecorator extends VerificadorDecorator{
-    public static PenalizadoDecorator ClasicoDecorator(Verificador verificador){
-        return new PenalizadoDecorator();
+
+    public ClasicoDecorator(Verificador verificador){
+        super(verificador);
     }
 
-    public Puntaje calificar(Opciones opcionesCorrectas, Opciones opcionesIncorrectas){
+    @Override
+    public Puntaje calificar(Opciones opcionesCorrectas, Opciones opcionesElegidas) {
         return new PuntoNulo();
     }
 }
