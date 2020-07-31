@@ -32,4 +32,11 @@ public class Opciones {
 
         return misOpciones.equals(opcionesAComparar);
     }
+
+    public boolean compararParcialmente(Opciones opciones) {
+        Collection<String> misOpciones = new HashSet<String>(this.elementos);
+        Collection<String> opcionesAComparar = new HashSet<String>(opciones.elementos());
+
+        return misOpciones.containsAll(opcionesAComparar);
+    }
 }
