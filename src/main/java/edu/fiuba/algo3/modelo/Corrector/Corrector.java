@@ -1,8 +1,6 @@
-package edu.fiuba.algo3.modelo.Verificador;
+package edu.fiuba.algo3.modelo.Corrector;
 
 import edu.fiuba.algo3.modelo.Opciones.Opciones;
-
-import java.util.List;
 
 public interface Corrector {
 

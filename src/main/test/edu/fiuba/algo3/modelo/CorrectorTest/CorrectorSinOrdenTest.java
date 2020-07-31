@@ -1,8 +1,8 @@
-package edu.fiuba.algo3.modelo.VerificadorTest;
+package edu.fiuba.algo3.modelo.CorrectorTest;
 
 import edu.fiuba.algo3.modelo.Opciones.Opciones;
-import edu.fiuba.algo3.modelo.Verificador.Corrector;
-import edu.fiuba.algo3.modelo.Verificador.CorrectorSinOrden;
+import edu.fiuba.algo3.modelo.Corrector.Corrector;
+import edu.fiuba.algo3.modelo.Corrector.CorrectorSinOrden;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;

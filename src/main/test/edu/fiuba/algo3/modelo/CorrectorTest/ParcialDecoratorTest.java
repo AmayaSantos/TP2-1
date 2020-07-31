@@ -1,10 +1,10 @@
-package edu.fiuba.algo3.modelo.VerificadorTest;
+package edu.fiuba.algo3.modelo.CorrectorTest;
 
 import edu.fiuba.algo3.modelo.Opciones.Opciones;
-import edu.fiuba.algo3.modelo.Verificador.ParcialDecorator;
-import edu.fiuba.algo3.modelo.Verificador.Corrector;
-import edu.fiuba.algo3.modelo.Verificador.CorrectorDecorator;
-import edu.fiuba.algo3.modelo.Verificador.CorrectorParcial;
+import edu.fiuba.algo3.modelo.Corrector.ParcialDecorator;
+import edu.fiuba.algo3.modelo.Corrector.Corrector;
+import edu.fiuba.algo3.modelo.Corrector.CorrectorDecorator;
+import edu.fiuba.algo3.modelo.Corrector.CorrectorParcial;
 import edu.fiuba.algo3.modelo.puntaje.Puntaje;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

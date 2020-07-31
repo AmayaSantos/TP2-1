@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo.Verificador;
+package edu.fiuba.algo3.modelo.Corrector;
 
 import edu.fiuba.algo3.modelo.Opciones.Opciones;
 import edu.fiuba.algo3.modelo.puntaje.Puntaje;

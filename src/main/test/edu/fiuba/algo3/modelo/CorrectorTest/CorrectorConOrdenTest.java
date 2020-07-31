@@ -1,18 +1,18 @@
-package edu.fiuba.algo3.modelo.VerificadorTest;
+package edu.fiuba.algo3.modelo.CorrectorTest;
 
 import edu.fiuba.algo3.modelo.Opciones.Opciones;
-import edu.fiuba.algo3.modelo.Verificador.Corrector;
-import edu.fiuba.algo3.modelo.Verificador.CorrectorParcial;
+import edu.fiuba.algo3.modelo.Corrector.Corrector;
+import edu.fiuba.algo3.modelo.Corrector.CorrectorConOrden;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class CorrectorPacialTest {
+
+public class CorrectorConOrdenTest {
 
     @Test
-    public void test01CorrectorParcialRecibe2OpcionesUnaSubconjuntoDeLaOtraYDiferenteOrdenDevuelveTrue(){
-        Corrector corrector = new CorrectorParcial();
+    public void test01CorrectorConOrdenRecibe2OpcionesIgualesPeroDeDiferenteOrdenDevuelveFalse(){
+        Corrector corrector = new CorrectorConOrden();
         Opciones op1, op2;
 
         op1 = new Opciones();
@@ -25,13 +25,14 @@ public class CorrectorPacialTest {
         op1.agregarOpcion("4");
         op1.agregarOpcion("3");
         op1.agregarOpcion("2");
+        op1.agregarOpcion("1");
 
-        assertTrue(corrector.sonCorrectas(op1, op2));
+        assertFalse(corrector.sonCorrectas(op1, op2));
     }
 
     @Test
-    public void test02CorrectorParcialRecibe2OpcionesDistintasDevuelveFalso(){
-        Corrector corrector = new CorrectorParcial();
+    public void test02CorrectorConOrdenRecibe2OpcionesIgualesYMismoOrdenDevuelveTrue(){
+        Corrector corrector = new CorrectorConOrden();
         Opciones op1, op2;
 
         op1 = new Opciones();
@@ -44,8 +45,9 @@ public class CorrectorPacialTest {
         op2.agregarOpcion("1");
         op2.agregarOpcion("2");
         op2.agregarOpcion("3");
-        op2.agregarOpcion("5");
+        op2.agregarOpcion("4");
 
-        assertFalse(corrector.sonCorrectas(op1, op2));
+        assertTrue(corrector.sonCorrectas(op1, op2));
     }
+
 }
