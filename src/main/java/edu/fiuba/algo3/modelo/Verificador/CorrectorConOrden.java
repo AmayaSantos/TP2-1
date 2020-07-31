@@ -2,12 +2,10 @@ package edu.fiuba.algo3.modelo.Verificador;
 
 import edu.fiuba.algo3.modelo.Opciones.Opciones;
 
-import java.util.List;
-
-public class VerificadorConOrden implements Verificador{
+public class CorrectorConOrden implements Corrector {
 
      @Override
-     public boolean verificar(Opciones opcionesCorrectas, Opciones opcionesElegidas){
+     public boolean sonCorrectas(Opciones opcionesCorrectas, Opciones opcionesElegidas){
         return opcionesCorrectas.compararConOrden(opcionesElegidas);
      }
 }

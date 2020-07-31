@@ -4,8 +4,8 @@ import edu.fiuba.algo3.modelo.Opciones.Opciones;
 
 import java.util.List;
 
-public interface Verificador {
+public interface Corrector {
 
-    boolean verificar (Opciones opcionesCorrectas, Opciones opcionesElegidas);
+    boolean sonCorrectas(Opciones opcionesCorrectas, Opciones opcionesElegidas);
 
 }
