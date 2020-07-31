@@ -7,16 +7,16 @@ import java.util.LinkedList;
 public class Opciones {
     private Collection<String> elementos = new ArrayList<String>();
 
+    private Collection<String> elementos(){
+        return elementos;
+    }
+
     public void agregarOpcion(String elemento) {
         elementos.add(elemento);
     }
 
     public boolean esta(String opcion) {
         return elementos.contains(opcion);
-    }
-
-    private Collection<String> elementos(){
-        return elementos;
     }
 
     public boolean compararSinOrden(Opciones opciones) {
