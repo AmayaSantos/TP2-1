@@ -9,6 +9,5 @@ public class VerificadorConOrden implements Verificador{
      @Override
      public boolean verificar(Opciones opcionesCorrectas, Opciones opcionesElegidas){
         return opcionesCorrectas.compararConOrden(opcionesElegidas);
-
      }
 }
