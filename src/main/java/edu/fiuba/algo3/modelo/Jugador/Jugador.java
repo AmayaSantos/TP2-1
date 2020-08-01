@@ -1,5 +1,8 @@
 package edu.fiuba.algo3.modelo.Jugador;
 
+import edu.fiuba.algo3.modelo.Opciones.Opcion;
+import edu.fiuba.algo3.modelo.Opciones.OpcionCorrecta;
+import edu.fiuba.algo3.modelo.Opciones.OpcionIncorrecta;
 import edu.fiuba.algo3.modelo.puntaje.Puntaje;
 import edu.fiuba.algo3.modelo.puntaje.Puntos;
 import edu.fiuba.algo3.modelo.Opciones.Opciones;
@@ -7,7 +10,7 @@ import edu.fiuba.algo3.modelo.Opciones.Opciones;
 
 public class Jugador {
     protected String nombre;
-    protected Puntaje puntaje  ;
+    protected Puntos puntaje  ;
     protected Opciones misRespuestas;
 
     public Jugador(String nombre) {
@@ -28,8 +31,11 @@ public class Jugador {
         return misRespuestas;
     }
 
-    public void agregar(String opcion){
-        misRespuestas.agregarOpcion(opcion);
+    public void agregar(OpcionCorrecta opcion){
+        misRespuestas.agregar(opcion);
+    }
+    public void agregar(OpcionIncorrecta opcion){
+        misRespuestas.agregar(opcion);
     }
 
 }

@@ -5,42 +5,43 @@ import java.util.HashSet;
 import java.util.LinkedList;
 
 public class Opciones {
-    private Collection<String> elementos = new ArrayList<String>();
+    private Collection<OpcionCorrecta> elementosCorrectos = new ArrayList<OpcionCorrecta>();
+    private Collection<OpcionIncorrecta> elementosIncorrectos = new ArrayList<OpcionIncorrecta>();
 
-    private Collection<String> elementos(){
+
+    public Collection<Opcion> elementos(){
+        Collection elementos= new ArrayList<>();
+        elementos.addAll(elementosCorrectos);
+        elementos.addAll(elementosIncorrectos);
         return elementos;
     }
-
-    public void agregarOpcion(String elemento) {
-        elementos.add(elemento);
+    public void agregar(OpcionCorrecta elemento){
+        elementosCorrectos.add(elemento);
+    }
+    public void agregar(OpcionIncorrecta elemento){
+        elementosIncorrectos.add(elemento);
     }
 
-    public boolean esta(String opcion) {
-        return elementos.contains(opcion);
+    public int compararParcialmente(Opciones otraOpciones){
+        int cantidad=otraOpciones.elementosCorrectos.size();
+        if (!otraOpciones.elementosIncorrectos.isEmpty()){
+            cantidad=0;
+        }
+        return cantidad;
     }
+    public boolean compararClasicomente(Opciones otraOpciones){
 
-    public boolean compararSinOrden(Opciones opciones) {
-        Collection<String> misOpciones = new HashSet<String>(this.elementos);
-        Collection<String> opcionesAComparar = new HashSet<String>(opciones.elementos());
-
-        return misOpciones.equals(opcionesAComparar);
+        return this.elementosCorrectos.containsAll(otraOpciones.elementos());
     }
+    public boolean compararOrdenadamente(Opciones otraOpciones){
+       return this.elementosCorrectos.equals(otraOpciones.elementosCorrectos);
 
-    public boolean compararConOrden(Opciones opciones) {
-        Collection<String> misOpciones = new LinkedList<String>(this.elementos);
-        Collection<String> opcionesAComparar = new LinkedList<String>(opciones.elementos());
-
-        return misOpciones.equals(opcionesAComparar);
     }
-
-    public boolean compararParcialmente(Opciones opciones) {
-        Collection<String> misOpciones = new HashSet<String>(this.elementos);
-        Collection<String> opcionesAComparar = new HashSet<String>(opciones.elementos());
-
-        return misOpciones.containsAll(opcionesAComparar);
+    public int compararPositivamente(Opciones otraOpciones){
+        return otraOpciones.elementosCorrectos.size();
     }
+    public int compararNegativamente(Opciones otraOpciones){
 
-    public int cantidad() {
-        return elementos.size();
+        return otraOpciones.elementosIncorrectos.size();
     }
 }

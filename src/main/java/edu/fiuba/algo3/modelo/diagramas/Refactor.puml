@@ -1,0 +1,18 @@
+@startuml
+Pregunta *-left- Opciones
+PuntoNegativo -up-|> Puntaje
+PuntoNulo -up-|> Puntaje
+PuntoPositivo -up-|> Puntaje
+Puntos -left-|> Puntaje
+Puntos "1" o-left- "*" Puntaje
+Jugador *-down- Puntaje
+Jugador *-up- Opciones
+Pregunta *-right-Calificador
+Calificador <|-up- CalificadorParcial
+Calificador <|-up- CalificadorPenalizado
+Calificador <|-right- CalificadorClasico
+Calificador <|-down-CalificadorOrden
+Calificador <|-down-CalificadorGroup
+Ronda .left.> Jugador
+Ronda .left.> Pregunta
+@enduml
