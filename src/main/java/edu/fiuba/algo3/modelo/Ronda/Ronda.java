@@ -1,21 +1,13 @@
+package edu.fiuba.algo3.modelo.Ronda;
 
+import edu.fiuba.algo3.modelo.Jugador.Jugador;
+import edu.fiuba.algo3.modelo.Pregunta.Pregunta;
+import edu.fiuba.algo3.modelo.puntaje.Puntaje;
 
-    /*
-    public calificarEn(Jugadores jugadores,Pregunta pregunta){
-        Puntaje puntaje=pregunta.calificar(jugador.respuestas());
-        jugador.sumarTemporalemente(puntaje);
+public class Ronda {
 
-
-
+    public void calificar(Jugador jugador, Pregunta pregunta){
+        Puntaje puntaje=pregunta.calificar(jugador.obtenerRespuestas());
+        jugador.agregarPuntaje(puntaje);
     }
-    private boolean comprobarImplementacionExclusividad() {
-        Puntajes puntajesTemporales= new Puntajes();
-        for (Jugador jugador: jugadores) {
-             puntajesTemporales.add(jugador.puntajeTemporal());
-        }
-        return puntajesTemporales.contains(new PuntoNulo);
-    }
-
-
-
-}     */
+}

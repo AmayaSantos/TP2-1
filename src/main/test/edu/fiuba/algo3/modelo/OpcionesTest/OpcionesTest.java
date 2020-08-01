@@ -82,7 +82,7 @@ public class OpcionesTest {
     }
 
     @Test
-    public void test05ComparoOpcionesOrdenadamenteDevuelveFalse(){
+    public void test05ComparoOpcionesOrdenadamenteDevuelveTrue(){
         Opciones opciones1 = new Opciones();
         opciones1.agregar(op1);
         opciones1.agregar(op2);
@@ -126,9 +126,12 @@ public class OpcionesTest {
 
         assertEquals(0,opciones1.compararParcialmente(opciones2));
     }
-
     @Test
-    public void test09OpcionesComparaParcialmenteCuandoUnaOpcionesEsParteDeLaOtraPeroConDiferenteOrdenDevuelveTrue(){
+    public void test08prueboObtencionDeNomres(){
+        Opcion op1= new OpcionIncorrecta("Nombre1");
+        Opcion op2= new OpcionIncorrecta("Nombre2");
+        assertEquals(op1.getNombre(),"Nombre1");
+        assertEquals(op2.getNombre(),"Nombre2");
 
     }
 

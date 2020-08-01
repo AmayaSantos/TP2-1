@@ -1,14 +1,9 @@
 package edu.fiuba.algo3.modelo.Opciones;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.LinkedList;
+import java.util.*;
 
 public class Opciones {
-    private Collection<OpcionCorrecta> elementosCorrectos = new ArrayList<OpcionCorrecta>();
-    private Collection<OpcionIncorrecta> elementosIncorrectos = new ArrayList<OpcionIncorrecta>();
-
-
+    private Collection<Opcion> elementosCorrectos = new ArrayList<>();
+    private Collection<Opcion> elementosIncorrectos = new ArrayList<>();
     public Collection<Opcion> elementos(){
         Collection elementos= new ArrayList<>();
         elementos.addAll(elementosCorrectos);
@@ -21,7 +16,6 @@ public class Opciones {
     public void agregar(OpcionIncorrecta elemento){
         elementosIncorrectos.add(elemento);
     }
-
     public int compararParcialmente(Opciones otraOpciones){
         int cantidad=otraOpciones.elementosCorrectos.size();
         if (!otraOpciones.elementosIncorrectos.isEmpty()){
@@ -30,8 +24,9 @@ public class Opciones {
         return cantidad;
     }
     public boolean compararClasicomente(Opciones otraOpciones){
-
-        return this.elementosCorrectos.containsAll(otraOpciones.elementos());
+        if (otraOpciones.elementosIncorrectos.isEmpty()){
+            return otraOpciones.elementosCorrectos.containsAll(this.elementosCorrectos);
+        }else {return false;}
     }
     public boolean compararOrdenadamente(Opciones otraOpciones){
        return this.elementosCorrectos.equals(otraOpciones.elementosCorrectos);

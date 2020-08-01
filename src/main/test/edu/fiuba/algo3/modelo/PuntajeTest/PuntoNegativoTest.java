@@ -1,5 +1,4 @@
 package edu.fiuba.algo3.modelo.PuntajeTest;
-import edu.fiuba.algo3.modelo.puntaje.Puntaje;
 import edu.fiuba.algo3.modelo.puntaje.PuntoNegativo;
 import org.junit.jupiter.api.Test;
 

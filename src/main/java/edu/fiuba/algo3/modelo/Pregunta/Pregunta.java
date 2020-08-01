@@ -26,5 +26,5 @@ public class Pregunta {
     public Puntaje calificar(Opciones opcionesACalificar){
        return calificador.calificar(opciones,opcionesACalificar);
     }
-
+    public Opciones obtenerOpciones(){return opciones;}
 }
