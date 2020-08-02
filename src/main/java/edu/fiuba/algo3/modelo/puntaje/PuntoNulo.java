@@ -9,4 +9,6 @@ public class PuntoNulo implements Puntaje {
     public int valor(){
         return 0;
     }
+
+
 }

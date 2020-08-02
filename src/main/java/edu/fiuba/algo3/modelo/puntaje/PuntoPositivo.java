@@ -9,4 +9,5 @@ public class PuntoPositivo implements Puntaje {
     public int valor(){
         return 1;
     }
+
 }

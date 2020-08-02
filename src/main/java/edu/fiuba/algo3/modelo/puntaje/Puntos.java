@@ -6,7 +6,7 @@ import java.util.List;
 public class Puntos implements Puntaje {
     List<Puntaje> listaDePuntos = new ArrayList<Puntaje>();
 
-    @Override
+
     public void aniadir(Puntaje puntaje){
         listaDePuntos.add(puntaje);
     }

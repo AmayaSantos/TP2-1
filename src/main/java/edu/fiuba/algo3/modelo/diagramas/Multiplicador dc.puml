@@ -1,0 +1,9 @@
+@startuml
+interface Multiplicador{
++aplicar(Puntaje):Puntaje
+}
+Multiplicador <|-- MultiplicadorX3
+Multiplicador <|-- MultiplicadorX2
+Multiplicador <|-- MultiplicadorX1
+Multiplicador <|-- MultiplicadorDesabilitado
+@enduml

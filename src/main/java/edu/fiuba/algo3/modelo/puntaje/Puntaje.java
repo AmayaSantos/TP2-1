@@ -6,4 +6,11 @@ public interface Puntaje {
 
     int valor();
 
+    default Puntaje multiplicar(int multiplo){
+        Puntos puntos= new Puntos();
+        for (int j = 0; j < multiplo; j++){
+            puntos.aniadir(this);
+        }
+        return puntos;
+    };
 }
