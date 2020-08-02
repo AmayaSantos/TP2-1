@@ -7,7 +7,6 @@ import edu.fiuba.algo3.modelo.Jugador.Jugador;
 import edu.fiuba.algo3.modelo.Opciones.OpcionCorrecta;
 import edu.fiuba.algo3.modelo.Opciones.OpcionIncorrecta;
 import edu.fiuba.algo3.modelo.Pregunta.Pregunta;
-import edu.fiuba.algo3.modelo.Ronda.Ronda;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -50,9 +49,9 @@ public class PreguntaChoicePenalizado {
         jugador2.agregar(op2);
         jugador2.agregar(op1);
         jugador2.agregar(op3);
-        Ronda ronda= new Ronda();
-        ronda.calificar(jugador2,pregunta);
-        ronda.calificar(jugador1,pregunta);
+
+        pregunta.puntuar(jugador1,jugador2);
+
 
         assertEquals(2, jugador1.obtenerPuntaje().valor() );
         assertEquals(1, jugador2.obtenerPuntaje().valor() );
@@ -73,9 +72,9 @@ public class PreguntaChoicePenalizado {
         jugador2.agregar(op4);
         jugador2.agregar(op2);
         jugador2.agregar(op3);
-        Ronda ronda= new Ronda();
-        ronda.calificar(jugador2,pregunta);
-        ronda.calificar(jugador1,pregunta);
+
+        pregunta.puntuar(jugador1,jugador2);
+
 
         assertEquals(1, jugador1.obtenerPuntaje().valor() );
         assertEquals(-1, jugador2.obtenerPuntaje().valor() );
@@ -95,9 +94,9 @@ public class PreguntaChoicePenalizado {
         jugador1.agregar(op3);
         jugador2.agregar(op3);
         jugador2.agregar(op1);
-        Ronda ronda= new Ronda();
-        ronda.calificar(jugador2,pregunta);
-        ronda.calificar(jugador1,pregunta);
+
+        pregunta.puntuar(jugador1,jugador2);
+
 
         assertEquals(2, jugador1.obtenerPuntaje().valor() );
         assertEquals(2, jugador2.obtenerPuntaje().valor() );
@@ -115,9 +114,9 @@ public class PreguntaChoicePenalizado {
         jugador1.agregar(op4);
         jugador2.agregar(op4);
         jugador2.agregar(op2);
-        Ronda ronda= new Ronda();
-        ronda.calificar(jugador2,pregunta);
-        ronda.calificar(jugador1,pregunta);
+
+        pregunta.puntuar(jugador1,jugador2);
+
 
         assertEquals(-2, jugador1.obtenerPuntaje().valor() );
         assertEquals(-2, jugador2.obtenerPuntaje().valor() );

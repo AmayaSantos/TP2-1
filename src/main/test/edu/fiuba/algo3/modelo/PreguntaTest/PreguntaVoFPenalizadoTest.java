@@ -5,7 +5,7 @@ import edu.fiuba.algo3.modelo.Jugador.Jugador;
 import edu.fiuba.algo3.modelo.Opciones.OpcionCorrecta;
 import edu.fiuba.algo3.modelo.Opciones.OpcionIncorrecta;
 import edu.fiuba.algo3.modelo.Pregunta.Pregunta;
-import edu.fiuba.algo3.modelo.Ronda.Ronda;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -35,9 +35,9 @@ public class PreguntaVoFPenalizadoTest {
 
         jugador1.agregar(op1);
         jugador2.agregar(op2);
-        Ronda ronda= new Ronda();
-        ronda.calificar(jugador2,pregunta);
-        ronda.calificar(jugador1,pregunta);
+
+        pregunta.puntuar(jugador1,jugador2);
+
 
         assertEquals(1, jugador1.obtenerPuntaje().valor() );
         assertEquals(-1, jugador2.obtenerPuntaje().valor() );
@@ -54,9 +54,9 @@ public class PreguntaVoFPenalizadoTest {
 
         jugador1.agregar(op2);
         jugador2.agregar(op1);
-        Ronda ronda= new Ronda();
-        ronda.calificar(jugador2,pregunta);
-        ronda.calificar(jugador1,pregunta);
+
+        pregunta.puntuar(jugador1,jugador2);
+
 
         assertEquals(-1, jugador1.obtenerPuntaje().valor() );
         assertEquals(1, jugador2.obtenerPuntaje().valor() );
