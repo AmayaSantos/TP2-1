@@ -32,6 +32,7 @@ Class Respuesta{
     +{static}Respuesta(jugador: Jugador)
     +{static}Respuesta(jugador: Jugador, multiplicador: Multiplicador)
     +agregarOpcion(opcion: String): void
+    +agregarPuntajeObtenido(puntaje:Puntaje):void
     +aplicarPuntaje(): void
 }
 
