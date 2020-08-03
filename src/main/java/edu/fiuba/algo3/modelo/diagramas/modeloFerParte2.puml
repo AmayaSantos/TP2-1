@@ -1,0 +1,74 @@
+@startuml
+hide circle
+skinparam classAttributeIconSize 0
+
+'Clases
+Class Opciones{
+    -opciones: Collection<String>
+    +agregarOpcion(opcion: String): void
+    +compararConOrden(opciones: Opciones): boolean
+    +compararSinOrden(opciones: Opciones): boolean
+}
+
+Abstract Class Pregunta{
+    -enunciado: String
+    +{abstract}{static}Pregunta(enunciado: String)
+    +asignarOpcionCorrecta(opcionCorrecta: String): void
+    +calificar(Respuestaes: List<Respuesta>): void
+}
+
+
+Class Respuestas{
+    -opcionesElegidas: Opciones
+        +{static}Respuesta(jugador: Jugador)
+        +agregarOpcion(opcion: String): void
+}
+
+Class Jugador{
+    -nombre: String
+    +{Static}Jugador(nombre: String)
+    +modificarPuntaje(puntaje: puntaje): void
+    +obtenerPuntaje(): int
+}
+
+Abstract Class Puntaje{
+    +{abstract}añadir(puntaje: Puntaje): void
+    +{abstract}valor(puntaje: Puntaje): int
+}
+
+Class Puntos{
+    +añadir(puntaje: Puntaje): void
+    +valor(): int
+}
+
+Class PuntoNulo{
+    +añadir(puntaje: Puntaje): void
+    +valor(): int
+}
+
+Class PuntoNegativo{
+    +añadir(puntaje: Puntaje): void
+    +valor(): int
+}
+
+Class PuntoPositivo{
+    +añadir(puntaje: Puntaje): void
+    +valor(): int
+}
+
+
+
+'Relaciones
+Respuestas --* Jugador
+Pregunta *-right- Opciones
+Respuestas *-up- Pregunta
+PuntoNegativo -up-|> Puntaje
+PuntoNulo -up-|> Puntaje
+PuntoPositivo -up-|> Puntaje
+Puntos -left-|> Puntaje
+Puntos "1" o-left- "*" Puntaje
+Jugador *-- Puntaje
+
+
+
+@enduml

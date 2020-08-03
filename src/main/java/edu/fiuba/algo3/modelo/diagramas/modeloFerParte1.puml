@@ -1,0 +1,56 @@
+@startuml
+
+Class PreguntaVerdaderoOFalso{
+    calificar(Opciones opcionesCorrectas, List<Respuestas> respuestaJugadores): void
+}
+
+Class PreguntaMultipleChoice{
+    calificar(Opciones opcionesCorrectas, List<Respuestas> respuestaJugadores): void
+}
+
+Class PreguntaOrderedChoice{
+    calificar(Opciones opcionesCorrectas, List<Respuestas> respuestaJugadores): void
+}
+
+Class PreguntaGroupChoice{
+    calificar(Opciones opcionesCorrectas, List<Respuestas> respuestaJugadores): void
+}
+
+
+Abstract Class Pregunta{
+    -Opciones respuestasCorretas;
+    -String enunciado;
+    -ModificadorPuntaje modificadorPuntaje;
+    calificar(Opciones opcionesCorrectas, List<Respuestas> opcionesJugador): void
+}
+
+
+Interface ModificadorDePuntaje{
+    modificarPuntaje(int cantidadRespuestasCorrectas, int cantidadRespuestasIncorrectas, Jugador jugador):void
+}
+
+Class ModificadorClasico{
+   modificarPuntaje(int cantidadRespuestasCorrectas, int cantidadRespuestasIncorrectas, Jugador jugador):void
+}
+
+Class ModificadorParcial{
+    modificarPuntaje(int cantidadRespuestasCorrectas, int cantidadRespuestasIncorrectas, Jugador jugador):void
+}
+
+Class ModificadorPenalizado{
+    modificarPuntaje(int cantidadRespuestasCorrectas, int cantidadRespuestasIncorrectas, Jugador jugador):void
+}
+
+'dependencias
+
+
+PreguntaGroupChoice -right-|> Pregunta
+PreguntaMultipleChoice --|> Pregunta
+PreguntaOrderedChoice --|> Pregunta
+PreguntaVerdaderoOFalso -left-|> Pregunta
+ModificadorClasico -up-|> ModificadorDePuntaje
+ModificadorPenalizado  -up-|> ModificadorDePuntaje
+ModificadorParcial  -up-|> ModificadorDePuntaje
+ModificadorDePuntaje -up-> Pregunta
+
+@enduml
