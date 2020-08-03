@@ -1,22 +1,24 @@
 package edu.fiuba.algo3.modelo.Jugador;
 
+import edu.fiuba.algo3.modelo.Comodin.Multiplicador;
 import edu.fiuba.algo3.modelo.puntaje.Puntaje;
 import edu.fiuba.algo3.modelo.puntaje.Puntos;
 import edu.fiuba.algo3.modelo.Opciones.Opciones;
+
+import java.util.*;
 
 
 public class Jugador {
     protected String nombre;
     protected Puntaje puntaje  ;
-    protected Opciones misRespuestas;
-
+    protected Map<Integer,Multiplicador> multiplicadores;
     public Jugador(String nombre) {
-        this.misRespuestas= new Opciones();
         this.nombre = nombre;
-        this.puntaje= new Puntos();
-
+        this.puntaje = new Puntos();
+        this.multiplicadores = new HashMap<Integer,Multiplicador>();
+        multiplicadores.put(2, new Multiplicador(2));
+        multiplicadores.put(3, new Multiplicador(3));
     }
-
     public void agregarPuntaje(Puntaje puntaje){
         this.puntaje.aniadir(puntaje);
     }
@@ -24,13 +26,13 @@ public class Jugador {
     public Puntaje obtenerPuntaje(){
         return puntaje;
     }
-    public Opciones obtenerRespuestas(){
-        return misRespuestas;
+    public void removerMultiplicador(int factor){
+        multiplicadores.remove(factor);
+    }
+    public Map<Integer,Multiplicador> obtenerMultiplicadores(){
+        return multiplicadores;
     }
 
-    public void agregar(String opcion){
-        misRespuestas.agregarOpcion(opcion);
-    }
 
 }
 

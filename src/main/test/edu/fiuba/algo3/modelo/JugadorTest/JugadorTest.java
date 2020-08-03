@@ -1,10 +1,15 @@
 package edu.fiuba.algo3.modelo.JugadorTest;
 
+import edu.fiuba.algo3.modelo.Comodin.Multiplicador;
 import edu.fiuba.algo3.modelo.Jugador.Jugador;
 import edu.fiuba.algo3.modelo.puntaje.*;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class JugadorTest {
     @Test
@@ -49,5 +54,27 @@ public class JugadorTest {
         Puntaje puntaje1 = jugador.obtenerPuntaje();
         assertEquals(puntaje1.valor(), 2);
     }
+    @Test
+    public void obtengoMultiplicadorX2YLoAplico(){
+
+        Jugador jugador = new Jugador("carlos");
+        Map<Integer,Multiplicador> multiplicadores=jugador.obtenerMultiplicadores();
+        Multiplicador  multiplicador= multiplicadores.get(2);
+        Puntaje puntoPositivo= new PuntoPositivo();
+        puntoPositivo=multiplicador.aplicar(puntoPositivo);
+        assertEquals(puntoPositivo.valor(), 2);
+    }
+    @Test
+    public void testQuitoUnMultiplicadorX2AJugador(){
+
+        Jugador jugador = new Jugador("carlos");
+        Map<Integer,Multiplicador> multiplicadores=jugador.obtenerMultiplicadores();
+        assertEquals(multiplicadores.size(), 2);
+        Multiplicador  multiplicador= multiplicadores.get(2);
+        jugador.removerMultiplicador(2);
+        Map<Integer,Multiplicador>multiplicadores2=jugador.obtenerMultiplicadores();
+        assertFalse(multiplicadores2.containsValue(multiplicador));
+    }
+
 }
 
