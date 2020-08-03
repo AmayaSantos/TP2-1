@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.CalificadorTest;
 
 import edu.fiuba.algo3.modelo.Calificador.AsignadorClasico;
+import edu.fiuba.algo3.modelo.Calificador.AsignadorPenalizado;
 import edu.fiuba.algo3.modelo.Calificador.ComparadorSinOrden;
 import edu.fiuba.algo3.modelo.Opciones.Opciones;
 import edu.fiuba.algo3.modelo.puntaje.Puntaje;

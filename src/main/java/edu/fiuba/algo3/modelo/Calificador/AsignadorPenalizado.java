@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo.CalificadorTest;
+package edu.fiuba.algo3.modelo.Calificador;
 
 import edu.fiuba.algo3.modelo.Calificador.Calificador;
 import edu.fiuba.algo3.modelo.Opciones.Opciones;
