@@ -15,9 +15,14 @@ public class Opciones {
         elementos.add(elemento);
     }
 
+    public Collection<String> obtenerOpciones(){
+        return elementos;
+    }
+
     public boolean esta(String opcion) {
         return elementos.contains(opcion);
     }
+
 
     public boolean compararSinOrden(Opciones opciones) {
         Collection<String> misOpciones = new HashSet<String>(this.elementos);
@@ -33,14 +38,4 @@ public class Opciones {
         return misOpciones.equals(opcionesAComparar);
     }
 
-    public boolean compararParcialmente(Opciones opciones) {
-        Collection<String> misOpciones = new HashSet<String>(this.elementos);
-        Collection<String> opcionesAComparar = new HashSet<String>(opciones.elementos());
-
-        return misOpciones.containsAll(opcionesAComparar);
-    }
-
-    public int cantidad() {
-        return elementos.size();
-    }
 }
