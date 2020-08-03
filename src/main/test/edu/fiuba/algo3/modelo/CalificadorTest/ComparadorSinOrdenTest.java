@@ -1,10 +1,10 @@
 package edu.fiuba.algo3.modelo.CalificadorTest;
 
 import edu.fiuba.algo3.modelo.Calificador.AsignadorClasico;
+import edu.fiuba.algo3.modelo.Calificador.AsignadorPenalizado;
 import edu.fiuba.algo3.modelo.Calificador.ComparadorSinOrden;
 import edu.fiuba.algo3.modelo.Opciones.Opciones;
 import edu.fiuba.algo3.modelo.puntaje.Puntaje;
-import edu.fiuba.algo3.modelo.puntaje.PuntoNegativo;
 import edu.fiuba.algo3.modelo.puntaje.PuntoNulo;
 import edu.fiuba.algo3.modelo.puntaje.PuntoPositivo;
 import org.junit.jupiter.api.Test;
@@ -113,11 +113,11 @@ public class ComparadorSinOrdenTest {
         ComparadorSinOrden comparador = new ComparadorSinOrden(new AsignadorPenalizado());
         Puntaje puntajeObtenido = comparador.calificar(opcionesCorrectas, opcionesElegidas);
 
-        assertEquals((new PuntoNegativo().valor()), puntajeObtenido.valor());
+        assertEquals(3, puntajeObtenido.valor());
     }
 
     @Test
-    public void Test04SeEvaluanDosOpcionesSinPenalidadVerificaOpcionesDiferentesDevuelveUnPuntoNegativo(){
+    public void Test06SeEvaluanDosOpcionesConPenalidadVerificaOpcionesDiferentesDevuelveUnPuntoNegativo(){
 
         Opciones opcionesCorrectas = new Opciones();
         opcionesCorrectas.agregarOpcion("1");
@@ -134,8 +134,40 @@ public class ComparadorSinOrdenTest {
         ComparadorSinOrden comparador = new ComparadorSinOrden(new AsignadorPenalizado());
         Puntaje puntajeObtenido = comparador.calificar(opcionesCorrectas, opcionesElegidas);
 
-        assertEquals((new PuntoNegativo().valor()), puntajeObtenido.valor());
+        assertEquals(-2, puntajeObtenido.valor());
     }
 
+
+    @Test
+    public void Test07ComparadorSinOrdenEvaluanOpcionCorrectaYSeObtieneUnPuntoPositivo(){
+
+        Opciones opcionesCorrectas = new Opciones();
+        opcionesCorrectas.agregarOpcion("1");
+
+        Opciones opcionesElegidas = new Opciones();
+        opcionesElegidas.agregarOpcion("1");
+
+
+        ComparadorSinOrden comparador = new ComparadorSinOrden(new AsignadorClasico());
+        Puntaje puntajeObtenido = comparador.calificar(opcionesCorrectas, opcionesElegidas);
+
+        assertEquals((new PuntoPositivo().valor()), puntajeObtenido.valor());
+    }
+
+    @Test
+    public void Test08ComparadorSinOrdenEvaluanOpcionCorrectaYSeObtieneUnPuntoNulo(){
+
+        Opciones opcionesCorrectas = new Opciones();
+        opcionesCorrectas.agregarOpcion("1");
+
+        Opciones opcionesElegidas = new Opciones();
+        opcionesElegidas.agregarOpcion("4");
+
+
+        ComparadorSinOrden comparador = new ComparadorSinOrden(new AsignadorClasico());
+        Puntaje puntajeObtenido = comparador.calificar(opcionesCorrectas, opcionesElegidas);
+
+        assertEquals((new PuntoNulo().valor()), puntajeObtenido.valor());
+    }
 
 }
