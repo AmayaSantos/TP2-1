@@ -7,10 +7,12 @@ import edu.fiuba.algo3.modelo.puntaje.PuntoNegativo;
 import edu.fiuba.algo3.modelo.puntaje.PuntoPositivo;
 import edu.fiuba.algo3.modelo.puntaje.Puntos;
 
+
 public class AsignadorPenalizado extends Calificador {
 
     @Override
     public Puntaje calificar(Opciones correctas, Opciones elegidas) {
+
         Puntos puntajeParcial = new Puntos();
         for (String opcionElegida: elegidas.obtenerOpciones()) {
             if(correctas.esta(opcionElegida)){
@@ -21,5 +23,6 @@ public class AsignadorPenalizado extends Calificador {
             }
         }
         return puntajeParcial;
+
     }
 }
