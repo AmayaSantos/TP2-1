@@ -26,4 +26,22 @@ public class PreguntaVoFTest {
         opcion.agregarOpcion("F");
         assertFalse(pregunta.esCorrecta(opcion));
     }
+
+    @Test
+    public void Test03PreguntaVoFConEnunciadoFalsoSeCreaYVerificaConFalso(){
+
+        Pregunta pregunta = FabricaPreguntas.preguntaVoFFalsa("Enunciado");
+        Opciones opcion = new Opciones();
+        opcion.agregarOpcion("F");
+        assertTrue(pregunta.esCorrecta(opcion));
+    }
+
+    @Test
+    public void Test04PreguntaVoFConEnunciadoFalsoSeCreaYSeTesteaConUnVerdadero(){
+
+        Pregunta pregunta = FabricaPreguntas.preguntaVoFFalsa("Enunciado");
+        Opciones opcion = new Opciones();
+        opcion.agregarOpcion("V");
+        assertFalse(pregunta.esCorrecta(opcion));
+    }
 }
