@@ -7,6 +7,7 @@ import edu.fiuba.algo3.modelo.puntaje.PuntoPositivo;
 public class ComparadorSinOrden extends Calificador{
 
     public ComparadorSinOrden(Calificador calificador){
+
         siguienteCalificador = calificador;
     }
 
