@@ -29,4 +29,5 @@ public class Respuesta {
     public Opciones obtenerOpciones(){
         return opcionesElegidas;
     }
+
 }
